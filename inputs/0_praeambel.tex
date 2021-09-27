@@ -1,0 +1,143 @@
+\documentclass[a4paper,twoside,10pt,openright]{report}%Dokumentenklasse 
+\usepackage{graphicx} %Compiler
+
+%%%% Schrift und Kodierung %%%%
+	\usepackage[T1]{fontenc} %Zeichensatzkodierung von 7bit auf 8bit 
+	\usepackage[utf8]{inputenc} %Zeichensatzkodierung Unicode bzw. UTF8
+	\usepackage{lmodern} %Vektorschrift
+	%\RequirePackage[english,spanish,es-nolayout]{babel}
+	\usepackage[english]{babel}
+	\usepackage{textcomp}
+	\usepackage{lmodern}
+	\usepackage{url}
+	\usepackage[bookmarksnumbered=true]{hyperref}
+    \graphicspath{{figures/}}	
+	
+%%% COLORS %%%
+\newcommand{\hl}[1]{
+   \textcolor{MidnightBlue!90!black}{#1} 
+}
+	
+%%%% Fancy Header %%%
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz} 
+\usepackage{pgfplots}
+%\usepackage{pgf-pie}
+
+\definecolor{mycolor}{rgb}{0.45,0.45,0.45}% dark grey
+
+ 
+\fancyhf{}
+\fancyhead[LE]{\sffamily\color{mycolor}\nouppercase{\leftmark}} % left even, right odd
+\fancyhead[RO]{\sffamily\color{mycolor}\nouppercase{\rightmark}} % left even, right odd
+\fancyfoot[CE,CO]{\sffamily\color{mycolor}\nouppercase{\thepage}} % center even, center odd
+\renewcommand{\headrule}{{\color{mycolor}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\fancypagestyle{plain}{%
+    \fancyhf{}%
+    \fancyfoot[CE,CO]{ { \sffamily\color{mycolor}{\thepage} } }
+	\renewcommand{\headrulewidth}{0.0pt}
+}
+
+%\fancypagestyle{fancy}{%
+%   \fancyhf{}
+%	\fancyhead[LE,RO]{\sffamily\color{mycolor}\nouppercase{\leftmark}} % left even, right odd
+%	\fancyfoot[CE,CO]{\sffamily\color{mycolor}\nouppercase{\thepage}} % center even, center odd
+%	\renewcommand{\headrule}{{\color{mycolor}%
+%	\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+%	\renewcommand{\headrulewidth}{0.5pt}
+%}
+
+
+%%% Customize titles %%%%
+\usepackage[ ]{titlesec}  %
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+%\titleformat{\chapter}[display]
+%  { \normalsize \huge  \color{black}}%
+%  {\flushright \normalsize \color{mycolor} \MakeUppercase %
+%  {\sffamily \chaptertitlename } \hspace{1 ex}%
+%  { \fontsize{60}{60}\selectfont \color{mycolor} \sffamily  \thechapter }}%
+%  {10 pt}%
+%  {\sffamily \huge \color{mycolor}\bfseries}
+%\newcommand\mychapformat[1]{\parbox[t]{\dimexpr\textwidth-3em\relax}{\raggedleft#1}}
+\titleformat{\chapter}[hang]{\Huge\bfseries\color{mycolor}\sffamily}% the number
+	{\thechapter\hspace{20pt}\textcolor{mycolor}{|}\hspace{20pt}}%
+	{0pt}{\Huge\bfseries\color{mycolor}\sffamily}% the title
+\titleformat*{\section}{\sffamily\LARGE\color{mycolor}}
+\titleformat*{\subsection}{\sffamily\Large\color{mycolor}}
+\titleformat*{\subsubsection}{\sffamily\large\color{mycolor}}
+\titleformat*{\paragraph}{\sffamily\large\bfseries\color{mycolor}}
+
+
+
+	
+%%%% Mathepakete %%%%
+	\usepackage{array}
+	\usepackage{calc}
+	\usepackage{amsmath}
+	\usepackage[intlimits]{empheq}
+	\usepackage{amssymb,mathrsfs}
+	\usepackage{theorem}
+	\usepackage{slashed}
+	\usepackage{feynmp-auto}
+
+%%%% Sonstiges %%%%
+	%\usepackage{subcaption}
+	\expandafter\def\csname ver@subfig.sty\endcsname{}
+	\usepackage{subfig} %Ermöglicht subfloats, also mehrere Tabellen/Bilder in einer Umgebung
+	\usepackage{float} %Setzt mit [H] Figuren genau dort hin, wo sie im Text auftauchen
+	\usepackage{booktabs} %Andere Tabellen
+	\usepackage{gensymb}
+	\usepackage{extarrows}%lange Pfeile
+%	\usepackage{pst-pdf}	
+	\usepackage{wasysym} %Symbolpaket
+	\usepackage{multirow} %Ein Wert für mehrere Zeilen oder Spalten von Tabellen. Verwendung \multirow{#AnzahlZeilen}{*}{Name} bzw. analog \multicolumn{}{}{}
+	\usepackage{rotating} %ermöglicht Schiefe Schrift
+	%\usepackage{ziffer} %Deutsche Zahlen (Komma als Dezimalstelle im Mathemodus!)
+	\usepackage{nicefrac} %Im Text schöne Brüche
+	\usepackage[inner=3cm, outer=2.4cm, top=3cm]{geometry} %Passt Seitenränder an (left, right, top, bottom, width, height, textwidth, textheight)
+	\usepackage{scrhack} %Verbessert angeblich LaTeX-Pakete
+	\usepackage{numprint} %ROOT-Zahlen in deutsches zahlenformat übertragen. Syntax: \numprint[kg]{1.234e56} wird zu 1,234 * 10^56 kg
+	\usepackage{cite}
+	\usepackage{placeins}
+	\usepackage{changepage}
+	%\hyphenation{con-fine-ment}
+	
+%%%% spezielle Formatierungen %%%%
+	\setlength{\emergencystretch}{25pt} %verhindert das Herausragen von Wörtern übers Zeilenende
+	\setlength{\parindent}{0pt} %Kein Einschub bei neuem Absatz
+	\setlength{\parskip}{2pt plus 1pt} %Erhöht Abstand zwischen Absätzen (um 1pt flexibel bei Seitenumbrüchen)
+	
+	%%%% Dokument-Variablen %%%%
+\date{\today}
+
+%%%% Eigene Befehle %%%%
+\DeclareGraphicsRule{*}{mps}{*}{}
+	\newcommand{\mE}[1]{\,\mathrm{#1}} %Einheiten im Mathemodus
+	\renewcommand{\sl}[1]{\slashed{#1}} %Feynman-Slash
+	\newcommand{\dummyImage}[2]{  %Erzeugt eine Umgebung wie includegraphics
+		\frame{\mbox{\rule{0pt}{#2}	Bild fehlt  noch \rule{#1}{0pt}}}
+	}
+	\renewcommand{\i}{\mathrm{i}} %Imaginäre Einheit
+%	\renewcommand{\vec}[1]{\textbf{#1}} %Fette Vektoren
+	\newcommand{\bc}{\begin{center}}
+	\newcommand{\ec}{\end{center}}
+
+\newcommand{\matM}{\mathcal{M}}
+\newcommand{\matH}{\mathcal{H}}
+\newcommand{\matS}{\mathcal{S}}
+\newcommand{\matU}{\mathcal{U}}
+\newcommand{\matUL}{\mathcal{U}_L}
+\newcommand{\matUR}{\mathcal{U}_R}
+
+%%% center all the figures and tables
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother

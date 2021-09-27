@@ -1,0 +1,97 @@
+% maximal number of floating environments on each page 
+\setlength{\floatsep}{0pt}
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+\setcounter{totalnumber}{1}
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0.0}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\def\tablename{Table}
+\def\figurename{Figure}
+
+\newcommand{\newparagraph}{\par\bigskip\noindent}
+\newcommand{\toolfont}[1]{\texttt{#1}}
+\newcommand{\ord}{\ensuremath{\mathcal{O}}}
+\newcommand{\ope}[1]{\ensuremath{\mathcal{O}_{#1}}}
+\newcommand{\largex}{\ensuremath{\large \boldsymbol{\times}}}
+\newcommand{\brlargex}{\ensuremath{\large (\boldsymbol{\times})}}
+\newcommand{\mheavy}{\ensuremath{M}}
+
+\newcommand{\lag}{\ensuremath{\mathcal{L}}}
+\newcommand{\mat}{\ensuremath{\mathcal{M}}}
+\newcommand{\delx}{\ensuremath{\Delta}}
+\newcommand{\data}{\ensuremath{\mathcal{D}}}
+\newcommand{\jump}{\vspace{0.3cm}}
+\newcommand{\bsg}{\ensuremath{\mathcal{B}(b \to s \gamma)}}
+\newcommand{\rself}{\ensuremath{\hat{\Sigma}}}
+\newcommand{\retildehat}{\ensuremath{\mbox{Re}\hat{\Sigma}}}
+\newcommand{\retilde}{\ensuremath{\mbox{Re}\,\Sigma}}
+\newcommand{\dweaksing}{\ensuremath{\delta_{\text{weak}}^{\text{sing}}}}
+\newcommand{\dweak}{\ensuremath{\delta_{\text{weak}}}}
+\newcommand{\newtext}[1]{\textcolor{red}{#1}}
+\newcommand{\suit}{\textcolor{blue}{$\spadesuit$}}
+\newcommand{\neutn}{\ensuremath{\tilde{\chi}^0_n}}
+\newcommand{\gluino}{\ensuremath{\tilde{g}}}
+\newcommand{\squark}{\ensuremath{\tilde{q}}}
+\newcommand{\met}{\ensuremath{\slashed{E}_T}}
+\newcommand{\nqsq}{\ensuremath{\tilde{\chi}\,\tilde{q}\,q}}
+\newcommand{\msbar}{\ensuremath{\overline{MS}}}
+\newcommand{\sw}{\ensuremath{s_w}}
+\newcommand{\swd}{\ensuremath{s^2_w}}
+\newcommand{\cw}{\ensuremath{c_w}}
+\newcommand{\cwd}{\ensuremath{c^2_w}}
+\newcommand{\myrbox}[1]{\parbox{4.0cm}{#1}}
+
+\newcommand{\psib}{\overline{\psi}}
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+
+\newcommand{\p}{\partial}
+\newcommand{\br}{\text{BR}}
+\newcommand{\qqquad}{\qquad \qquad}
+\newcommand{\qqqquad}{\qquad \qquad \qquad}
+
+\newcommand{\matx}{|\mathcal{M}|^2}
+\newcommand{\really}{\stackrel{!}{=}}
+\newcommand{\SFitter}{\textsc{SFitter} }
+
+% units of measure
+\newcommand{\mev}{{\ensuremath\rm MeV}}
+\newcommand{\gev}{{\ensuremath\rm GeV}}
+\newcommand{\tev}{{\ensuremath\rm TeV}}
+\newcommand{\fb}{{\ensuremath\rm fb}}
+\newcommand{\ab}{{\ensuremath\rm ab}}
+\newcommand{\pb}{{\ensuremath\rm pb}}
+\newcommand{\sign}{{\ensuremath\rm sign}}
+\newcommand{\iab}{\text{ab}^{-1}}
+\newcommand{\ifb}{{\ensuremath\rm fb^{-1}}}
+\newcommand{\ipb}{{\ensuremath\rm pb^{-1}}}
+
+% really great macro by Chris Lester
+\def\slashchar#1{\setbox0=\hbox{$#1$}           % set a box for #1
+   \dimen0=\wd0                                 % and get its size
+   \setbox1=\hbox{/} \dimen1=\wd1               % get size of /
+   \ifdim\dimen0>\dimen1                        % #1 is bigger
+      \rlap{\hbox to \dimen0{\hfil/\hfil}}      % so center / in box
+      #1                                        % and print #1
+   \else                                        % / is bigger
+      \rlap{\hbox to \dimen1{\hfil$#1$\hfil}}   % so center #1
+      /                                         % and print /
+   \fi}
+\newcommand{\dslash}{\slashchar{\partial}}
+\newcommand{\Dslash}{\slashchar{D}}
+
+\def\eg{{e.g.}\ }
+\def\ie{{i.e.}\ }
+%\def\etal{{\sl et al} \,}
+%\DeclareMathOperator{\tr}{Tr}
+\newcommand{\pbp}{\ensuremath{H^\dagger\,H}}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand{\Dfb}{\mbox{$\raisebox{2mm}{\boldmath ${}^\leftrightarrow$}\hspace{-4mm} D$}}
+\newcommand{\Dfba}{\mbox{$\raisebox{2mm}{\boldmath ${}^\leftrightarrow$}\hspace{-4mm} D^a$}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\let\vec\mathbf % vectors in bold
+\renewcommand{\d}{\text{d}}
+
