@@ -4,7 +4,7 @@
 This repository contains the LaTeX source for the PhD thesis written by [Marco Bellagente](https://marcobellagente93.github.io). 
 Some code is available for running the experiments presented in the thesis in the repositories linked below. 
 
-<a href="https://github.com/marcobellagente93/phdthesis/releases/download/submission/marcobellagente93-phdthesis.pdf"><img alt="PDF" 
+<a href="https://github.com/marcobellagente93/phdthesis/thesis.pdf"><img alt="PDF" 
 height="24" src="https://img.shields.io/github/downloads/marcobellagente93/phdthesis/total?label=PDF"></a>
 
 # Publications in this thesis
