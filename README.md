@@ -1,5 +1,5 @@
 # Go with the Flow <br/>
-## Normalizing Flows applications for particle physics
+# Normalizing Flows applications for particle physics
 
 This repository contains the LaTeX source for the PhD thesis written by [Marco Bellagente](https://marcobellagente93.github.io). 
 Some code is available for running the experiments presented in the thesis in the repositories linked below. 
