@@ -1,6 +1,8 @@
 \documentclass[a4paper,twoside,10pt,openright]{report}%Dokumentenklasse 
 \usepackage{graphicx} %Compiler
 
+\usepackage{dsfont}
+
 %%%% Schrift und Kodierung %%%%
 	\usepackage[T1]{fontenc} %Zeichensatzkodierung von 7bit auf 8bit 
 	\usepackage[utf8]{inputenc} %Zeichensatzkodierung Unicode bzw. UTF8
@@ -25,8 +27,23 @@
 \usepackage{pgfplots}
 %\usepackage{pgf-pie}
 
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric, arrows}
+
 \definecolor{mycolor}{rgb}{0.45,0.45,0.45}% dark grey
 
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\dth}{\Delta_{\text{th/sys}}}
+\newcommand{\dst}{\Delta_{\text{stat}}}
+\newcommand{\dsy}{\Delta_{\text{syst}}}
+\newcommand{\sthsy}{\sigma_{\text{th/sys}}}
+\newcommand{\sth}{\sigma_{\text{th}}}
+\newcommand{\sst}{\sigma_{\text{stat}}}
+\newcommand{\ssy}{\sigma_{\text{syst}}}
+
+\newcommand{\Langle}{\big\langle}
+\newcommand{\Rangle}{\big\rangle} 
  
 \fancyhf{}
 \fancyhead[LE]{\sffamily\color{mycolor}\nouppercase{\leftmark}} % left even, right odd

@@ -1,0 +1,248 @@
+% To fix list things: 
+\setitemize{itemsep=2pt,topsep=2pt,parsep=0pt,partopsep=0pt,leftmargin=*}
+\setenumerate{itemsep=0pt,topsep=2pt,parsep=0pt,partopsep=0pt,labelindent=3pt,leftmargin=*}
+\setlength{\tabcolsep}{2pt}
+
+
+\definecolor{Gcolor}{HTML}{3b528b}
+\definecolor{Dcolor}{HTML}{e41a1c}
+
+\tikzstyle{generator} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=Gcolor]
+\tikzstyle{discriminator} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=Dcolor]
+\tikzstyle{io} = [circle, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=1cm, text centered, draw=black]
+
+\tikzstyle{process} = [rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{decision} = [rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\usepackage{xcolor}
+
+%% macros for marking changes
+%\marginparwidth 3.0cm
+%\setlength{\hoffset}{-1.6cm}
+%\newcommand{\mpar}[1]{\rule{2pt}{10pt}
+%                      {\marginpar{\hbadness10000\flushleft
+%                      \sloppy\hfuzz10pt\boldmath\footnotesize#1}}
+%                       \typeout{marginpar: #1}\ignorespaces}
+%\def\mda{\mpar{\hfil$\downarrow$\hfil}\ignorespaces}
+%\def\mua{\mpar{\hfil$\uparrow$\hfil}\ignorespaces}
+%\def\mla{\marginpar[\boldmath\hfil$\rightarrow$\hfil]
+%                   {\boldmath\hfil$\leftarrow $\hfil}
+%                    \typeout{marginpar: $\leftrightarrow$}\ignorespaces}
+
+% hyper-link hep-ph references
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{arXiv:#1}}
+\newcommand{\urlx}[1]{\href{#1}{#1}}
+\newcommand{\doix}[2]{\href{http://dx.doi.org/#2}{#1}}
+
+\newcommand{\mcD}{\mathcal{D}} 
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\dth}{\Delta_{\text{th/sys}}}
+\newcommand{\dst}{\Delta_{\text{stat}}}
+\newcommand{\dsy}{\Delta_{\text{syst}}}
+\newcommand{\sthsy}{\sigma_{\text{th/sys}}}
+\newcommand{\sth}{\sigma_{\text{th}}}
+\newcommand{\sst}{\sigma_{\text{stat}}}
+\newcommand{\ssy}{\sigma_{\text{syst}}}
+
+
+%\newcommand*{\thead}[1]{\multicolumn{1}{c}{\bfseries #1}}
+
+\def\contentsname{{\normalsize Content}}
+\def\tablename{Table}
+\def\figurename{Figure}
+
+\def\cls{\text{CL}_\text{s}}
+\def\mtr{\overline{m}_t}
+\def\pveto{P_\text{veto}}
+\def\nj{N_\text{jets}}
+\def\meff{m_\text{eff}}
+\def\ptmin{p_T^\text{min}}
+\def\gtot{\Gamma_\text{tot}}
+\def\as{\alpha_s}
+\def\az{\alpha_0}
+\def\gz{g_0}
+\def\w{\vec{w}}
+\def\sdag{\Sigma^{\dag}}
+\def\s{\Sigma}
+
+\newcommand{\comment}[1]{\textcolor{red}{#1}}
+
+\newcommand{\Langle}{\big\langle}
+\newcommand{\Rangle}{\big\rangle}
+
+\newcommand{\psib}{\overline{\psi}}
+\newcommand{\Psib}{\overline{\Psi}}
+%\newcommand{\dslash}{\not{\hbox{\kern-3pt $\partial$}}}
+%\newcommand{\Dslash}{\not{\hbox{\kern-3pt $D$}}}
+%\def\one{\leavevmode\hbox{\small1\kern-7.3pt\normalsize1}}
+%%\def\one{I}
+\newcommand\one{\leavevmode\hbox{\small1\normalsize\kern-.33em1}}
+\newcommand{\Mpl}{M_\text{Pl}}
+%\def\dslash{\not{\hbox{\kern-4pt $\partial$}}}
+%\def\Dslash{\not{\hbox{\kern-4pt $D$}}}
+\newcommand{\p}{\partial}
+\newcommand{\mat}{\mathcal{M}}
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\loss}{\mathcal{L}}
+\newcommand{\ord}{\mathcal{O}}
+\newcommand{\ope}{\mathcal{O}}
+\newcommand{\matx}{|\mathcal{M}|^2}
+
+\newcommand{\qqquad}{\qquad \qquad}
+\newcommand{\qqqquad}{\qquad \qquad \qquad}
+
+\newcommand{\qb}{\bar{q}}
+\newcommand{\really}{\stackrel{!}{=}}
+\newcommand{\msbar}{\overline{\text{MS}}}
+\newcommand{\qns}{f_q^\text{NS}}
+\newcommand{\lqcd}{\Lambda_\text{QCD}}
+\newcommand{\met}{\slashchar{E}_T}
+\newcommand{\pmiss}{\slashchar{\vec{p}}_T}
+
+% for SUSY fit projects
+\newcommand{\Mzero}{\ensuremath{m_0}}
+\newcommand{\MOneHalf}{\ensuremath{m_{1/2}}}
+\newcommand{\omegacdm}{\ensuremath{\Omega h^2}}
+\newcommand{\Mtop}{\ensuremath{m_t}}
+\newcommand{\Mone}{\ensuremath{M_1}}
+\newcommand{\Mtwo}{\ensuremath{M_2}}
+\newcommand{\Mthree}{\ensuremath{M_3}}
+\newcommand{\Deltaamu}{\ensuremath{\text{\Delta a_\mu}}}
+\newcommand{\chisq}{{\ensuremath -2\log L}}
+\newcommand{\Alambda}{{\ensuremath {A_\lambda}}}
+\newcommand{\Akappa}{{\ensuremath {A_\kappa}}}
+\newcommand{\tkappa}{{\ensuremath{\tilde \kappa}}}
+\newcommand{\abs}[1]{\left |#1\right |}
+\newcommand{\unit}[1]{\ensuremath{\, \text{#1}}}
+
+\newcommand{\lsp}{\tilde \chi}
+\newcommand{\sq}{\tilde{q}}
+\newcommand{\go}{\tilde{g}}
+\newcommand{\st}[1]{\tilde{t}_{#1}}
+\newcommand{\stb}[1]{\tilde{t}_{#1}^*}
+\newcommand{\nz}[1]{\tilde{\chi}_{#1}^0}
+\newcommand{\cp}[1]{\tilde{\chi}_{#1}^+}
+\newcommand{\cm}[1]{\tilde{\chi}_{#1}^-}
+\newcommand{\CP}{CP}
+
+% all the masses 
+\providecommand{\mg}{m_{\tilde{g}}}
+\providecommand{\mst}[1]{m_{\tilde{t}_{#1}}}
+\newcommand{\msn}[1]{m_{\tilde{\nu}_{#1}}}
+\newcommand{\mch}[1]{m_{\tilde{\chi}^+_{#1}}}
+\newcommand{\mne}[1]{m_{\tilde{\chi}^0_{#1}}}
+\newcommand{\msb}[1]{m_{\tilde{b}_{#1}}}
+\newcommand{\vsm}{\ensuremath{v_\text{SM}}}
+
+% units of measure
+\newcommand{\cmu}{\text{cm}}
+\newcommand{\mev}{\text{MeV}}
+\newcommand{\gev}{\text{GeV}}
+\newcommand{\tev}{\text{TeV}}
+\newcommand{\fb}{\text{fb}}
+\newcommand{\ab}{\text{ab}}
+\newcommand{\pb}{\text{pb}}
+\newcommand{\br}{\text{BR}}
+\newcommand{\sign}{\text{sign}}
+\newcommand{\ifb}{\ensuremath{\text{fb}^{-1}} }
+\newcommand{\iab}{\ensuremath{\text{ab}^{-1}} }
+\newcommand{\ipb}{\text{pb}^{-1}}
+
+% really great macro by Chris Lester
+\def\slashchar#1{\setbox0=\hbox{$#1$}           % set a box for #1
+   \dimen0=\wd0                                 % and get its size
+   \setbox1=\hbox{/} \dimen1=\wd1               % get size of /
+   \ifdim\dimen0>\dimen1                        % #1 is bigger
+      \rlap{\hbox to \dimen0{\hfil/\hfil}}      % so center / in box
+      #1                                        % and print #1
+   \else                                        % / is bigger
+      \rlap{\hbox to \dimen1{\hfil$#1$\hfil}}   % so center #1
+      /                                         % and print /
+   \fi}
+\newcommand{\dslash}{\slashchar{\partial}}
+\newcommand{\Dslash}{\slashchar{D}}
+
+\newcommand{\eg}{\textsl{e.g.}\;}
+\newcommand{\ie}{\textsl{i.e.}\;}
+\newcommand{\etal}{\textsl{et al}\;}
+%\DeclareMathOperator{\tr}{Tr}
+
+% maximal number of floating environments on each page 
+\setlength{\floatsep}{0pt}
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+\setcounter{totalnumber}{1}
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0.0}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand{\rig}{\rightarrow}
+\newcommand{\lrig}{\longrightarrow}
+\renewcommand{\d}{{\text{d}}}
+\newcommand{\gl}[1]{(\ref{#1})}
+\newcommand{\ta}[2]{ \frac{ {\text{d}} #1 } {{\text{d}} #2}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}{\epsilon}
+%\renewcommand{\vec}{\bf}
+\newcommand{\emt}{$\times 10^{-3}$}
+\newcommand{\emfo}{$\times 10^{-4}$}
+\newcommand{\emfi}{$\times 10^{-5}$}
+
+\newcommand{\revision}[1]{{\bf{}#1}}
+
+\newcommand{\hzero}{\ensuremath{h^0}}
+\newcommand{\Hzero}{\ensuremath{H^0}}
+\newcommand{\Azero}{\ensuremath{A^0}}
+\newcommand{\PHiggs}{\ensuremath{H}}
+\newcommand{\PW}{\ensuremath{W}}
+\newcommand{\PZ}{\ensuremath{Z}}
+
+\newcommand{\sw}{\ensuremath{s_w}}
+\newcommand{\cw}{\ensuremath{c_w}}
+\newcommand{\swd}{\ensuremath{s^2_w}}
+\newcommand{\cwd}{\ensuremath{c^2_w}}
+
+%% 2HDM Higgs masses
+\newcommand{\mhhd}{\ensuremath{m^2_{\Hzero}}}
+\newcommand{\mhh}{\ensuremath{m_{\Hzero}}}
+\newcommand{\mlhd}{\ensuremath{m^2_{\hzero}}}
+\newcommand{\Mlh}{\ensuremath{m_{\hzero}}}
+\newcommand{\mad}{\ensuremath{m^2_{\Azero}}}
+% \newcommand{\ma}{\ensuremath{m_{\Azero}}}
+\newcommand{\mhpd}{\ensuremath{m^2_{\PHiggs^{\pm}}}}
+\newcommand{\mhp}{\ensuremath{m_{\PHiggs^{\pm}}}}
+
+\newcommand{\sa}{\ensuremath{\sin\alpha}}
+\newcommand{\ca}{\ensuremath{\cos\alpha}}
+\newcommand{\cad}{\ensuremath{\cos^2\alpha}}
+\newcommand{\sad}{\ensuremath{\sin^2\alpha}}
+\newcommand{\sbd}{\ensuremath{\sin^2\beta}}
+\newcommand{\cbd}{\ensuremath{\cos^2\beta}}
+\newcommand{\cb}{\ensuremath{\cos\beta}}
+\renewcommand{\sb}{\ensuremath{\sin\beta}}
+\newcommand{\tanbd}{\ensuremath{\tan^2\beta}}
+\newcommand{\cotbd}{\ensuremath{\cot^2\beta}}
+\newcommand{\tanb}{\ensuremath{\tan\beta}}
+\newcommand{\tb}{\ensuremath{\tan\beta}}
+\newcommand{\cotb}{\ensuremath{\cot\beta}}
+
+\newcommand{\Sherpa}{S\protect\scalebox{0.8}{HERPA}\xspace}
+
+\newcommand{\brinv}{\ensuremath{BR_{\text{inv}}}\xspace}
+\newcommand{\vegas}{\textsc{Vegas}\xspace}
+\newcommand{\madgraph}{\textsc{Madgraph}5\xspace}
+\newcommand{\pythia}{\textsc{Pythia8}\xspace}
+\newcommand{\fastjet}{\textsc{FastJet}\xspace}
+\newcommand{\delphes}{\textsc{Delphes}\xspace}
+\newcommand{\sherpa}{\textsc{Sherpa}\xspace}
+\newcommand{\sklearn}{\textsc{scikit-learn}\xspace}
+\newcommand{\keras}{\textsc{Keras}\xspace}
+\newcommand{\pytorch}{\textsc{PyTorch}\xspace}
+\newcommand{\theano}{\textsc{Theano}\xspace}
+\newcommand{\adam}{\textsc{Adam}\xspace}
+\newcommand{\etmiss}{\ensuremath{E_T^{\text{miss}}}\xspace}
+\newcommand{\lumi}{\ensuremath{\mathcal{L}}\xspace}
+\newcommand{\sqrts}{\ensuremath{\sqrt{s}}\xspace}
+

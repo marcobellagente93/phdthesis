@@ -1,0 +1,95 @@
+
+%\definecolor{Gcolor}{HTML}{3b528b}
+%\definecolor{Dcolor}{HTML}{e41a1c}
+
+\definecolor{Gcolor}{HTML}{2c7fb8}
+\definecolor{Dcolor}{HTML}{f03b20}
+
+
+\tikzstyle{cINN} = [thick, rectangle, rounded corners, minimum width=2.5cm, minimum height=3.5cm,text centered, draw=Gcolor]
+\tikzstyle{preprocessor} = [thick, rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm,text centered, draw=Dcolor]
+\tikzstyle{mmd} = [thick, rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{io} = [thick,circle, minimum width=1.2cm, minimum height=1cm, text centered, draw=black]
+
+\tikzstyle{cond} = [thick, rectangle, dotted, rounded corners, minimum width=10.0cm, minimum height=2cm,text centered, draw=gray!50!black]
+
+\tikzstyle{iodotted} = [thick, circle, minimum width=1.2cm, minimum height=1cm, text centered, draw=black, dotted]
+
+\tikzstyle{process} = [thick, rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black]
+
+\tikzstyle{xG} = [thick,rectangle, minimum width=2.2cm, minimum height=3cm, text depth= 2.2cm, draw=black]
+\tikzstyle{s0} = [thick,rectangle, minimum width=2cm, minimum height=3cm, text centered]
+\tikzstyle{s1} = [thick, dotted, rectangle, minimum width=1.6cm, minimum height=1.1cm, text centered, draw=black]
+
+
+\tikzstyle{decision} = [thick,rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black]
+
+
+\tikzstyle{dots} = [circle, minimum size=2pt, inner sep=0pt,outer sep=0pt, draw=Dcolor, fill = Dcolor]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+
+
+\node (cINN) [cINN] {cINN};
+
+\node (xG) [io, left of = cINN, xshift=-0.5cm, yshift=1cm] {$\{\tilde{x}_p\}$};
+\node (rG) [io, right of = cINN, xshift=0.5cm, yshift=-1cm] {$\{ \tilde{r} \}$};
+
+
+\node (xp) [io, left of = cINN, xshift=-0.5cm, yshift=-1cm] {$\{x_p\}$};
+\node (parton) [process, below of=xp, xshift=0cm, yshift=0.25cm] {parton};
+\node (mmd) [mmd, left of=xp, xshift=0.0cm, yshift=1cm] {$L_\text{MMD}$};
+
+\node (random) [io, right of=cINN, xshift=0.5cm, yshift=1cm] {$\{ r \}$};
+\node (gauss) [mmd, right of=rG, xshift=0.0cm, yshift=1cm] {$L$};
+
+
+\node (cond) [cond, above of = xG, xshift=1.5cm, yshift=0.7cm] {};
+\node (condi) [above of = xG, xshift=5.5cm, yshift=1.3cm, color=gray!50!black] {condition};
+
+\node (preprocessor) [preprocessor, above of=cINN, xshift=0cm, yshift=1.5cm] {subnet};
+\node (xd) [io, left of = preprocessor, xshift=-0.5cm, yshift=0cm] {$\{x_d\}$};
+\node (detector) [process, left of=xd, xshift=-0.2cm, yshift=0cm] {detector};
+
+\coordinate[ right of = rG, xshift=0cm, yshift=0cm] (Gin1);
+\coordinate[ right of = random, xshift=0cm, yshift=0cm] (Gin2);
+
+\coordinate[ left of = xG, xshift=0cm, yshift=0cm] (MMDin1);
+\coordinate[ left of = xp, xshift=0cm, yshift=0cm] (MMDin2);
+
+
+
+%\draw [arrow, color=black] ([yshift=0em]random.west) -- ([yshift=1.5em]cINN.east);
+%\draw [arrow, color=black] ([yshift=-1.5em]cINN.east) -- (rG.west);
+%\draw [arrow, color=black] ([yshift=1.5em]cINN.west) -- (xG.east);
+%\draw [arrow, color=black] ([yshift=0em]xp.east) -- ([yshift=-1.5em]cINN.west);
+
+\draw [arrow, color=black] ([yshift=0em]parton.north) -- ([yshift=0em]xp.south);
+
+
+\draw [thick, color=Gcolor] ([yshift=0em]xp.west) -- ([yshift=0em]MMDin2);
+\draw [arrow, color=Gcolor] ([yshift=0em]MMDin2) -- ([yshift=0em]mmd.south);
+\draw [thick, color=Gcolor] ([yshift=0em]xG.west) -- ([yshift=0em]MMDin1);
+\draw [arrow, color=Gcolor] ([yshift=0em]MMDin1) -- ([yshift=0em]mmd.north);
+
+%\draw [thick, color=Gcolor] ([yshift=0em]random.east) -- ([yshift=0em]Gin2);
+%\draw [arrow, color=Gcolor] ([yshift=0em]Gin2) -- ([yshift=0em]gauss.north);
+\draw [thick, color=Gcolor] ([yshift=0em]rG.east) -- ([yshift=0em]Gin1);
+\draw [arrow, color=Gcolor] ([yshift=0em]Gin1) -- ([yshift=0em]gauss.south);
+
+\draw [arrow, color=black] ([yshift=0em]detector.east) -- ([yshift=0em]xd.west);
+\draw [arrow, color=Dcolor] ([yshift=0em]xd.east) -- ([yshift=0em]preprocessor.west);
+\draw [arrow, color=Dcolor] ([yshift=0em, xshift=1mm]preprocessor.south) -- node[scale=0.8, anchor=center, right, color=Dcolor]{$f(x_d)$} ([yshift=0em,xshift=1mm]cINN.north);
+\draw [arrow, dashed, color=black] ([yshift=0em, xshift=-1mm]cINN.north) -- ([yshift=0em, xshift=-1mm]preprocessor.south);
+
+\draw[arrow, thick, color=Gcolor] (random.west) -- node[scale=0.8, sloped, anchor=center, above, color=Gcolor]{$\bar{g}(r, f(x_d))$} (xG.east);
+\draw[arrow, thick, color=Gcolor] (xp.east) -- node[scale=0.8, sloped, anchor=center, above, color=Gcolor]{$g(x_p, f(x_d))$} (rG.west);
+
+
+\draw[arrow, thick, dashed, color=black] (mmd) -- (cINN.west);
+\draw[arrow, thick, dashed, color=black] (gauss) -- (cINN.east);
+
+
+\end{tikzpicture}
