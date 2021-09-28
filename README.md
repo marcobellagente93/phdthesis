@@ -19,7 +19,7 @@ Scipost 2019<br>
 <tr>
 <td>
 <strong>Invertible Networks or Partons to Detector and Back Again</strong><br>
-Marco Bellagente, Anja Butter, Gregor Kasieczka, Tilman Plehn, Ramon Winterhalder, Lynton Ardizzone and Uellrich Koethe<br>
+Marco Bellagente, Anja Butter, Gregor Kasieczka, Tilman Plehn, Ramon Winterhalder, Lynton Ardizzone and Ullrich Koethe<br>
 Scipost 2020<br>
 <a href="https://arxiv.org/abs/2006.06685"><img alt="Paper" src="https://img.shields.io/badge/-Paper-gray"></a>
 <a href="https://github.com/VLL-HD/FrEIA/tree/master/FrEIA"><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
