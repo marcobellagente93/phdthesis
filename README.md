@@ -14,7 +14,7 @@ height="24" src="https://img.shields.io/github/downloads/marcobellagente93/phdth
 <td>
 <strong>How to GAN Away Detector Effects</strong><br>
 Marco Bellagente, Anja Butter, Gregor Kasieczka Tilman Plehn and Ramon Winterhalder<br>
-Scipost shit<br>
+Scipost 2019<br>
 <a href="https://arxiv.org/abs/1912.00477"><img alt="Paper" src="https://img.shields.io/badge/-Paper-gray"></a>
 <a href=""><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
 </td>
@@ -23,16 +23,16 @@ Scipost shit<br>
 <td>
 <strong>Invertible Networks or Partons to Detector and Back Again</strong><br>
 Marco Bellagente, Anja Butter, Gregor Kasieczka, Tilman Plehn, Ramon Winterhalder, Lynton Ardizzone and Uellrich Koethe<br>
-Scipost shit<br>
+Scipost 2020<br>
 <a href="https://arxiv.org/abs/2006.06685"><img alt="Paper" src="https://img.shields.io/badge/-Paper-gray"></a>
-<a href=""><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
+<a href="https://github.com/VLL-HD/FrEIA/tree/master/FrEIA"><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
 </td>
 </tr>
 <tr>
 <td>
 <strong>Understanding Event-Generation Networks via Uncertainties</strong><br>
 Marco Bellagente, Manuel Haussmann, Michel Luchmann and Tilman Plehn<br>
-Scipost<br>
+Scipost 2021<br>
 <a href="https://arxiv.org/abs/2104.04543"><img alt="Paper" src="https://img.shields.io/badge/-Paper-gray"></a>
 <a href="https://github.com/marcobellagente93/Bayesian_INN"><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
 </td>
