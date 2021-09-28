@@ -7,6 +7,8 @@ Some code is available for running the experiments presented in the thesis in th
 <a href="https://github.com/marcobellagente93/phdthesis/blob/main/thesis.pdf"><img alt="PDF" 
 height="24" src="https://img.shields.io/github/downloads/marcobellagente93/phdthesis/total?label=PDF"></a>
 
+<a id="raw-url" href="https://raw.githubusercontent.com/marcobellagente93/phdthesis/master/thesis.pdf">Download FILE</a>
+
 # Publications in this thesis
 
 <table>
