@@ -34,7 +34,7 @@ Scipost shit<br>
 Marco Bellagente, Manuel Haussmann, Michel Luchmann and Tilman Plehn<br>
 Scipost<br>
 <a href="https://arxiv.org/abs/2104.04543"><img alt="Paper" src="https://img.shields.io/badge/-Paper-gray"></a>
-<a href=""><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
+<a href="https://github.com/marcobellagente93/Bayesian_INN"><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
 </td>
 </tr>
 <tr>
@@ -42,7 +42,7 @@ Scipost<br>
 <strong>Latent Space Refinement for Deep Generative Models</strong><br>
 Ramon Winterhalder, Marco Bellagente, and Ben Nachman<br>
 <a href="https://arxiv.org/abs/2106.00792"><img alt="Paper" src="https://img.shields.io/badge/-Paper-gray"></a>
-<a href=""><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
+<a href="https://github.com/ramonpeter/LaSeR"><img alt="Code" src="https://img.shields.io/badge/-Code-gray" ></a>
 </td>
 </tr>
 <tr>
