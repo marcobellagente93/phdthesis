@@ -82,7 +82,7 @@ radiation as the last simulation step. This is the final goal of our
 paper.
 
 Technically, we propose to use invertible networks
-(INNs)~\cite{inn1,coupling2,glow} to invert part of the LHC simulation
+(INNs)~\cite{inn,coupling2,glow} to invert part of the LHC simulation
 chain.  This application builds on a long list of one-directional
 applications of generative or similar networks to LHC simulations,
 including phase space integration~\cite{maxim,bendavid},
@@ -90,7 +90,7 @@ amplitudes~\cite{Bishara:2019iwh,Badger:2020uow}, event
 generation~\cite{dutch,gan_datasets,DijetGAN2,gan_phasespace,Alanazi:2020klf},
 event subtraction~\cite{subgan}, detector
 simulations~\cite{calogan1,calogan2,fast_accurate,aachen_wgan1,aachen_wgan2,ATLASShowerGAN,ATLASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy},
-parton showers~\cite{shower,locationGAN,monkshower,juniprshower}, or
+parton showers~\cite{shower,by_example,monkshower,juniprshower}, or
 searches for physics beyond the Standard Model~\cite{bsm_gan}.  INNs
 are an alternative class of generative networks, based on normalizing
 flows~\cite{nflow1,papamakarios2019normalizing,nflow_review,mller2018neural}.
@@ -355,7 +355,7 @@ We generate the $ZW$ events using madgraph~\cite{madgraph} without
 any generation cuts and then simulate parton showering with
 pythia~\cite{pythia8} and the detector effects with
 delphes~\cite{delphes} using the standard ATLAS card.  For jet
-clustering we use the anti-$k_T$ algorithm~\cite{anti-kt} with
+clustering we use the anti-$k_T$ algorithm~\cite{anti_kt} with
 $R=0.6$ implemented in fastjet~\cite{fastjet}. All jets are required
 to have
 %
@@ -399,7 +399,7 @@ data set is only used for the conditional INN.
 
 We introduce the conditional INN in two steps, starting with the
 non-conditional, standard setup. The construction of the INN we use in
-our analysis combines two goals~\cite{inn1}:
+our analysis combines two goals~\cite{inn}:
 %
 \begin{enumerate}
 \item the mapping from input to output is invertible and the Jacobians
@@ -566,7 +566,7 @@ k_\text{BW}\left(x,y\right) = \frac{\sigma^2}{\left(x - y\right)^2 + \sigma^2}
 with a fixed or variable width $\sigma$~\cite{fcgan}.  Inside the INN
 architecture the Breit-Wigner kernel is the best choice to analyze the
 distribution of the random numbers as part of the loss
-function~\cite{inn1}.
+function~\cite{inn}.
 
 %------------------------------------------------------------
 \begin{figure}[t]

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  27 SEP 2021 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  30 SEP 2021 10:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -53,18 +53,14 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 7--10
 []
  []
 
-
-! LaTeX Error: Environment abstract undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \begin{abstract}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+! Undefined control sequence.
+l.13 \section
+             *{Abstract}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 ! LaTeX Error: Missing \begin{document}.
@@ -73,11 +69,28 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.14 D
-      eep generative models are becoming widely used across science and indu...
-
+l.13 \section*
+              {Abstract}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no * in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+! Undefined control sequence.
+l.14 {\bf
+          Deep generative models are becoming widely used across science and...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 Missing character: There is no D in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -850,25 +863,12 @@ Missing character: There is no l in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-! LaTeX Error: \begin{document} ended by \end{abstract}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 \end{abstract}
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 14--16
+Overfull \hbox (20.0pt too wide) in paragraph at lines 13--15
 []
  []
 
 ! Undefined control sequence.
-l.17 \section
+l.16 \section
              {Introduction}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -883,7 +883,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.17 \section{I
+l.16 \section{I
                ntroduction}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -901,8 +901,8 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 17--18
-[] 
+Overfull \hbox (20.0pt too wide) in paragraph at lines 16--18
+[]
  []
 
 
@@ -1304,11 +1304,11 @@ Missing character: There is no A in font nullfont!
 Missing character: There is no N in font nullfont!
 Missing character: There is no ) in font nullfont!
 Missing character: There is no [ in font nullfont!
-\citation{Goodfellow:2014:GAN:2969033.2969125}
+\citation{goodfellow}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.19 ...low:2014:GAN:2969033.2969125,Creswell2018}
+l.19 ...works (GAN)~\cite{goodfellow,Creswell2018}
                                                   , Variational Autoencoders...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1317,15 +1317,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Goodfellow:2014:GAN:2969033.2969125' on page  undefine
-d on input line 19.
+LaTeX Warning: Citation `goodfellow' on page  undefined on input line 19.
 
 Missing character: There is no , in font nullfont!
 \citation{Creswell2018}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.19 ...low:2014:GAN:2969033.2969125,Creswell2018}
+l.19 ...works (GAN)~\cite{goodfellow,Creswell2018}
                                                   , Variational Autoencoders...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1723,7 +1722,7 @@ LaTeX Warning: Citation `Paganini:2017hrr' on page  undefined on input line 19.
 
 
 Missing character: There is no , in font nullfont!
-\citation{Paganini:2017dwg}
+\citation{calogan2}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
@@ -1736,8 +1735,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Paganini:2017dwg' on page  undefined on input line 19.
-
+LaTeX Warning: Citation `calogan2' on page  undefined on input line 19.
 
 Missing character: There is no , in font nullfont!
 \citation{Alonso-Monsalve:2018aqs}
@@ -1790,7 +1788,7 @@ LaTeX Warning: Citation `Martinez:2019jlu' on page  undefined on input line 19.
 
 
 Missing character: There is no , in font nullfont!
-\citation{Bellagente:2019uyp}
+\citation{fcgan}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
@@ -1803,8 +1801,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Bellagente:2019uyp' on page  undefined on input line 1
-9.
+LaTeX Warning: Citation `fcgan' on page  undefined on input line 19.
 
 Missing character: There is no , in font nullfont!
 \citation{Vallecorsa:2019ked}
@@ -2608,7 +2605,7 @@ and I'll forget about whatever was undefined.
 LaTeX Warning: Citation `Cheng:2020dal' on page  undefined on input line 19.
 
 Missing character: There is no , in font nullfont!
-\citation{1816035}
+\citation{Dohi:2020eda}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
@@ -2621,7 +2618,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `1816035' on page  undefined on input line 19.
+LaTeX Warning: Citation `Dohi:2020eda' on page  undefined on input line 19.
 
 Missing character: There is no , in font nullfont!
 \citation{Howard:2021pos}
@@ -7927,6 +7924,18 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 \newlabel{chap:lsr}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{sec:intro}{{}{\thepage 
+                                         }}
+l.43 
+     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec:intro}{{}{}}
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 ! Undefined control sequence.
 <write> \newlabel{fig:schematic}{{}{\thepage 
@@ -8323,11 +8332,11 @@ Missing character: There is no F in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no ) in font nullfont!
 Missing character: There is no [ in font nullfont!
-\citation{10.5555/3045118.3045281}
+\citation{nflow1}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.49 ...\cite{10.5555/3045118.3045281,Kobyzev2020}
+l.49 ...zing flows (NFs)~\cite{nflow1,Kobyzev2020}
                                                    %and related  invertible ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -8336,15 +8345,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `10.5555/3045118.3045281' on page  undefined on input l
-ine 49.
+LaTeX Warning: Citation `nflow1' on page  undefined on input line 49.
 
 Missing character: There is no , in font nullfont!
 \citation{Kobyzev2020}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.49 ...\cite{10.5555/3045118.3045281,Kobyzev2020}
+l.49 ...zing flows (NFs)~\cite{nflow1,Kobyzev2020}
                                                    %and related  invertible ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -10754,7 +10762,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no ] in font nullfont!
 ! Undefined control sequence.
 l.113     \includegraphics
-                          [width=0.4\textwidth]{.figures/LSR/torus.png}
+                          [width=0.4\textwidth]{./figures/LSR/torus.png}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -10775,7 +10783,7 @@ Missing character: There is no 4 in font nullfont!
 <to be read again> 
                    ]
 l.113     \includegraphics[width=0.4\textwidth]
-                                               {.figures/LSR/torus.png}
+                                               {./figures/LSR/torus.png}
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
@@ -10784,7 +10792,7 @@ look up `weird error' in the index to The TeXbook.)
 <to be read again> 
                    ]
 l.113     \includegraphics[width=0.4\textwidth]
-                                               {.figures/LSR/torus.png}
+                                               {./figures/LSR/torus.png}
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -10794,6 +10802,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
+Missing character: There is no / in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
@@ -10984,11 +10993,11 @@ Overfull \hbox (5.00002pt too wide) in paragraph at lines 109--118
 
  
 Here is how much of TeX's memory you used:
- 26 strings out of 492649
- 361 string characters out of 6129622
- 66615 words of memory out of 5000000
- 4005 multiletter control sequences out of 15000+600000
+ 25 strings out of 492649
+ 350 string characters out of 6129622
+ 67547 words of memory out of 5000000
+ 4004 multiletter control sequences out of 15000+600000
  4249 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 20i,4n,27p,1995b,117s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 20i,4n,27p,1942b,117s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

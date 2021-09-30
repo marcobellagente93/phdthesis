@@ -5,7 +5,7 @@
 %\begin{document}
 
 \chapter{Bayesian Neural Networks}\label{chap:bnn}
-bla bla
+
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
@@ -47,12 +47,12 @@ the uncertainties at the per-cent level and better.
 
 In recent years it has been shown that modern machine learning can
 improve LHC event simulations in many
-ways~\cite{Butter:2020tvl}. Promising techniques include generative
+ways. Promising techniques include generative
 adversarial networks
-(GAN)~\cite{goodfellow2014generative,Creswell2018,Butter:2020qhk},
+(GAN)~\cite{goodfellow,Creswell2018}, %,Butter:2020qhk},
 variational autoencoders~\cite{kingma2014autoencoding,Kingma2019}, and
 normalizing
-flows~\cite{nflow1,Kobyzev_2020,papamakarios2019normalizing,nflow_review,mller2018neural},
+flows~\cite{nflow1,nflow_review,papamakarios2019normalizing,nflow_review,mller2018neural},
 including invertible networks (INNs)~\cite{inn,coupling2,glow}. They
 can improve phase space integration~\cite{maxim,Chen:2020nfb}, phase
 space sampling~\cite{Bothmann:2020ywa,Gao:2020vdv,Gao:2020zvv}, and
@@ -60,11 +60,11 @@ amplitude computations~\cite{Bishara:2019iwh,Badger:2020uow}.  Further
 developments are fully NN-based event
 
 generation~\cite{dutch,gan_datasets,DijetGAN2,gan_phasespace,Alanazi:2020klf},
-event subtraction~\cite{Butter:2019eyo}, event
+event subtraction~\cite{subgan}, event
 unweighting~\cite{Verheyen:2020bjw,Backes:2020vka}, detector
 simulation~\cite{calogan1,calogan2,fast_accurate,aachen_wgan1,aachen_wgan2,ATLASShowerGAN,ATLASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy,Buhmann:2021lxj},
 or parton
-showering~\cite{shower,locationGAN,monkshower,juniprshower,Dohi:2020eda}.
+showering~\cite{shower,lby_example,monkshower,juniprshower,Dohi:2020eda}.
 Generative models will also improve searches for physics beyond the
 Standard Model~\cite{bsm_gan}, anomaly
 detection~\cite{Nachman:2020lpy,Knapp:2020dde}, detector
@@ -1100,8 +1100,8 @@ our general observation, that the (B)INN learns a functional form of
 the density in both directions, in close analogy to a fit. It also
 means that the uncertainty from the generative network training is not
 described by the simple statistical scaling we observed for simpler
-networks~\cite{Bollweg:2019skg,Kasieczka:2020vlh} and instead points
-towards a GANplification-like~\cite{Butter:2020qhk} pattern.
+networks~\cite{Bollweg:2019skg,Kasieczka:2020vlh}.
+% and instead points towards a GANplification-like~\cite{Butter:2020qhk} pattern.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{LHC events with uncertainties}
@@ -1282,9 +1282,10 @@ find that the uncertainty distributions are naturally explained by a
 fit-like behavior of the network, rather than a patch-wise learning of
 the density. For the LHC, this can be seen for instance in the
 non-trivial uncertainty for an intermediate Breit-Wigner
-resonance. These results are another step in understanding
-GANplification patterns~\cite{Butter:2020qhk} and might even allow us
-to use INNs to extrapolate in phase space.
+resonance. 
+%These results are another step in understanding
+%GANplification patterns~\cite{Butter:2020qhk} and might even allow us
+%to use INNs to extrapolate in phase space.
 
 Obviously, it remains to be seen how our observations generalize to
 other generative networks architectures. For the LHC, the next step
