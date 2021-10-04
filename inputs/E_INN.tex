@@ -13,10 +13,9 @@
 \section*{Abstract}
 {\bf For simulations where the forward and the inverse directions have a physics meaning, invertible neural networks are especially useful. A conditional INN can invert a detector simulation in terms of high-level observables, specifically for ZW production at the LHC. It allows for a per-event statistical interpretation. Next, we allow for a variable number of QCD jets. We unfold detector effects and QCD radiation to a pre-defined hard process, again with a per-event probabilistic interpretation over parton-level phase space.}
 
-\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-\label{sec:intro}
+\label{sec:innintro}
 
 The unique feature of LHC physics from a data science perspective is
 the comparison of vast amounts of data with predictions based on first
@@ -88,7 +87,7 @@ applications of generative or similar networks to LHC simulations,
 including phase space integration~\cite{maxim,bendavid},
 amplitudes~\cite{Bishara:2019iwh,Badger:2020uow}, event
 generation~\cite{dutch,gan_datasets,DijetGAN2,gan_phasespace,Alanazi:2020klf},
-event subtraction~\cite{subgan}, detector
+event subtraction~\cite{Butter:2019eyo}, detector
 simulations~\cite{calogan1,calogan2,fast_accurate,aachen_wgan1,aachen_wgan2,ATLASShowerGAN,ATLASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy},
 parton showers~\cite{shower,by_example,monkshower,juniprshower}, or
 searches for physics beyond the Standard Model~\cite{bsm_gan}.  INNs
@@ -325,14 +324,14 @@ paper.
 \subsection{Reference process $pp \to ZW$}
 \label{sec:basics_proc}
 %-------------------------------------------------
-\begin{figure}[b!]
-\begin{center}
-\input{inputs/incl_feynman}
-\end{center}
-\caption{Sample Feynman diagram contributing to $ZW$ production, with
-  intermediate on-shell particles labeled.}
-\label{fig:feyn_intro}
-\end{figure}
+%\begin{figure}[b!]
+%\begin{center}
+%\input{inputs/incl_feynman}
+%\end{center}
+%\caption{Sample Feynman diagram contributing to $ZW$ production, with
+%  intermediate on-shell particles labelled.}
+%\label{fig:feyn_intro}
+%\end{figure}
 %------------------------------------------------------------
 
 To provide a quantitative estimate of unfolding with an invertible
@@ -351,12 +350,12 @@ can test the stability of the unfolding network for small and for
 large detector effects.
 %In Sec.~\ref{sec:jets_model} we will also
 %introduce a $W'$ resonance in the $s$-channel.
-We generate the $ZW$ events using madgraph~\cite{madgraph} without
+We generate the $ZW$ events using \madgraph~\cite{madgraph} without
 any generation cuts and then simulate parton showering with
-pythia~\cite{pythia8} and the detector effects with
-delphes~\cite{delphes} using the standard ATLAS card.  For jet
+\pythia~\cite{pythia8} and the detector effects with
+\delphes~\cite{delphes} using the standard ATLAS card.  For jet
 clustering we use the anti-$k_T$ algorithm~\cite{anti_kt} with
-$R=0.6$ implemented in fastjet~\cite{fastjet}. All jets are required
+$R=0.6$ implemented in \fastjet~\cite{FastJet}. All jets are required
 to have
 %
 \begin{align}
@@ -550,7 +549,7 @@ of parton-level and detector-level events,
 \left[ \langle k\left(x,x'\right)\rangle_{x,x' \sim P_p}
      + \langle k\left(y,y'\right)\rangle_{y,y' \sim P_d}
      - 2 \langle k\left(x,y \right)\rangle_{x\sim P_p,y \sim P_d} \right]^{1/2} \; .
-\label{eq:MMD}
+\label{eq:MMD2}
 \end{align}
 %
 In Refs.~\cite{gan_phasespace} and~\cite{fcgan} we compare common
@@ -560,7 +559,7 @@ choices, like Gaussian or Breit-Wigner kernels
 k_\text{Gauss} \left(x,y\right) = \exp \frac{- \left(x - y\right)^2}{2 \sigma^2}
 \qquad \text{or} \qquad
 k_\text{BW}\left(x,y\right) = \frac{\sigma^2}{\left(x - y\right)^2 + \sigma^2}
-\label{eq:kernels}
+\label{eq:kernels2}
  \end{align}
 %
 with a fixed or variable width $\sigma$~\cite{fcgan}.  Inside the INN
@@ -779,7 +778,7 @@ $\lambda_\text{MMD}$ increase & - & - \\
 \bottomrule
 \end{tabular} \end{small}
 \caption{INN and noise-extended eINN setup and hyper-parameters, as
-  implemented in pytorch(v1.2.0)~\cite{pytorch}.}
+  implemented in \pytorch(v1.2.0)~\cite{pytorch}.}
 \label{tab:inn}
 \end{table}
 %------------------------------------------------------------
@@ -971,7 +970,7 @@ $\lambda_\text{MMD}$ increase & - & 1.6 / 100 epochs\\
 \bottomrule
 \end{tabular} \end{small}
 \caption{cINN setup and hyper-parameters, as implemented in
-  pytorch(v1.2.0)~\cite{pytorch}.}
+  \pytorch(v1.2.0)~\cite{pytorch}.}
 \label{tab:cinn}
 \end{table}
 %------------------------------------------------------------

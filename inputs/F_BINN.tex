@@ -24,7 +24,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-\label{sec:intro}
+\label{sec:binnintro}
 
 The role of first-principle simulations in our understanding of large
 data sets makes LHC physics stand out in comparison to many other
@@ -60,11 +60,11 @@ amplitude computations~\cite{Bishara:2019iwh,Badger:2020uow}.  Further
 developments are fully NN-based event
 
 generation~\cite{dutch,gan_datasets,DijetGAN2,gan_phasespace,Alanazi:2020klf},
-event subtraction~\cite{subgan}, event
+event subtraction~\cite{Butter:2019eyo}, event
 unweighting~\cite{Verheyen:2020bjw,Backes:2020vka}, detector
 simulation~\cite{calogan1,calogan2,fast_accurate,aachen_wgan1,aachen_wgan2,ATLASShowerGAN,ATLASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy,Buhmann:2021lxj},
 or parton
-showering~\cite{shower,lby_example,monkshower,juniprshower,Dohi:2020eda}.
+showering~\cite{shower,by_example,monkshower,juniprshower,Dohi:2020eda}.
 Generative models will also improve searches for physics beyond the
 Standard Model~\cite{bsm_gan}, anomaly
 detection~\cite{Nachman:2020lpy,Knapp:2020dde}, detector
@@ -213,17 +213,11 @@ constraints are fulfilled, $G$ gives us a powerful generative pipeline
 to model the phase space density,
 %
 \begin{align}
-\text{base distribution $z \sim p_Z$} \quad
-\frac{\leftarrow \; \overline{G}(x)}{G(z) \rightarrow} \quad
+\text{base distribution $z \sim p_Z$}
+\stackrel[\leftarrow \; \overline{G}(x)]{G(z) \rightarrow}{\xleftrightarrow{\hspace*{1.5cm}}}
 \text{phase space distribution $x \sim p_X$} \;,
-\label{eq:mapping}
+\label{eq:mapping2}
 \end{align}
-%\begin{align}
-%\text{base distribution $z \sim p_Z$}
-%\stackrel[\leftarrow \; \overline{G}(x)]{G(z) \rightarrow}{\xleftrightarrow{\hspace*{1.5cm}}}
-%\text{phase space distribution $x \sim p_X$} \;,
-%\label{eq:mapping}
-%\end{align}
 %
 where $\overline{G}(x) = G^{-1}(x)$.%\mpar{MH: Turn this into a figure?}
 

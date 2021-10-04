@@ -15,7 +15,7 @@ danger of using first-principle predictions only as a black-box part of event si
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-\label{sec:intro}
+\label{sec:ganintro}
 
 Our understanding of LHC data from first principles is a unique
 strength of particle physics. It is based on a simulation chain which
@@ -46,7 +46,7 @@ generation~\cite{dutch,gan_datasets,DijetGAN2, gan_phasespace},
 detector
 simulations~\cite{calogan1,calogan2,fast_accurate,aachen_wgan1,aachen_wgan2,ATLASShowerGAN,ATLASsimGAN},
 unfolding~\cite{Datta:2018mwd}, and parton
-showers~\cite{shower,lby_example,monkshower,juniprshower}. The
+showers~\cite{shower,by_example,monkshower,juniprshower}. The
 question is if and how we can invert them.  We start with a naive GAN
 inversion and see how a mismatch between local structures at parton
 level and detector level leads to problems.  We then introduce the
@@ -66,7 +66,7 @@ inverted detector simulation.
 
 We note that our approach is not targeted at combining detector
 unfolding~\cite{Cowan:2002in,Blobel:2011fih,Balasubramanian:2019itp}
-with optimized inference~\cite{madminer,madminer_tool,omnifold}.  A
+with optimized inference~\cite{madminer,madminer_tool,Andreassen:2019cjw}.  A
 powerful application for unfolded kinematic distributions to the hard
 process could be global analyses. For instance in the electroweak and
 Higgs sector exotics resonance searches turn out to be among the most
@@ -105,7 +105,7 @@ unfolding procedure.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{GAN unfolding}
-\label{sec:gan}
+\label{sec:ganunfolding}
 
 %------------------------------------------------------------
 \begin{figure}[t]
@@ -140,10 +140,10 @@ process. In any case, from this argument it is clear that unfolding
 only makes sense at the level of large enough event samples.
 
 For our example we rely on two event samples: we start with events at
-the parton level, simulated with madgraph~\cite{madgraph}. For
-the second sample we first apply pythia not including initial state radiation. Technically this
+the parton level, simulated with \madgraph~\cite{madgraph}. For
+the second sample we first apply \pythia not including initial state radiation. Technically this
 means that we only have to deal with a fixed number of partons in the
-final state and that we can more easily match partons and jets. Further, we apply delphes~\cite{delphes} as a fast detector
+final state and that we can more easily match partons and jets. Further, we apply \delphes~\cite{delphes} as a fast detector
 simulation and reconstruct the smeared jet 4-momenta with a jet
 algorithm included in fastjet~\cite{FastJet}. For lepton 4-momenta we can directly compare the
 parton-level output with the detector-level output. From
@@ -163,7 +163,7 @@ the jet algorithm reproduces the hard parton momentum.
 
 Our GAN comprises a generator network $G$ competing against a
 discriminator network $D$ in a min-max game, as illustrated in
-Fig.~\ref{fig:GANs}. For the implementation we use keras~(v2.2.4) \cite{keras} with a tensorflow~(v1.14) backend \cite{tensorflow}.
+Fig.~\ref{fig:GANs}. For the implementation we use \keras~(v2.2.4) \cite{keras} with a \tensorflow~(v1.14) backend \cite{tensorflow}.
 As the starting point, $G$ is randomly
 initialized to produce an output, typically with the same
 dimensionality as the target space. It induces a probability
@@ -268,10 +268,10 @@ epochs and 500 iterations per epoch.\medskip
 \end{figure}
 %------------------------------------------------------------
 For our $Z_{\ell \ell} W_{jj}$ process we generate 300k events at LO using
-madgraph~(v2.6.7) \cite{madgraph} (without any generation cuts) with the standard
-pythia~(v8.2) shower \cite{pythia} and then simulate the detector
-effects event-by-event with delphes~(v3.3.3) \cite{delphes}  using the standard
-ATLAS card. For the reconstruction of the jets we use the anti-$k_t$ jet algorithm \cite{anti_kt} with $R=0.6$ which is performed via the fastjet~(v3.1.3) \cite{FastJet} package included in delphes. To keep our toy setup simple we select events
+\madgraph~(v2.6.7) \cite{madgraph} (without any generation cuts) with the standard
+\pythia~(v8.2) shower \cite{pythia} and then simulate the detector
+effects event-by-event with \delphes~(v3.3.3) \cite{delphes}  using the standard
+ATLAS card. For the reconstruction of the jets we use the anti-$k_t$ jet algorithm \cite{anti_kt} with $R=0.6$ which is performed via the \fastjet~(v3.1.3) \cite{FastJet} package included in \delphes. To keep our toy setup simple we select events
 with exactly two jets and a pair of same-flavor opposite-sign leptons,
 specifically electrons. At the detector level both jets
 are required to fulfill $p_{T, j} > 25$~GeV and $|\eta_j| <
@@ -679,11 +679,11 @@ a feature of neural networks which comes in addition to the known
 strengths in interpolation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Outlook}
+\section{ganOutlook}
 We have shown that it is possible to invert a simple Monte Carlo
 simulation, like a fast detector simulation, with a fully conditional
 GAN. Our example process is $WZ \to (jj) (\ell \ell)$ at the LHC and
-we GAN away the effect of standard delphes. A naive GAN approach
+we GAN away the effect of standard \delphes. A naive GAN approach
 works extremely well when the training sample and the test sample are
 very similar. In that case the GAN benefits from the fact that we do
 not actually need an event-by-event matching of the parton-level and

@@ -7,68 +7,15 @@
 \chapter{Introduction}\label{chap:introduction}
 \enlargethispage{2ex}
 \vspace*{-2pt}
-The motivation behind the prediction of a fundamental scalar particle in the Standard Model (SM), 
-the Higgs boson, was to grant
-a mechanism for the generation of the masses of the electroweak gauge bosons via 
-electroweak symmetry breaking (EWSB)~\cite{Higgs:1964pj,Higgs:1964ia,Englert:1964et}. 
-The discovery of a Higgs boson at the Large Hadron Collider (LHC)~\cite{Aad:2012tfa,Chatrchyan:2012xdj} 
-%and precision analyses of its properties 
-strongly hints at EWSB indeed being the mechanism behind the mass generation of the SM particles.
-One of the pivotal tasks of the LHC and future colliders is to probe both the local and global structure of the Higgs 
-potential,
-%While after EWSB the local properties of the Higgs potential in the vicinity of the electroweak vacuum 
-which is reflected in the couplings of the Higgs boson to other SM particles and in its
-self-coupling, respectively. 
-%With the end of LHC Run~II and its experimental legacy coming in, 
-In this thesis, we present a global view on Higgs couplings at the LHC
-to extend our understanding of the EWSB sector and
-to set universal constraints on new physics that might be hiding in it.
-\\ \medskip \vspace*{-2pt}
 
-Driven by the question what current data reveal about the  
-EWSB sector and new physics that might be hiding in it, in this thesis 
-we aim at increasing the precision of Higgs-coupling measurements 
-and combining them in a comprehensive framework. 
-This requires us to rethink the way we perform,  
-interpret and combine experimental analyses in a way that fully exploits the available data. 
-To tackle this challenge, we take a multi-prong approach:
-First, we focus on the improvement of an individual Higgs-production and decay
-channel by applying modern analysis techniques. Second, we perform global 
-analyses of the Higgs-gauge sector for the LHC and a potential future upgrade 
-of the LHC in a model-independent framework.
-\\ \medskip \vspace*{-2pt}
+The extensive physics program of the ATLAS experiment [1] at the Large Hadron Collider [2] relies on high-fidelity Monte Carlo (MC) simulation as a basis for hypothesis tests of the underlying distribution of the data. One of the key detector technologies used for characterizing collisions are calorimeters, measuring the energy and location of both charged and neutral particles traversing the detector. Particles will lose their energy in a cascade (called a shower) of electromagnetic and hadronic interactions with a dense absorbing material. The number of the particles produced in these interactions is subsequently measured in thin sampling layers of an active medium.
+The deposition of energy in the calorimeter due to a developing shower is a stochastic process that can not be described from first principles and rather relies on a precise simulation of the detector response. It requires the modeling of interactions of particles with matter at the microscopic level as implemented using the Geant4 toolkit. This simulation process is inherently slow and thus presents a bottleneck in the ATLAS simulation pipeline.
 
-Motivated by the experimental advances of LHC Run~II, we perform a global fit of the Higgs-gauge sector 
-based on Higgs and di-boson measurements as well as electroweak precision data in Chapter~\ref{chap:fit13TeV}. 
-We include momentum-related kinematic distributions 
-%for Higgs production in association with a vector 
-%boson and for di-boson production. 
-and examine the impact of the different LHC Run~II measurements on the reach of our 
-global analysis in detail. 
-On the theory side, we broaden our view on the Higgs sector by expanding 
-the set of considered dimension-six operators from~10 to~18 with respect to 
-previous \textsc{SFitter} analyses~\cite{Corbett:2015ksa,Butter:2016cvz}.
-This extension of our operator set will bring 
-us a significant step closer to a global SMEFT fit at dimension six.
-%The  considered are constrained by electroweak precision data.
-We discuss how the additional fermionic Higgs-gauge operators have a relevant 
-impact on a global fit of the Higgs-gauge sector
-despite the strong constraints from electroweak precision data.
+To meet the growing analysis demands, ATLAS already relies strongly on fast calorimeter simulation techniques based on thousands of individual parametrizations of the calorimeter response in the longit- udinal and transverse direction given a single particle’s energy and pseudorapidity [5]. The algorithms currently employed for physics analyses by the ATLAS collaboration achieve a significant speed-up over the full simulation of the detector response at the cost of accuracy. Current developments [6, 7] aim at improving the modeling of taus, jet-substructure-based boosted objects or wrongly identified objects in the calorimeter and will benefit from an improved detector description following data taking and a more detailed forward calorimeter geometry.
+In recent years, deep learning algorithms have been demonstrated to accurately model the underlying distributions of rich, structured data for a wide range of problems, notably in the areas of computer vision, natural language processing and signal processing. The ability to embed complex distributions in a low dimensional manifold has been leveraged to generate samples of higher dimensionality and approximate the underlying probability densities. Among the most promising approaches to generative models are Variational Auto-Encoders (VAEs) [8, 9] and Generative Adversarial Networks (GANs), shown to simulate the response of idealized calorimeters.
 
-In Chapter~\ref{cha:conclusion}, we will summarize our results and give an 
-outlook to further improvements and extensions of the concepts discussed 
-in this thesis. 
-%
-Each of the lines of research mentioned above will aid in constructing a global view of Higgs 
-couplings at the LHC as well as its proposed future upgrade 
-and will bring us one step closer to probing if EWSB
-is indeed described by the simple structure of the SM Higgs potential.
-The derived limits on Higgs couplings in the SMEFT framework 
-can be mapped onto constraints for UV-complete BSM models~\cite{deBlas:2017xtg,Ellis:2018gqa}.
-Furthermore, they provide a key ingredient for future tests of the global structure of the Higgs potential. 
-In summary, the thorough investigation of Higgs couplings at the LHC is crucial 
-to gain a deeper understanding of the structure of the Higgs sector and EWSB on a fundamental level.
-\enlargethispage{2ex}
+This note presents the first application of such models to the fast simulation of the calorimeter response of the ATLAS detector, demonstrating the feasibility of using such algorithms for large scale high energy physics experiments in the future, and opens the possibility to complement current techniques. The studies presented in this note focus on generating showers for photons over a range of energies in the central region of the electromagnetic calorimeter. These showers are easier to reproduce and thus studied first, in particular the longitudinal and lateral shower shapes. Through the simplifications made, it is possible to focus on narrow regions of the calorimeter and neglect the dependence of the calorimeter response on the incident particle’s pseudorapidity. Furthermore, the extension of the algorithms for different particle types through conditioning the models on these types, is not studied.
+The note is organized as follows. Section 2 describes the design of the ATLAS detector and the geometry of the calorimeter system in particular. The Monte Carlo simulation samples used are described in Section 3. Section 4 presents a comprehensive summary of the deep generative models exploited in this work as well as their optimization. The results obtained by these algorithms are reviewed in Section 5. The final section concludes the note with a discussion of the work.
 
 
 %\end{document}

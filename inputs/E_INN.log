@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  29 SEP 2021 12:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  1 OCT 2021 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -538,36 +538,8 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 13--15
 []
  []
 
-
-! LaTeX Error: The font size command \normalsize is not defined:
-               there is probably something wrong with the class file.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.16 \newpage
-             
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[1
 ! Undefined control sequence.
-<write> \newlabel{chap:inn}{{}{\thepage 
-                                        }}
-l.16 \newpage
-             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{chap:inn}{{}{}}
-]
-! Undefined control sequence.
-l.18 \section
+l.17 \section
              {Introduction}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -582,7 +554,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 \section{I
+l.17 \section{I
                ntroduction}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -600,7 +572,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 18--20
+Overfull \hbox (20.0pt too wide) in paragraph at lines 17--19
 []
  []
 
@@ -611,7 +583,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.21 T
+l.20 T
       he unique feature of LHC physics from a data science perspective is
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -971,7 +943,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.27 simulation~\cite{black_book}
+l.26 simulation~\cite{black_book}
                                  . In this so-defined forward direction all
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -980,7 +952,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `black_book' on page  undefined on input line 27.
+LaTeX Warning: Citation `black_book' on page  undefined on input line 26.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -1307,12 +1279,12 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 21--33
+Overfull \hbox (20.0pt too wide) in paragraph at lines 20--32
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 21--33
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 20--32
 []
  []
 
@@ -1323,7 +1295,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.34 B
+l.33 B
       ecause our simulation chain works only in one direction, the typical
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1676,7 +1648,7 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 34--41
+Overfull \hbox (20.0pt too wide) in paragraph at lines 33--40
 []
  []
 
@@ -1867,7 +1839,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.46 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
+l.45 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1876,14 +1848,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Kondo:1988yd' on page  undefined on input line 46.
+LaTeX Warning: Citation `Kondo:1988yd' on page  undefined on input line 45.
 
 Missing character: There is no , in font nullfont!
 \citation{Martini:2015fsa}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.46 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
+l.45 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1892,14 +1864,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Martini:2015fsa' on page  undefined on input line 46.
+LaTeX Warning: Citation `Martini:2015fsa' on page  undefined on input line 45.
 
 Missing character: There is no , in font nullfont!
 \citation{Gritsan:2016hjl}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.46 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
+l.45 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1908,14 +1880,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Gritsan:2016hjl' on page  undefined on input line 46.
+LaTeX Warning: Citation `Gritsan:2016hjl' on page  undefined on input line 45.
 
 Missing character: There is no , in font nullfont!
 \citation{Martini:2017ydu}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.46 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
+l.45 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1924,14 +1896,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Martini:2017ydu' on page  undefined on input line 46.
+LaTeX Warning: Citation `Martini:2017ydu' on page  undefined on input line 45.
 
 Missing character: There is no , in font nullfont!
 \citation{Kraus:2019qoq}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.46 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
+l.45 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1940,14 +1912,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Kraus:2019qoq' on page  undefined on input line 46.
+LaTeX Warning: Citation `Kraus:2019qoq' on page  undefined on input line 45.
 
 Missing character: There is no , in font nullfont!
 \citation{Prestel:2019neg}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.46 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
+l.45 ...ini:2017ydu,Kraus:2019qoq,Prestel:2019neg}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1956,7 +1928,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Prestel:2019neg' on page  undefined on input line 46.
+LaTeX Warning: Citation `Prestel:2019neg' on page  undefined on input line 45.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -2004,7 +1976,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.48     available~\cite{Cranmer:2019eaq}
+l.47     available~\cite{Cranmer:2019eaq}
                                          .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2013,42 +1985,42 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Cranmer:2019eaq' on page  undefined on input line 48.
+LaTeX Warning: Citation `Cranmer:2019eaq' on page  undefined on input line 47.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 42--49
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 41--48
 [] 
  []
 
@@ -3261,7 +3233,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.75 model~\cite{Khachatryan:2015oqa,Aad:2015mbv}
+l.74 model~\cite{Khachatryan:2015oqa,Aad:2015mbv}
                                                  . Going beyond detector
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3271,14 +3243,14 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Citation `Khachatryan:2015oqa' on page  undefined on input line 
-75.
+74.
 
 Missing character: There is no , in font nullfont!
 \citation{Aad:2015mbv}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.75 model~\cite{Khachatryan:2015oqa,Aad:2015mbv}
+l.74 model~\cite{Khachatryan:2015oqa,Aad:2015mbv}
                                                  . Going beyond detector
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3287,7 +3259,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Aad:2015mbv' on page  undefined on input line 75.
+LaTeX Warning: Citation `Aad:2015mbv' on page  undefined on input line 74.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -3658,13 +3630,13 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 64--83
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 63--82
                                                                                
                                   []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 64--83
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 63--82
 []
  []
 
@@ -3719,12 +3691,12 @@ Missing character: There is no N in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no ) in font nullfont!
 Missing character: There is no [ in font nullfont!
-\citation{inn1}
+\citation{inn}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.85 (INNs)~\cite{inn1,coupling2,glow}
-                                       to invert part of the LHC simulation
+l.84 (INNs)~\cite{inn,coupling2,glow}
+                                      to invert part of the LHC simulation
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3732,15 +3704,15 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `inn1' on page  undefined on input line 85.
+LaTeX Warning: Citation `inn' on page  undefined on input line 84.
 
 Missing character: There is no , in font nullfont!
 \citation{coupling2}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.85 (INNs)~\cite{inn1,coupling2,glow}
-                                       to invert part of the LHC simulation
+l.84 (INNs)~\cite{inn,coupling2,glow}
+                                      to invert part of the LHC simulation
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3748,15 +3720,15 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `coupling2' on page  undefined on input line 85.
+LaTeX Warning: Citation `coupling2' on page  undefined on input line 84.
 
 Missing character: There is no , in font nullfont!
 \citation{glow}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.85 (INNs)~\cite{inn1,coupling2,glow}
-                                       to invert part of the LHC simulation
+l.84 (INNs)~\cite{inn,coupling2,glow}
+                                      to invert part of the LHC simulation
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3764,7 +3736,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `glow' on page  undefined on input line 85.
+LaTeX Warning: Citation `glow' on page  undefined on input line 84.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -3945,7 +3917,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.88 ...se space integration~\cite{maxim,bendavid}
+l.87 ...se space integration~\cite{maxim,bendavid}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3954,14 +3926,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `maxim' on page  undefined on input line 88.
+LaTeX Warning: Citation `maxim' on page  undefined on input line 87.
 
 Missing character: There is no , in font nullfont!
 \citation{bendavid}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.88 ...se space integration~\cite{maxim,bendavid}
+l.87 ...se space integration~\cite{maxim,bendavid}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3970,7 +3942,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `bendavid' on page  undefined on input line 88.
+LaTeX Warning: Citation `bendavid' on page  undefined on input line 87.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -3989,7 +3961,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.89 ...udes~\cite{Bishara:2019iwh,Badger:2020uow}
+l.88 ...udes~\cite{Bishara:2019iwh,Badger:2020uow}
                                                   , event
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3998,14 +3970,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Bishara:2019iwh' on page  undefined on input line 89.
+LaTeX Warning: Citation `Bishara:2019iwh' on page  undefined on input line 88.
 
 Missing character: There is no , in font nullfont!
 \citation{Badger:2020uow}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.89 ...udes~\cite{Bishara:2019iwh,Badger:2020uow}
+l.88 ...udes~\cite{Bishara:2019iwh,Badger:2020uow}
                                                   , event
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4014,7 +3986,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Badger:2020uow' on page  undefined on input line 89.
+LaTeX Warning: Citation `Badger:2020uow' on page  undefined on input line 88.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -4038,7 +4010,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.90 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
+l.89 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4047,14 +4019,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `dutch' on page  undefined on input line 90.
+LaTeX Warning: Citation `dutch' on page  undefined on input line 89.
 
 Missing character: There is no , in font nullfont!
 \citation{gan_datasets}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.90 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
+l.89 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4063,14 +4035,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `gan_datasets' on page  undefined on input line 90.
+LaTeX Warning: Citation `gan_datasets' on page  undefined on input line 89.
 
 Missing character: There is no , in font nullfont!
 \citation{DijetGAN2}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.90 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
+l.89 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4079,14 +4051,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `DijetGAN2' on page  undefined on input line 90.
+LaTeX Warning: Citation `DijetGAN2' on page  undefined on input line 89.
 
 Missing character: There is no , in font nullfont!
 \citation{gan_phasespace}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.90 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
+l.89 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4095,14 +4067,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `gan_phasespace' on page  undefined on input line 90.
+LaTeX Warning: Citation `gan_phasespace' on page  undefined on input line 89.
 
 Missing character: There is no , in font nullfont!
 \citation{Alanazi:2020klf}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.90 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
+l.89 ...,DijetGAN2,gan_phasespace,Alanazi:2020klf}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4111,7 +4083,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Alanazi:2020klf' on page  undefined on input line 90.
+LaTeX Warning: Citation `Alanazi:2020klf' on page  undefined on input line 89.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -4132,12 +4104,12 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no [ in font nullfont!
-\citation{subgan}
+\citation{Butter:2019eyo}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.91 event subtraction~\cite{subgan}
-                                    , detector
+l.90 event subtraction~\cite{Butter:2019eyo}
+                                            , detector
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -4145,7 +4117,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `subgan' on page  undefined on input line 91.
+LaTeX Warning: Citation `Butter:2019eyo' on page  undefined on input line 90.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -4173,7 +4145,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4182,14 +4154,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `calogan1' on page  undefined on input line 92.
+LaTeX Warning: Citation `calogan1' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{calogan2}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4198,14 +4170,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `calogan2' on page  undefined on input line 92.
+LaTeX Warning: Citation `calogan2' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{fast_accurate}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4214,14 +4186,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `fast_accurate' on page  undefined on input line 92.
+LaTeX Warning: Citation `fast_accurate' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{aachen_wgan1}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4230,14 +4202,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `aachen_wgan1' on page  undefined on input line 92.
+LaTeX Warning: Citation `aachen_wgan1' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{aachen_wgan2}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4246,14 +4218,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `aachen_wgan2' on page  undefined on input line 92.
+LaTeX Warning: Citation `aachen_wgan2' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{ATLASShowerGAN}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4262,14 +4234,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `ATLASShowerGAN' on page  undefined on input line 92.
+LaTeX Warning: Citation `ATLASShowerGAN' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{ATLASsimGAN}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4278,14 +4250,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `ATLASsimGAN' on page  undefined on input line 92.
+LaTeX Warning: Citation `ATLASsimGAN' on page  undefined on input line 91.
 
 Missing character: There is no , in font nullfont!
 \citation{Belayneh:2019vyx}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4294,7 +4266,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Belayneh:2019vyx' on page  undefined on input line 92.
+LaTeX Warning: Citation `Belayneh:2019vyx' on page  undefined on input line 91.
 
 
 Missing character: There is no , in font nullfont!
@@ -4302,7 +4274,7 @@ Missing character: There is no , in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.92 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
+l.91 ...ASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4311,7 +4283,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Buhmann:2020pmy' on page  undefined on input line 92.
+LaTeX Warning: Citation `Buhmann:2020pmy' on page  undefined on input line 91.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -4333,7 +4305,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.93 ...hower,locationGAN,monkshower,juniprshower}
+l.92 ...shower,by_example,monkshower,juniprshower}
                                                   , or
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4342,14 +4314,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `shower' on page  undefined on input line 93.
+LaTeX Warning: Citation `shower' on page  undefined on input line 92.
 
 Missing character: There is no , in font nullfont!
-\citation{locationGAN}
+\citation{by_example}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.93 ...hower,locationGAN,monkshower,juniprshower}
+l.92 ...shower,by_example,monkshower,juniprshower}
                                                   , or
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4358,14 +4330,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `locationGAN' on page  undefined on input line 93.
+LaTeX Warning: Citation `by_example' on page  undefined on input line 92.
 
 Missing character: There is no , in font nullfont!
 \citation{monkshower}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.93 ...hower,locationGAN,monkshower,juniprshower}
+l.92 ...shower,by_example,monkshower,juniprshower}
                                                   , or
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4374,14 +4346,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `monkshower' on page  undefined on input line 93.
+LaTeX Warning: Citation `monkshower' on page  undefined on input line 92.
 
 Missing character: There is no , in font nullfont!
 \citation{juniprshower}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.93 ...hower,locationGAN,monkshower,juniprshower}
+l.92 ...shower,by_example,monkshower,juniprshower}
                                                   , or
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4390,7 +4362,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `juniprshower' on page  undefined on input line 93.
+LaTeX Warning: Citation `juniprshower' on page  undefined on input line 92.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -4441,7 +4413,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.94 ...s beyond the Standard Model~\cite{bsm_gan}
+l.93 ...s beyond the Standard Model~\cite{bsm_gan}
                                                   .  INNs
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4450,7 +4422,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `bsm_gan' on page  undefined on input line 94.
+LaTeX Warning: Citation `bsm_gan' on page  undefined on input line 93.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -4528,7 +4500,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.96 ...9normalizing,nflow_review,mller2018neural}
+l.95 ...9normalizing,nflow_review,mller2018neural}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4537,14 +4509,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `nflow1' on page  undefined on input line 96.
+LaTeX Warning: Citation `nflow1' on page  undefined on input line 95.
 
 Missing character: There is no , in font nullfont!
 \citation{papamakarios2019normalizing}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.96 ...9normalizing,nflow_review,mller2018neural}
+l.95 ...9normalizing,nflow_review,mller2018neural}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4554,14 +4526,14 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Citation `papamakarios2019normalizing' on page  undefined on inp
-ut line 96.
+ut line 95.
 
 Missing character: There is no , in font nullfont!
 \citation{nflow_review}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.96 ...9normalizing,nflow_review,mller2018neural}
+l.95 ...9normalizing,nflow_review,mller2018neural}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4570,14 +4542,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `nflow_review' on page  undefined on input line 96.
+LaTeX Warning: Citation `nflow_review' on page  undefined on input line 95.
 
 Missing character: There is no , in font nullfont!
 \citation{mller2018neural}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.96 ...9normalizing,nflow_review,mller2018neural}
+l.95 ...9normalizing,nflow_review,mller2018neural}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4586,7 +4558,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `mller2018neural' on page  undefined on input line 96.
+LaTeX Warning: Citation `mller2018neural' on page  undefined on input line 95.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -4688,7 +4660,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.98 ...e space generation~\cite{Bothmann:2020ywa}
+l.97 ...e space generation~\cite{Bothmann:2020ywa}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4697,7 +4669,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Bothmann:2020ywa' on page  undefined on input line 98.
+LaTeX Warning: Citation `Bothmann:2020ywa' on page  undefined on input line 97.
 
 
 Missing character: There is no ] in font nullfont!
@@ -4739,7 +4711,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.99 ... generation~\cite{Gao:2020vdv,Gao:2020zvv}
+l.98 ... generation~\cite{Gao:2020vdv,Gao:2020zvv}
                                                   , or
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4748,14 +4720,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Gao:2020vdv' on page  undefined on input line 99.
+LaTeX Warning: Citation `Gao:2020vdv' on page  undefined on input line 98.
 
 Missing character: There is no , in font nullfont!
 \citation{Gao:2020zvv}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.99 ... generation~\cite{Gao:2020vdv,Gao:2020zvv}
+l.98 ... generation~\cite{Gao:2020vdv,Gao:2020zvv}
                                                   , or
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4764,7 +4736,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Gao:2020zvv' on page  undefined on input line 99.
+LaTeX Warning: Citation `Gao:2020zvv' on page  undefined on input line 98.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
@@ -4791,8 +4763,8 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.100 anomaly detection~\cite{Nachman:2020lpy}
-                                              .
+l.99 anomaly detection~\cite{Nachman:2020lpy}
+                                             .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -4800,188 +4772,187 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Nachman:2020lpy' on page  undefined on input line 100.
-
+LaTeX Warning: Citation `Nachman:2020lpy' on page  undefined on input line 99.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 84--101
+Overfull \hbox (20.0pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 84--101
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 83--100
 [] 
  []
 
@@ -5032,7 +5003,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.103 events~\cite{Andreassen:2019cjw}
+l.102 events~\cite{Andreassen:2019cjw}
                                        to the hard scattering builds on
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5042,7 +5013,7 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Citation `Andreassen:2019cjw' on page  undefined on input line 1
-03.
+02.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -5108,7 +5079,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.104 ... with a standard GAN~\cite{Datta:2018mwd}
+l.103 ... with a standard GAN~\cite{Datta:2018mwd}
                                                    and a fully
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5117,7 +5088,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Datta:2018mwd' on page  undefined on input line 104.
+LaTeX Warning: Citation `Datta:2018mwd' on page  undefined on input line 103.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -5156,7 +5127,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.105 conditional GAN analysis~\cite{fcgan}
+l.104 conditional GAN analysis~\cite{fcgan}
                                            .  In Sec.~\ref{sec:inn} we show
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5165,7 +5136,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `fcgan' on page  undefined on input line 105.
+LaTeX Warning: Citation `fcgan' on page  undefined on input line 104.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -5178,7 +5149,7 @@ Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
 <write> ...: Reference `sec:inn' on page \thepage 
                                                   \space undefined\on@line .
-l.105 ...ysis~\cite{fcgan}.  In Sec.~\ref{sec:inn}
+l.104 ...ysis~\cite{fcgan}.  In Sec.~\ref{sec:inn}
                                                    we show
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5187,7 +5158,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `sec:inn' on page  undefined on input line 105.
+LaTeX Warning: Reference `sec:inn' on page  undefined on input line 104.
 
 Missing character: There is no w in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -5406,7 +5377,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.109 ... conditional INN (cINN)~\cite{cinn,cinn2}
+l.108 ... conditional INN (cINN)~\cite{cinn,cinn2}
                                                    adds even more
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5415,14 +5386,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `cinn' on page  undefined on input line 109.
+LaTeX Warning: Citation `cinn' on page  undefined on input line 108.
 
 Missing character: There is no , in font nullfont!
 \citation{cinn2}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.109 ... conditional INN (cINN)~\cite{cinn,cinn2}
+l.108 ... conditional INN (cINN)~\cite{cinn,cinn2}
                                                    adds even more
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5431,7 +5402,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `cinn2' on page  undefined on input line 109.
+LaTeX Warning: Citation `cinn2' on page  undefined on input line 108.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -5782,37 +5753,37 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 102--116
+Overfull \hbox (20.0pt too wide) in paragraph at lines 101--115
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 102--116
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 101--115
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 102--116
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 101--115
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 102--116
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 101--115
 []
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 102--116
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 101--115
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 102--116
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 101--115
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 102--116
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 101--115
 []
  []
 
@@ -5836,7 +5807,7 @@ Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
 <write> ... Reference `sec:jets' on page \thepage 
                                                   \space undefined\on@line .
-l.117 Next, we show in Sec.~\ref{sec:jets}
+l.116 Next, we show in Sec.~\ref{sec:jets}
                                            how the inversion can link two
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5845,7 +5816,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `sec:jets' on page  undefined on input line 117.
+LaTeX Warning: Reference `sec:jets' on page  undefined on input line 116.
 
 Missing character: There is no h in font nullfont!
 Missing character: There is no o in font nullfont!
@@ -6369,12 +6340,12 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 117--127
+Overfull \hbox (20.0pt too wide) in paragraph at lines 116--126
 []
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 117--127
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 116--126
 []
  []
 
@@ -6824,12 +6795,12 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 128--136
+Overfull \hbox (20.0pt too wide) in paragraph at lines 127--135
 []
  []
 
 ! Undefined control sequence.
-l.138 \section
+l.137 \section
               {Unfolding basics}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -6853,7 +6824,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no s in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 138--140
+Overfull \hbox (20.0pt too wide) in paragraph at lines 137--139
 []
  []
 
@@ -6928,7 +6899,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.142 ...li:2010zw, Spano:2013nca, Glazov:2017vni}
+l.141 ...li:2010zw, Spano:2013nca, Glazov:2017vni}
                                                   . In the limit where detec...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -6938,14 +6909,14 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Citation `Gagunashvili:2010zw' on page  undefined on input line 
-142.
+141.
 
 Missing character: There is no , in font nullfont!
 \citation{Spano:2013nca}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.142 ...li:2010zw, Spano:2013nca, Glazov:2017vni}
+l.141 ...li:2010zw, Spano:2013nca, Glazov:2017vni}
                                                   . In the limit where detec...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -6954,14 +6925,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Spano:2013nca' on page  undefined on input line 142.
+LaTeX Warning: Citation `Spano:2013nca' on page  undefined on input line 141.
 
 Missing character: There is no , in font nullfont!
 \citation{Glazov:2017vni}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.142 ...li:2010zw, Spano:2013nca, Glazov:2017vni}
+l.141 ...li:2010zw, Spano:2013nca, Glazov:2017vni}
                                                   . In the limit where detec...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -6970,7 +6941,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Glazov:2017vni' on page  undefined on input line 142.
+LaTeX Warning: Citation `Glazov:2017vni' on page  undefined on input line 141.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -7420,22 +7391,22 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 141--151
+Overfull \hbox (20.0pt too wide) in paragraph at lines 140--150
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 141--151
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 140--150
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 141--151
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 140--150
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 141--151
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 140--150
 []
  []
 
@@ -7524,25 +7495,25 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 152.
+(Font)              <7> on input line 151.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 152.
+(Font)              <5> on input line 151.
 
-LaTeX Warning: Command \d invalid in math mode on input line 152.
+LaTeX Warning: Command \d invalid in math mode on input line 151.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 152.
+LaTeX Warning: Command \d invalid in math mode on input line 151.
 
-LaTeX Font Info:    Try loading font information for +cmr on input line 152.
-LaTeX Font Info:    No file cmr.fd. on input line 152.
+LaTeX Font Info:    Try loading font information for +cmr on input line 151.
+LaTeX Font Info:    No file cmr.fd. on input line 151.
 
 LaTeX Font Warning: Font shape `/cmr/m/n' undefined
-(Font)              using `/cmr/m/n' instead on input line 152.
+(Font)              using `/cmr/m/n' instead on input line 151.
 
 ! Corrupted NFSS tables.
 wrong@fontshape ...message {Corrupted NFSS tables}
                                                   error@fontshape else let f...
-l.152 ...e detector-level distributions $\d \sigma
+l.151 ...e detector-level distributions $\d \sigma
                                                   /\d x_d$ as a random proce...
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
@@ -7551,12 +7522,12 @@ and deduce the truth by order and method.
 
 
 LaTeX Font Warning: Font shape `/cmr/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 152.
+(Font)              using `OT1/cmr/m/n' instead on input line 151.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.152 ...e detector-level distributions $\d \sigma
+l.151 ...e detector-level distributions $\d \sigma
                                                   /\d x_d$ as a random proce...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -7564,16 +7535,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.152 ...e detector-level distributions $\d \sigma
+l.151 ...e detector-level distributions $\d \sigma
                                                   /\d x_d$ as a random proce...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 152.
+LaTeX Warning: Command \d invalid in math mode on input line 151.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 152.
+LaTeX Warning: Command \d invalid in math mode on input line 151.
 
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -7761,15 +7732,15 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 
-LaTeX Warning: Command \d invalid in math mode on input line 155.
+LaTeX Warning: Command \d invalid in math mode on input line 154.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 155.
+LaTeX Warning: Command \d invalid in math mode on input line 154.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.155 ... the parton-level distribution $\d \sigma
+l.154 ... the parton-level distribution $\d \sigma
                                                   /\d x_p$ is a statistical ...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -7777,16 +7748,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.155 ... the parton-level distribution $\d \sigma
+l.154 ... the parton-level distribution $\d \sigma
                                                   /\d x_p$ is a statistical ...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 155.
+LaTeX Warning: Command \d invalid in math mode on input line 154.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 155.
+LaTeX Warning: Command \d invalid in math mode on input line 154.
 
 Missing character: There is no i in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -7811,22 +7782,22 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 152--156
+Overfull \hbox (20.0pt too wide) in paragraph at lines 151--155
 []
  []
 
 
-Overfull \hbox (21.0136pt too wide) in paragraph at lines 152--156
+Overfull \hbox (21.0136pt too wide) in paragraph at lines 151--155
 []\OML/cmm/m/it/10 =[][]$
  []
 
 
-Overfull \hbox (20.97307pt too wide) in paragraph at lines 152--156
+Overfull \hbox (20.97307pt too wide) in paragraph at lines 151--155
 []\OML/cmm/m/it/10 =[][]$
  []
 
 ! Undefined control sequence.
-l.158 \subsection
+l.157 \subsection
                  {Binned toy model and locality}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -7860,7 +7831,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no y in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 158--160
+Overfull \hbox (20.0pt too wide) in paragraph at lines 157--159
 []
  []
 
@@ -8038,7 +8009,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.166 \begin{align}
+l.165 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8047,7 +8018,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.167   \sigma
+l.166   \sigma
               ^{(d)}_i = \sum_{j=1}^N g_{ij} \sigma^{(p)}_j \; .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -8059,7 +8030,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.168 \end{align}
+l.167 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8068,7 +8039,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.167 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -8153,7 +8124,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.173 \begin{align}
+l.172 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8162,13 +8133,13 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.174   \sigma
+l.173   \sigma
               ^{(p)}_k
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Undefined control sequence.
-l.178   \quad \text
+l.177   \quad \text
                    {with} \quad
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -8183,7 +8154,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 \end{align}
+l.179 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8192,7 +8163,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.180 \end{align}
+l.179 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -8371,7 +8342,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.187 \begin{align}
+l.186 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8379,7 +8350,7 @@ or  <return>  to continue without it.
 
 Missing character: There is no g in font nullfont!
 ! Misplaced alignment tab character &.
-l.189   &
+l.188   &
          =
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8392,13 +8363,13 @@ Missing character: There is no = in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.191   1
+l.190   1
           - x & x & 0 \\ x & 1-2x & x \\ 0 & x & 1-x
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Misplaced alignment tab character &.
-l.191   1 - x &
+l.190   1 - x &
                 x & 0 \\ x & 1-2x & x \\ 0 & x & 1-x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8408,7 +8379,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.191   1 - x & x &
+l.190   1 - x & x &
                     0 \\ x & 1-2x & x \\ 0 & x & 1-x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8418,7 +8389,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.191   1 - x & x & 0 \\ x &
+l.190   1 - x & x & 0 \\ x &
                              1-2x & x \\ 0 & x & 1-x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8428,7 +8399,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.191   1 - x & x & 0 \\ x & 1-2x &
+l.190   1 - x & x & 0 \\ x & 1-2x &
                                     x \\ 0 & x & 1-x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8438,7 +8409,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.191   1 - x & x & 0 \\ x & 1-2x & x \\ 0 &
+l.190   1 - x & x & 0 \\ x & 1-2x & x \\ 0 &
                                              x & 1-x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8448,7 +8419,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.191   1 - x & x & 0 \\ x & 1-2x & x \\ 0 & x &
+l.190   1 - x & x & 0 \\ x & 1-2x & x \\ 0 & x &
                                                  1-x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8460,7 +8431,7 @@ might try typing `S' now just to see what is salvageable.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.192   \end{pmatrix}
+l.191   \end{pmatrix}
                       \; .
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -8471,7 +8442,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.192   \end{pmatrix} \;
+l.191   \end{pmatrix} \;
                          .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -8483,7 +8454,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.194 \end{align}
+l.193 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8492,7 +8463,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.194 \end{align}
+l.193 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -8665,7 +8636,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.200 \begin{alignat}
+l.199 \begin{alignat}
                      {7}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8675,13 +8646,13 @@ Missing character: There is no 7 in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.201   \sigma
+l.200   \sigma
               ^{(p)} &= n \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Misplaced alignment tab character &.
-l.201   \sigma^{(p)} &
+l.200   \sigma^{(p)} &
                       = n \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8691,7 +8662,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.202   &
+l.201   &
          \quad &\Rightarrow \quad
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8701,7 +8672,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.202   &\quad &
+l.201   &\quad &
                 \Rightarrow \quad
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8711,7 +8682,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.203   \sigma^{(d)} = \sigma^{(p)}\; , \notag
+l.202   \sigma^{(d)} = \sigma^{(p)}\; , \notag
                                                \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -8720,7 +8691,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Misplaced alignment tab character &.
-l.204   \sigma^{(p)} &
+l.203   \sigma^{(p)} &
                       = \begin{pmatrix} 1 \\ n \\ 0 \end{pmatrix}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8730,7 +8701,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.205   &
+l.204   &
          \quad &\Rightarrow \quad
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8740,7 +8711,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.205   &\quad &
+l.204   &\quad &
                 \Rightarrow \quad
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -8756,7 +8727,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.208 \end{alignat}
+l.207 \end{alignat}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -8765,7 +8736,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.208 \end{alignat}
+l.207 \end{alignat}
                    
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -9181,7 +9152,7 @@ Missing character: There is no E in font nullfont!
 Missing character: There is no q in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.218 Eq.\eqref
+l.217 Eq.\eqref
                {eq:gtoy} and find
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9210,7 +9181,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.220 \begin{align}
+l.219 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -9219,13 +9190,13 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.221   \bar
+l.220   \bar
             {g}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Misplaced alignment tab character &.
-l.232   1-3x &
+l.231   1-3x &
                -x & x^2 \\ -x & 1-2x & -x \\ x^2 & -x & 1-3x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -9235,7 +9206,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.232   1-3x & -x &
+l.231   1-3x & -x &
                     x^2 \\ -x & 1-2x & -x \\ x^2 & -x & 1-3x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -9245,7 +9216,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.232   1-3x & -x & x^2 \\ -x &
+l.231   1-3x & -x & x^2 \\ -x &
                                 1-2x & -x \\ x^2 & -x & 1-3x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -9255,7 +9226,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.232   1-3x & -x & x^2 \\ -x & 1-2x &
+l.231   1-3x & -x & x^2 \\ -x & 1-2x &
                                        -x \\ x^2 & -x & 1-3x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -9265,7 +9236,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.232   1-3x & -x & x^2 \\ -x & 1-2x & -x \\ x^2 &
+l.231   1-3x & -x & x^2 \\ -x & 1-2x & -x \\ x^2 &
                                                    -x & 1-3x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -9275,7 +9246,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.232 ... -x & x^2 \\ -x & 1-2x & -x \\ x^2 & -x &
+l.231 ... -x & x^2 \\ -x & 1-2x & -x \\ x^2 & -x &
                                                    1-3x
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -9291,7 +9262,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.234 \end{align}
+l.233 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -9300,7 +9271,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 \end{align}
+l.233 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -9701,277 +9672,277 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 161--243
+Overfull \hbox (20.0pt too wide) in paragraph at lines 160--242
 []
  []
 
 
-Overfull \hbox (16.94528pt too wide) in paragraph at lines 161--243
+Overfull \hbox (16.94528pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[]$
  []
 
 
-Overfull \hbox (16.98581pt too wide) in paragraph at lines 161--243
+Overfull \hbox (16.98581pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[]$
  []
 
 
-Overfull \hbox (11.81253pt too wide) in paragraph at lines 161--243
+Overfull \hbox (11.81253pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 g[]$
  []
 
 
-Overfull \hbox (27.54132pt too wide) in paragraph at lines 161--243
+Overfull \hbox (27.54132pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (60.87413pt too wide) in paragraph at lines 161--243
+Overfull \hbox (60.87413pt too wide) in paragraph at lines 160--242
 [][] \OML/cmm/m/it/10 g[]^^[[] :$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 160--242
 []$
  []
 
 
-Overfull \hbox (27.5008pt too wide) in paragraph at lines 161--243
+Overfull \hbox (27.5008pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (65.737pt too wide) in paragraph at lines 161--243
+Overfull \hbox (65.737pt too wide) in paragraph at lines 160--242
 [][] []\OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (189.60182pt too wide) in paragraph at lines 161--243
+Overfull \hbox (189.60182pt too wide) in paragraph at lines 160--242
 [][] [] \OML/cmm/m/it/10 ^^[[] []  [][] []g[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (18.63367pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.63367pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^N[] :$
  []
 
 
-Overfull \hbox (13.6111pt too wide) in paragraph at lines 161--243
+Overfull \hbox (13.6111pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 N[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 g$
  []
 
 
-Overfull \hbox (13.6111pt too wide) in paragraph at lines 161--243
+Overfull \hbox (13.6111pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 N[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 160--242
 []$
  []
 
 
-Overfull \hbox (23.88887pt too wide) in paragraph at lines 161--243
+Overfull \hbox (23.88887pt too wide) in paragraph at lines 160--242
 [] \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (16.43056pt too wide) in paragraph at lines 161--243
+Overfull \hbox (16.43056pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 xx\/cmr/m/n/10 0[] 
  []
 
 
-Overfull \hbox (18.49309pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.49309pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x\/cmr/m/n/10 1 \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (16.43056pt too wide) in paragraph at lines 161--243
+Overfull \hbox (16.43056pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 2\OML/cmm/m/it/10 xx[] 
  []
 
 
-Overfull \hbox (23.4931pt too wide) in paragraph at lines 161--243
+Overfull \hbox (23.4931pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 0\OML/cmm/m/it/10 x\/cmr/m/n/10 1 \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (5.71527pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.71527pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x$
  []
 
 
-Overfull \hbox (2.77779pt too wide) in paragraph at lines 161--243
+Overfull \hbox (2.77779pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 :[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 160--242
 []$
  []
 
 
-Overfull \hbox (27.5008pt too wide) in paragraph at lines 161--243
+Overfull \hbox (27.5008pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (25.44667pt too wide) in paragraph at lines 161--243
+Overfull \hbox (25.44667pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 n [] [] 
  []
 
 
-Overfull \hbox (5.00002pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 1[] 
  []
 
 
-Overfull \hbox (17.77774pt too wide) in paragraph at lines 161--243
+Overfull \hbox (17.77774pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 1  \OMS/cmsy/m/n/10 )
  []
 
 
-Overfull \hbox (27.54132pt too wide) in paragraph at lines 161--243
+Overfull \hbox (27.54132pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (24.1674pt too wide) in paragraph at lines 161--243
+Overfull \hbox (24.1674pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] ; [] 
  []
 
 
-Overfull \hbox (27.5008pt too wide) in paragraph at lines 161--243
+Overfull \hbox (27.5008pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (17.7777pt too wide) in paragraph at lines 161--243
+Overfull \hbox (17.7777pt too wide) in paragraph at lines 160--242
 [] [] 
  []
 
 
-Overfull \hbox (6.00235pt too wide) in paragraph at lines 161--243
+Overfull \hbox (6.00235pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 n[] 
  []
 
 
-Overfull \hbox (17.77774pt too wide) in paragraph at lines 161--243
+Overfull \hbox (17.77774pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 0  \OMS/cmsy/m/n/10 )
  []
 
 
-Overfull \hbox (27.54132pt too wide) in paragraph at lines 161--243
+Overfull \hbox (27.54132pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (24.72308pt too wide) in paragraph at lines 161--243
+Overfull \hbox (24.72308pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[] \/cmr/m/n/10 +
  []
 
 
-Overfull \hbox (32.2731pt too wide) in paragraph at lines 161--243
+Overfull \hbox (32.2731pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x [] \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (5.00002pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 1[] 
  []
 
 
-Overfull \hbox (7.7778pt too wide) in paragraph at lines 161--243
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 160--242
 \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (18.78017pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.78017pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 2\OML/cmm/m/it/10 n \/cmr/m/n/10 +
  []
 
 
-Overfull \hbox (5.00002pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 1[] 
  []
 
 
-Overfull \hbox (11.55785pt too wide) in paragraph at lines 161--243
+Overfull \hbox (11.55785pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 n :$
  []
 
 
-Overfull \hbox (16.94528pt too wide) in paragraph at lines 161--243
+Overfull \hbox (16.94528pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 ^^[[]$
  []
 
 
-Overfull \hbox (15.68398pt too wide) in paragraph at lines 161--243
+Overfull \hbox (15.68398pt too wide) in paragraph at lines 160--242
 [] \OMS/cmsy/m/n/10 ^^Y
  []
 
 
-Overfull \hbox (46.7125pt too wide) in paragraph at lines 161--243
+Overfull \hbox (46.7125pt too wide) in paragraph at lines 160--242
 [] [] \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (18.49309pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.49309pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 3\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (15.91667pt too wide) in paragraph at lines 161--243
+Overfull \hbox (15.91667pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 xx[][] 
  []
 
 
-Overfull \hbox (7.7778pt too wide) in paragraph at lines 161--243
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 160--242
 \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (18.49309pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.49309pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x\/cmr/m/n/10 1 \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (18.49309pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.49309pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 2\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (5.71527pt too wide) in paragraph at lines 161--243
+Overfull \hbox (5.71527pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x[] 
  []
 
 
-Overfull \hbox (17.9792pt too wide) in paragraph at lines 161--243
+Overfull \hbox (17.9792pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (18.49309pt too wide) in paragraph at lines 161--243
+Overfull \hbox (18.49309pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x\/cmr/m/n/10 1 \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (16.27078pt too wide) in paragraph at lines 161--243
+Overfull \hbox (16.27078pt too wide) in paragraph at lines 160--242
 \/cmr/m/n/10 3\OML/cmm/m/it/10 x ;$
  []
 
 
-Overfull \hbox (10.2014pt too wide) in paragraph at lines 161--243
+Overfull \hbox (10.2014pt too wide) in paragraph at lines 160--242
 \OML/cmm/m/it/10 x[]$
  []
 
 ! Undefined control sequence.
-l.245 \subsection
+l.244 \subsection
                  {Bayes' theorem and model dependence}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -10011,7 +9982,7 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no e in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 245--247
+Overfull \hbox (20.0pt too wide) in paragraph at lines 244--246
 []
  []
 
@@ -10082,7 +10053,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.252 \begin{align}
+l.251 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -10091,7 +10062,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.253 \frac{\d \sigma}{\d x_d}
+l.252 \frac{\d \sigma}{\d x_d}
                               
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10099,7 +10070,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.253 \frac{\d \sigma}{\d x_d}
+l.252 \frac{\d \sigma}{\d x_d}
                               
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10107,21 +10078,21 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.253 \frac{\d \sigma}{\d x_d}
+l.252 \frac{\d \sigma}{\d x_d}
                               
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 253.
+LaTeX Warning: Command \d invalid in math mode on input line 252.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 253.
+LaTeX Warning: Command \d invalid in math mode on input line 252.
 
 ! Extra }, or forgotten $.
 \frac #1#2->{\begingroup #1\endgroup \over #2}
                                               
-l.253 \frac{\d \sigma}{\d x_d}
+l.252 \frac{\d \sigma}{\d x_d}
                               
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -10130,21 +10101,21 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 255.
+LaTeX Warning: Command \d invalid in math mode on input line 254.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 255.
+LaTeX Warning: Command \d invalid in math mode on input line 254.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 255.
+LaTeX Warning: Command \d invalid in math mode on input line 254.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 255.
+LaTeX Warning: Command \d invalid in math mode on input line 254.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.255 ... \; g(x_d,x_p)\; \frac{\d \sigma}{\d x_p}
+l.254 ... \; g(x_d,x_p)\; \frac{\d \sigma}{\d x_p}
                                                    \; ,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10152,16 +10123,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.255 ... \; g(x_d,x_p)\; \frac{\d \sigma}{\d x_p}
+l.254 ... \; g(x_d,x_p)\; \frac{\d \sigma}{\d x_p}
                                                    \; ,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 255.
+LaTeX Warning: Command \d invalid in math mode on input line 254.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 255.
+LaTeX Warning: Command \d invalid in math mode on input line 254.
 
 
 ! LaTeX Error: \begin{document} ended by \end{align}.
@@ -10170,7 +10141,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.257 \end{align}
+l.256 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -10179,7 +10150,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.257 \end{align}
+l.256 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -10190,7 +10161,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.257 \end{align}
+l.256 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -10477,7 +10448,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.264 ...n,Blobel:2011fih,Balasubramanian:2019itp}
+l.263 ...n,Blobel:2011fih,Balasubramanian:2019itp}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -10486,14 +10457,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Cowan:2002in' on page  undefined on input line 264.
+LaTeX Warning: Citation `Cowan:2002in' on page  undefined on input line 263.
 
 Missing character: There is no , in font nullfont!
 \citation{Blobel:2011fih}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.264 ...n,Blobel:2011fih,Balasubramanian:2019itp}
+l.263 ...n,Blobel:2011fih,Balasubramanian:2019itp}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -10502,14 +10473,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Blobel:2011fih' on page  undefined on input line 264.
+LaTeX Warning: Citation `Blobel:2011fih' on page  undefined on input line 263.
 
 Missing character: There is no , in font nullfont!
 \citation{Balasubramanian:2019itp}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.264 ...n,Blobel:2011fih,Balasubramanian:2019itp}
+l.263 ...n,Blobel:2011fih,Balasubramanian:2019itp}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -10519,7 +10490,7 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Citation `Balasubramanian:2019itp' on page  undefined on input l
-ine 264.
+ine 263.
 
 Missing character: There is no ] in font nullfont!
 
@@ -10529,7 +10500,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.266 \begin{align}
+l.265 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -10538,7 +10509,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.267 \frac{\d \sigma}{d x_p}
+l.266 \frac{\d \sigma}{d x_p}
                              
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10546,7 +10517,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.267 \frac{\d \sigma}{d x_p}
+l.266 \frac{\d \sigma}{d x_p}
                              
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10554,7 +10525,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.267 \frac{\d \sigma}{d x_p}
+l.266 \frac{\d \sigma}{d x_p}
                              
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10562,7 +10533,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 \frac #1#2->{\begingroup #1\endgroup \over #2}
                                               
-l.267 \frac{\d \sigma}{d x_p}
+l.266 \frac{\d \sigma}{d x_p}
                              
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -10571,21 +10542,21 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 268.
+LaTeX Warning: Command \d invalid in math mode on input line 267.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 268.
+LaTeX Warning: Command \d invalid in math mode on input line 267.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 268.
+LaTeX Warning: Command \d invalid in math mode on input line 267.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 268.
+LaTeX Warning: Command \d invalid in math mode on input line 267.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.268 ...r{g}(x_p,x_d) \; \frac{\d \sigma}{\d x_d}
+l.267 ...r{g}(x_p,x_d) \; \frac{\d \sigma}{\d x_d}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10593,33 +10564,33 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.268 ...r{g}(x_p,x_d) \; \frac{\d \sigma}{\d x_d}
+l.267 ...r{g}(x_p,x_d) \; \frac{\d \sigma}{\d x_d}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 268.
+LaTeX Warning: Command \d invalid in math mode on input line 267.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 268.
+LaTeX Warning: Command \d invalid in math mode on input line 267.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 270.
+LaTeX Warning: Command \d invalid in math mode on input line 269.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 270.
+LaTeX Warning: Command \d invalid in math mode on input line 269.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 270.
+LaTeX Warning: Command \d invalid in math mode on input line 269.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 270.
+LaTeX Warning: Command \d invalid in math mode on input line 269.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.270 = \int \d x_p' \; \frac{\d \sigma}{d x_p'}
+l.269 = \int \d x_p' \; \frac{\d \sigma}{d x_p'}
                                                  \int \d x_d \; \bar{g}(x_p,...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -10627,16 +10598,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.270 = \int \d x_p' \; \frac{\d \sigma}{d x_p'}
+l.269 = \int \d x_p' \; \frac{\d \sigma}{d x_p'}
                                                  \int \d x_d \; \bar{g}(x_p,...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 270.
+LaTeX Warning: Command \d invalid in math mode on input line 269.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 270.
+LaTeX Warning: Command \d invalid in math mode on input line 269.
 
 
 ! LaTeX Error: \begin{document} ended by \end{align}.
@@ -10645,7 +10616,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.272 \end{align}
+l.271 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -10654,7 +10625,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.272 \end{align}
+l.271 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -10665,7 +10636,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.272 \end{align}
+l.271 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -10738,7 +10709,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.277 \begin{align}
+l.276 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -10747,16 +10718,16 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.278 \int
+l.277 \int
            \d x_d \; \bar{g}(x_p,x_d) g(x_d,x_p') = \delta(x_p - x_p') \; ,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 278.
+LaTeX Warning: Command \d invalid in math mode on input line 277.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 278.
+LaTeX Warning: Command \d invalid in math mode on input line 277.
 
 
 ! LaTeX Error: \begin{document} ended by \end{align}.
@@ -10765,7 +10736,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.280 \end{align}
+l.279 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -10774,7 +10745,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.280 \end{align}
+l.279 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -10845,7 +10816,7 @@ Missing character: There is no E in font nullfont!
 Missing character: There is no q in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.283 of Eq.\eqref
+l.282 of Eq.\eqref
                   {eq:toy1} and Eq.\eqref{eq:toy2} indicates that $g$ and
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -10867,7 +10838,7 @@ Missing character: There is no E in font nullfont!
 Missing character: There is no q in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.283 of Eq.\eqref{eq:toy1} and Eq.\eqref
+l.282 of Eq.\eqref{eq:toy1} and Eq.\eqref
                                          {eq:toy2} indicates that $g$ and
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -11112,116 +11083,241 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 249--289
+Overfull \hbox (20.0pt too wide) in paragraph at lines 248--288
 []
  []
 
 
-Overfull \hbox (92.92093pt too wide) in paragraph at lines 249--289
+Overfull \hbox (92.92093pt too wide) in paragraph at lines 248--288
 []$[]$
  []
 
 
-Overfull \hbox (10.37814pt too wide) in paragraph at lines 249--289
+Overfull \hbox (10.37814pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (10.33762pt too wide) in paragraph at lines 249--289
+Overfull \hbox (10.33762pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 g$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 []$
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 248--288
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 248--288
 []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 248--288
 []
  []
 
 
-Overfull \hbox (218.15872pt too wide) in paragraph at lines 249--289
+Overfull \hbox (218.15872pt too wide) in paragraph at lines 248--288
 []$[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 []$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 g$
  []
 
 
-Overfull \hbox (107.74007pt too wide) in paragraph at lines 249--289
+Overfull \hbox (107.74007pt too wide) in paragraph at lines 248--288
 [] [][] []\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; x[]\/cmr/m/n/10 )\OML/cmm/m/it/10
  g\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; x[]\/cmr/m/n/10 ) =
  []
 
 
-Overfull \hbox (26.82722pt too wide) in paragraph at lines 249--289
+Overfull \hbox (26.82722pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 ^^N\/cmr/m/n/10 (\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 ^^@
  []
 
 
-Overfull \hbox (19.78201pt too wide) in paragraph at lines 249--289
+Overfull \hbox (19.78201pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 x[]\/cmr/m/n/10 ) \OML/cmm/m/it/10 ;[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 g$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 []$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 g$
  []
 
 
-Overfull \hbox (10.33762pt too wide) in paragraph at lines 249--289
+Overfull \hbox (10.33762pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (5.12846pt too wide) in paragraph at lines 249--289
+Overfull \hbox (5.12846pt too wide) in paragraph at lines 248--288
 []$
  []
 
 
-Overfull \hbox (23.24388pt too wide) in paragraph at lines 249--289
+Overfull \hbox (23.24388pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 g\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\/cmr/m/n/10 )$
  []
 
 
-Overfull \hbox (10.37814pt too wide) in paragraph at lines 249--289
+Overfull \hbox (10.37814pt too wide) in paragraph at lines 248--288
 \OML/cmm/m/it/10 x[]$
  []
 
+
+! LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.288 
+      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1
+! Undefined control sequence.
+<write> \newlabel{chap:inn}{{}{\thepage 
+                                        }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{chap:inn}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{sec:innintro}{{}{\thepage 
+                                            }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec:innintro}{{}{}}
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+! Undefined control sequence.
+<write> \newlabel{sec:basics}{{}{\thepage 
+                                          }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec:basics}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{sec:basics_binned}{{}{\thepage 
+                                                 }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec:basics_binned}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:gtoy}{{}{\thepage 
+                                       }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:gtoy}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{sec:basics_model}{{}{\thepage 
+                                                }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec:basics_model}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:toy1}{{}{\thepage 
+                                       }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:toy1}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:toy2}{{}{\thepage 
+                                       }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:toy2}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:toy3}{{}{\thepage 
+                                       }}
+l.288 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:toy3}{{}{}}
+]
 Missing character: There is no T in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -11458,11 +11554,12 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no [ in font nullfont!
+
 \citation{Lucy_1974}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.295 $x_d$~\cite{Lucy_1974,Zech_2013}
+l.294 $x_d$~\cite{Lucy_1974,Zech_2013}
                                       . In this language Eq.\eqref{eq:toy1}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -11471,14 +11568,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Lucy_1974' on page  undefined on input line 295.
+LaTeX Warning: Citation `Lucy_1974' on page  undefined on input line 294.
 
 Missing character: There is no , in font nullfont!
 \citation{Zech_2013}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.295 $x_d$~\cite{Lucy_1974,Zech_2013}
+l.294 $x_d$~\cite{Lucy_1974,Zech_2013}
                                       . In this language Eq.\eqref{eq:toy1}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -11487,7 +11584,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Zech_2013' on page  undefined on input line 295.
+LaTeX Warning: Citation `Zech_2013' on page  undefined on input line 294.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -11509,7 +11606,7 @@ Missing character: There is no E in font nullfont!
 Missing character: There is no q in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.295 ...74,Zech_2013}. In this language Eq.\eqref
+l.294 ...74,Zech_2013}. In this language Eq.\eqref
                                                   {eq:toy1}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -11528,7 +11625,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no d in font nullfont!
 ! Undefined control sequence.
-l.296 and~\eqref
+l.295 and~\eqref
                 {eq:toy2} describe conditional probabilities, and we can
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -11630,7 +11727,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.299 \begin{align}
+l.298 \begin{align}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -11639,21 +11736,21 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.300   \bar
+l.299   \bar
             {g}(x_p|x_d) \; \frac{\d \sigma}{\d x_d}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 300.
+LaTeX Warning: Command \d invalid in math mode on input line 299.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 300.
+LaTeX Warning: Command \d invalid in math mode on input line 299.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.300 ...r{g}(x_p|x_d) \; \frac{\d \sigma}{\d x_d}
+l.299 ...r{g}(x_p|x_d) \; \frac{\d \sigma}{\d x_d}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -11661,27 +11758,27 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.300 ...r{g}(x_p|x_d) \; \frac{\d \sigma}{\d x_d}
+l.299 ...r{g}(x_p|x_d) \; \frac{\d \sigma}{\d x_d}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 300.
+LaTeX Warning: Command \d invalid in math mode on input line 299.
+
+
+LaTeX Warning: Command \d invalid in math mode on input line 299.
 
 
 LaTeX Warning: Command \d invalid in math mode on input line 300.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 301.
-
-
-LaTeX Warning: Command \d invalid in math mode on input line 301.
+LaTeX Warning: Command \d invalid in math mode on input line 300.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.301 ...im g(x_d|x_p) \; \frac{\d \sigma}{\d x_p}
+l.300 ...im g(x_d|x_p) \; \frac{\d \sigma}{\d x_p}
                                                    \; .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -11689,16 +11786,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.301 ...im g(x_d|x_p) \; \frac{\d \sigma}{\d x_p}
+l.300 ...im g(x_d|x_p) \; \frac{\d \sigma}{\d x_p}
                                                    \; .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 301.
+LaTeX Warning: Command \d invalid in math mode on input line 300.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 301.
+LaTeX Warning: Command \d invalid in math mode on input line 300.
 
 
 ! LaTeX Error: \begin{document} ended by \end{align}.
@@ -11707,7 +11804,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.302 \end{align}
+l.301 \end{align}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -11716,7 +11813,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.302 \end{align}
+l.301 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -11779,15 +11876,15 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no , in font nullfont!
 
-LaTeX Warning: Command \d invalid in math mode on input line 305.
+LaTeX Warning: Command \d invalid in math mode on input line 304.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 305.
+LaTeX Warning: Command \d invalid in math mode on input line 304.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.305 ...on of $x_p$ is the likelihood, $\d \sigma
+l.304 ...on of $x_p$ is the likelihood, $\d \sigma
                                                   /\d x_p$ is the prior,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -11795,16 +11892,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.305 ...on of $x_p$ is the likelihood, $\d \sigma
+l.304 ...on of $x_p$ is the likelihood, $\d \sigma
                                                   /\d x_p$ is the prior,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 305.
+LaTeX Warning: Command \d invalid in math mode on input line 304.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 305.
+LaTeX Warning: Command \d invalid in math mode on input line 304.
 
 Missing character: There is no i in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -11837,15 +11934,15 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no e in font nullfont!
 
-LaTeX Warning: Command \d invalid in math mode on input line 306.
+LaTeX Warning: Command \d invalid in math mode on input line 305.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 306.
+LaTeX Warning: Command \d invalid in math mode on input line 305.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.306 and the model evidence $\d \sigma
+l.305 and the model evidence $\d \sigma
                                        /\d x_d$ fixes the normalization of the
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -11853,16 +11950,16 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.306 and the model evidence $\d \sigma
+l.305 and the model evidence $\d \sigma
                                        /\d x_d$ fixes the normalization of the
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 306.
+LaTeX Warning: Command \d invalid in math mode on input line 305.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 306.
+LaTeX Warning: Command \d invalid in math mode on input line 305.
 
 Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
@@ -12170,83 +12267,83 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 290--312
+Overfull \hbox (20.0pt too wide) in paragraph at lines 289--311
 []
  []
 
 
-Overfull \hbox (36.39981pt too wide) in paragraph at lines 290--312
+Overfull \hbox (36.39981pt too wide) in paragraph at lines 289--311
 []\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x[]\/cmr
 /m/n/10 )$
  []
 
 
-Overfull \hbox (10.37814pt too wide) in paragraph at lines 290--312
+Overfull \hbox (10.37814pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (10.33762pt too wide) in paragraph at lines 290--312
+Overfull \hbox (10.33762pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (36.39981pt too wide) in paragraph at lines 290--312
+Overfull \hbox (36.39981pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 g\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/
 m/it/10 x[]\/cmr/m/n/10 )$
  []
 
 
-Overfull \hbox (10.33762pt too wide) in paragraph at lines 290--312
+Overfull \hbox (10.33762pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (15.80867pt too wide) in paragraph at lines 290--312
+Overfull \hbox (15.80867pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 x[]$ []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 290--312
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 289--311
 []
  []
 
 
-Overfull \hbox (61.60934pt too wide) in paragraph at lines 290--312
+Overfull \hbox (61.60934pt too wide) in paragraph at lines 289--311
 []\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x[]\/cmr
 /m/n/10 ) [] \OMS/cmsy/m/n/10 ^^X
  []
 
 
-Overfull \hbox (56.60936pt too wide) in paragraph at lines 290--312
+Overfull \hbox (56.60936pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 g\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/
 m/it/10 x[]\/cmr/m/n/10 ) [] \OML/cmm/m/it/10 :$
  []
 
 
-Overfull \hbox (36.39981pt too wide) in paragraph at lines 290--312
+Overfull \hbox (36.39981pt too wide) in paragraph at lines 289--311
 []\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x[]\/cmr
 /m/n/10 )$
  []
 
 
-Overfull \hbox (36.39981pt too wide) in paragraph at lines 290--312
+Overfull \hbox (36.39981pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 g\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/
 m/it/10 x[]\/cmr/m/n/10 )$
  []
 
 
-Overfull \hbox (10.33762pt too wide) in paragraph at lines 290--312
+Overfull \hbox (10.33762pt too wide) in paragraph at lines 289--311
 \OML/cmm/m/it/10 x[]$
  []
 
 
-Overfull \hbox (20.97307pt too wide) in paragraph at lines 290--312
+Overfull \hbox (20.97307pt too wide) in paragraph at lines 289--311
 []\OML/cmm/m/it/10 =[][]$
  []
 
 
-Overfull \hbox (21.0136pt too wide) in paragraph at lines 290--312
+Overfull \hbox (21.0136pt too wide) in paragraph at lines 289--311
 []\OML/cmm/m/it/10 =[][]$
  []
 
@@ -12291,32 +12388,32 @@ Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no l in font nullfont!
 
+LaTeX Warning: Command \d invalid in math mode on input line 312.
+
+
+LaTeX Warning: Command \d invalid in math mode on input line 313.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.313 \sigma
+            /\d x_p$, then Eq.\eqref{eq:toy2} does not look useful. On the
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.313 \sigma
+            /\d x_p$, then Eq.\eqref{eq:toy2} does not look useful. On the
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
 LaTeX Warning: Command \d invalid in math mode on input line 313.
 
 
-LaTeX Warning: Command \d invalid in math mode on input line 314.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.314 \sigma
-            /\d x_p$, then Eq.\eqref{eq:toy2} does not look useful. On the
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.314 \sigma
-            /\d x_p$, then Eq.\eqref{eq:toy2} does not look useful. On the
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-LaTeX Warning: Command \d invalid in math mode on input line 314.
-
-
-LaTeX Warning: Command \d invalid in math mode on input line 314.
+LaTeX Warning: Command \d invalid in math mode on input line 313.
 
 Missing character: There is no , in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -12327,7 +12424,7 @@ Missing character: There is no E in font nullfont!
 Missing character: There is no q in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Undefined control sequence.
-l.314 \sigma/\d x_p$, then Eq.\eqref
+l.313 \sigma/\d x_p$, then Eq.\eqref
                                     {eq:toy2} does not look useful. On the
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -12637,7 +12734,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.320 algorithm~\cite{DAgostini:1994fjx}
+l.319 algorithm~\cite{DAgostini:1994fjx}
                                         . We will not discuss these
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -12646,8 +12743,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `DAgostini:1994fjx' on page  undefined on input line 32
-0.
+LaTeX Warning: Citation `DAgostini:1994fjx' on page  undefined on input line 31
+9.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -12739,28 +12836,28 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 313--323
+Overfull \hbox (20.0pt too wide) in paragraph at lines 312--322
 []
  []
 
 
-Overfull \hbox (36.39981pt too wide) in paragraph at lines 313--323
+Overfull \hbox (36.39981pt too wide) in paragraph at lines 312--322
 []\/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x[]\/cmr
 /m/n/10 )$
  []
 
 
-Overfull \hbox (20.97307pt too wide) in paragraph at lines 313--323
+Overfull \hbox (20.97307pt too wide) in paragraph at lines 312--322
 []\OML/cmm/m/it/10 =[][]$
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 313--323
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 312--322
 []
  []
 
 ! Undefined control sequence.
-l.325 \subsection
+l.324 \subsection
                  {Reference process $pp \to ZW$}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -12791,7 +12888,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.328 \begin{figure}
+l.327 \begin{figure}
                     [b!]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -12802,17 +12899,17 @@ Missing character: There is no b in font nullfont!
 Missing character: There is no ! in font nullfont!
 Missing character: There is no ] in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 325--329
+Overfull \hbox (20.0pt too wide) in paragraph at lines 324--328
 []
  []
 
 
-Overfull \hbox (22.84023pt too wide) in paragraph at lines 325--329
+Overfull \hbox (22.84023pt too wide) in paragraph at lines 324--328
 \OML/cmm/m/it/10 pp \OMS/cmsy/m/n/10 !
  []
 
 
-Overfull \hbox (18.37502pt too wide) in paragraph at lines 325--329
+Overfull \hbox (18.37502pt too wide) in paragraph at lines 324--328
 \OML/cmm/m/it/10 ZW$
  []
 
@@ -12826,17 +12923,17 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.330 \input{inputs/incl_feynman}
+l.329 \input{inputs/incl_feynman}
                                  ^^M
 *** (cannot \read from terminal in nonstop modes)
 
  
 Here is how much of TeX's memory you used:
- 27 strings out of 492649
- 295 string characters out of 6129622
- 70655 words of memory out of 5000000
+ 28 strings out of 492649
+ 305 string characters out of 6129622
+ 68655 words of memory out of 5000000
  4005 multiletter control sequences out of 15000+600000
  3948 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 19i,11n,26p,545b,117s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 20i,11n,27p,545b,115s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!
