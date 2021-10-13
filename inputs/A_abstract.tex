@@ -5,11 +5,17 @@
 \vspace*{1cm}
 \section*{Abstract}
 
-bla bla
+Deep Learning is becoming a standard tool across science and industry to optimally solve a variety of tasks.
+A challenge of great importance for LHC analyses is realising a generative model to sample synthetic data from a desired probability density.
+%As LHC analyses require large, high fidelity simulated samples, great effort has been put on the development of novel techniques based on deep generative models. 
+While generative models such as Generative Adversarial Networks (GAN) and Normalizing Flows (NF) have been originally designed to solve Machine Learning tasks such as classification and data generation, we illustrate how they can also be employed to statistically invert Monte Carlo simulations of detector effects. 
+In particular, we show how conditional GANs and NFs are capable of unfolding detector effects, using ZW production at the LHC as a benchmarking process.
 
-\vspace*{2.2cm}
-\section*{Zusammenfassung}
+Two technical by-products of interest stemming from these studies are the introduction of a Bayesian NF and of the Latent Space Refinement (LaSeR) protocol. The former has been introduced in order to address the crucial question of explainability and uncertainty estimation of deep generative models, which is achieved by reformulating the training and prediction phases of NF as a Bayesian inference task. Finally, LaSeR is a method to refine a model's output using classifier weights. We show how LaSeR can critically improve the performances of a NF whenever the training data contains topological obstructions.
 
-bla bla aber auf Deutsch
+%\vspace*{2.2cm}
+%\section*{Zusammenfassung}
+%
+%bla bla aber auf Deutsch
 
 %\end{document}

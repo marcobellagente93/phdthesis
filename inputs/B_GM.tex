@@ -10,6 +10,15 @@
 
 \enlargethispage{2ex}
 
-Given data instances $X$ (with labels $Y$), a \textbf{generative model} is a model of the conditional probability $p(X | Y)$, or, if labels are not available, of $p(X)$.
+Given data instances $\mathcal{X}$, a \textit{generative model} is a probabilistic model of $p_{\mathcal{X}}(\mathcal{X})$, i.e, of the underlying probability density from which $\mathcal{X}$ is sampled. 
+Density estimation is the branch of machine learning that deals with representing $p_{\mathcal{X}}(\mathcal{X})$ in some way
+%
+\begin{figure}[t]
+\centering
+\includegraphics[page = 1, width=0.49\textwidth]{figures/gmm}
+\caption{Gaussian mixture model example.}
+\label{fig:gmm}
+\end{figure}
+%
 
 %\end{document}
