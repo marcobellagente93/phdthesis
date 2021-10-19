@@ -8,14 +8,193 @@
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-The extensive physics program of the ATLAS experiment [1] at the Large Hadron Collider [2] relies on high-fidelity Monte Carlo (MC) simulation as a basis for hypothesis tests of the underlying distribution of the data. One of the key detector technologies used for characterizing collisions are calorimeters, measuring the energy and location of both charged and neutral particles traversing the detector. Particles will lose their energy in a cascade (called a shower) of electromagnetic and hadronic interactions with a dense absorbing material. The number of the particles produced in these interactions is subsequently measured in thin sampling layers of an active medium.
-The deposition of energy in the calorimeter due to a developing shower is a stochastic process that can not be described from first principles and rather relies on a precise simulation of the detector response. It requires the modeling of interactions of particles with matter at the microscopic level as implemented using the Geant4 toolkit. This simulation process is inherently slow and thus presents a bottleneck in the ATLAS simulation pipeline.
+The research program carried over at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests.  
 
-To meet the growing analysis demands, ATLAS already relies strongly on fast calorimeter simulation techniques based on thousands of individual parametrizations of the calorimeter response in the longit- udinal and transverse direction given a single particle’s energy and pseudorapidity [5]. The algorithms currently employed for physics analyses by the ATLAS collaboration achieve a significant speed-up over the full simulation of the detector response at the cost of accuracy. Current developments [6, 7] aim at improving the modeling of taus, jet-substructure-based boosted objects or wrongly identified objects in the calorimeter and will benefit from an improved detector description following data taking and a more detailed forward calorimeter geometry.
-In recent years, deep learning algorithms have been demonstrated to accurately model the underlying distributions of rich, structured data for a wide range of problems, notably in the areas of computer vision, natural language processing and signal processing. The ability to embed complex distributions in a low dimensional manifold has been leveraged to generate samples of higher dimensionality and approximate the underlying probability densities. Among the most promising approaches to generative models are Variational Auto-Encoders (VAEs) [8, 9] and Generative Adversarial Networks (GANs), shown to simulate the response of idealized calorimeters.
+\section{Generative models}\label{sec:gmm}
+Given data instances $\mathcal{X} = \{ x_1, \ldots , x_N \}$, a generative model is a probabilistic model of $p(x)$, i.e. of the underlying probability density from which $\mathcal{X}$ is sampled. 
+In machine learning, generative modelling, or density estimation, is the unsupervised task of approximating a probability density via a parametrized function $G_{\theta}$, whose parameters $\theta$ are inferred in an automatic fashion. If $G_{\theta}$ is a good approximation of $p(x)$, new, realistic and unseen samples can be drawn from it.
+Similarly, if the data comes with labels $\mathcal{Y}$, we wish to approximate the conditional probability density $p(x | y)$ with a conditional probabilistic model $G_{\theta}(x | y)$.
+The underlying assumption of density estimation is that the manifold on which $\mathcal{X}$ lies can be described by a number of parameters which is lower than the dimensionality of the data itself, this way $G_{\theta}$ 
+is forced to discover regularities and patterns of the input data.
 
-This note presents the first application of such models to the fast simulation of the calorimeter response of the ATLAS detector, demonstrating the feasibility of using such algorithms for large scale high energy physics experiments in the future, and opens the possibility to complement current techniques. The studies presented in this note focus on generating showers for photons over a range of energies in the central region of the electromagnetic calorimeter. These showers are easier to reproduce and thus studied first, in particular the longitudinal and lateral shower shapes. Through the simplifications made, it is possible to focus on narrow regions of the calorimeter and neglect the dependence of the calorimeter response on the incident particle’s pseudorapidity. Furthermore, the extension of the algorithms for different particle types through conditioning the models on these types, is not studied.
-The note is organized as follows. Section 2 describes the design of the ATLAS detector and the geometry of the calorimeter system in particular. The Monte Carlo simulation samples used are described in Section 3. Section 4 presents a comprehensive summary of the deep generative models exploited in this work as well as their optimization. The results obtained by these algorithms are reviewed in Section 5. The final section concludes the note with a discussion of the work.
+As an example, if $p(x)$ is a multi-modal density, we may express it compactly with a finite mixture of  distributions
+%
+\begin{align}
+p(x) = \sum_{k=1}^{K} \pi_{k} p_{k}(x)
+\end{align}
+%
+with mixture weights $\pi_{k}$ constrained as
+%
+\begin{align}
+0 \leq \pi_k \leq 1, \quad \sum_{k=1}^{K} \pi_{k} = 1
+\end{align}
+%
+and the components $p_{k}(x)$ belong to a family of a basic distributions, e.g. Gaussians $\mathcal{N}_k(x | \mu_k, \Sigma_k)$, in which case we call the model \textit{Gaussian Mixture Model} (GMM). The model's parameters $\theta = \{ \mu_k, \Sigma_k, \pi_k; ~ k = 1, \ldots, K \}$ can be inferred via Maximum Likelihood. Assuming that the points in the dataset $\mathcal{X} = \{x_1, \ldots , x_N \}$ are identically and independently distributed, the likelihood can be written in the factorized form
+%
+\begin{align}
+p(\mathcal{X} | \theta ) = \prod_{n=1}^N p(x_n | \theta), \quad p(x_n | \theta) = \sum_{k=1}^K \pi_k \mathcal{N}_k(x_n | \mu_k, \Sigma_k),
+\end{align}
+%
+leading to the log-likelihood
+%
+\begin{align}
+\mathcal{L} \coloneqq \log p(\mathcal{X} | \theta ) = \sum_{n=1}^N \log \sum_{k=1}^K \pi_k \mathcal{N}_k(x_n | \mu_k, \Sigma_k).
+\end{align}
+%
+The optimal parameters $\theta^{*}$ are those that maximize the log-likelihood, and can therefore be obtained by solving for $\theta$ the equation $\text{d} \mathcal{L} / \text{d}\theta = 0$.
+As a concrete example, taking the derivative of $\mathcal{L}$ with respect to $\mu_{k}$ we get
+%
+\begin{align}
+\frac{\partial \mathcal{L}}{\partial \mu_k} &= \sum_{n=1}^{N} \frac{1}{p(x_n | \theta)} \frac{\partial p(x_n | \theta) }{\partial \mu_k} = \sum_{n=1}^{N} (x_n - \mu_k)^{T} \Sigma_k^{-1} \frac{\pi_k \mathcal{N}(x_n | \mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j N(x_n | \mu_j, \Sigma_j) } \\
+&= \sum_{n=1}^{N} r_{nk} (x_n - \mu_k)^{T} \Sigma_k^{-1} .
+\end{align}
+%
+Setting $\partial \mathcal{L} / \partial \mu_k  = 0$ we obtain
+%
+\begin{align}
+\mu_k^{*} = \frac{1}{ \sum_{n=1}^{N} r_{nk}} \sum_{n=1}^{N} r_{nk} x_n,
+\end{align}
+%
+where we have defined the responsibilities
+%
+\begin{align}
+r_{nk} = \frac{\pi_k \mathcal{N}(x_n | \mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j N(x_n | \mu_j, \Sigma_j) }.
+\end{align}
+%
+Similarly, it is possible to show that both $\pi_k^{*}$ and $\Sigma_k^{*}$ can also be expressed in terms of $r_{nk}$. 
+As it is often the case in machine learning, there is no closed form solution to the maximization problem for $k > 1$, and we rely instead on an updating scheme which, starting from randomized values of $\theta$, iteratively finds a better approximation of $\theta^{*}$.
+In the contest of GMMs, this iterative solution is called \textit{Expectation-Minimization} algorithm, and can be summarized as
+%
+\begin{itemize}
+\item
+Initialize $\mu_k, \Sigma_k, \pi_k$;
+\item
+E-step: evaluate the responsibilities $r_{nk}$ using current parameters $\mu_k, \Sigma_k, \pi_k$;
+\item
+M-step: estimate the new values $\mu_k^{*}, \Sigma_k^{*}, \pi_k^{*}$ using the current responsibilities.
+\end{itemize}
+The E/M-steps are repeated until convergence. The number of repetition, as well as the number of mixture are hyperparameters.
+In Fig.~\ref{fig:gmm} we show a simple example of a Gaussian mixture model used to predict the density of a 2-dimensional dataset.
+%------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\includegraphics[page = 1, width=0.49\textwidth]{gmm}
+\caption{Gaussian mixture model with two components. The equal probability surfaces are highlighted in colours.}
+\label{fig:gmm}
+\end{figure}
+%------------------------------------------------------------
 
+\section{Deep Generative Models}
+We may regard the GMM as the simplest statistical model. Recent years have seen the advent of novel methods for generative modelling which we collectively refer to as Deep Generative Models (DGM), in complete analogy to what Deep Learning (DL) is with respect to ML. Before describing the most relevant forms of DGMs, and with no claim of completeness, we recall that some of the key features of DL include
+\begin{itemize}
+\item
+models consists of highly parametrized Neural Networks (NN) whose specific form depends on the particular task;
+\item
+the NN parameters are inferred via a stochastic gradient descent approach;
+\item
+in order to achieve accurate results, vast amount of high-fidelity data is needed for the training.
+\end{itemize}
+The last bullet is particularly appetizing for the research program carried over at the Large Hadron Collider (LHC), in that not only scientific collaborations such as ATLAS and CMS have already collected petabytes of data (with a lot more to come with the next upgrade of the collider), but we are also able to generate accurate synthetic data from first principles via Monte Carlo simulation. It is therefore not surprising that DGMs have been extensively used in particle physics. Given the variety of applications and the number of papers on the topic, we refer to \href{https://github.com/iml-wg/HEPML-LivingReview}{here} for a complete overview.
+
+Concerning the actual realisations of DGMs, the three most successful frameworks studied in the literature are
+\begin{itemize}
+\item
+Normalizing Flows (NF);
+\item
+Generative Adversarial Networks (GAN);
+\item
+Variational Autoencoders,
+\end{itemize}
+of which the first two have been employed in this thesis, and are thoroughly discussed in chapters \ref{chap:gan}-\ref{chap:lsr}. NFs are defined in terms of a parametrized change of variable $G_{\theta}: x \rightarrow z$ between distributions
+%
+\begin{align}\label{eq:nf}
+p_X(x) = p_Z(z) \left|\det \frac{\partial G_{\theta}(z)}{\partial z}\right|^{-1} = p_Z(G_{\theta}^{-1}(x)) \left|\det \frac{\partial G_{\theta}^{-1}(x)}{\partial x}\right|.
+\end{align}
+%
+Regardless of how complicated $p_{X}(x)$ may be, if there exists a bijection $G_{\theta}$ such that $p_Z(z)$ is a simple distribution, e.g. a Gaussian $\mathcal{N}_{\mu=0, \Sigma=\mathbb{I}}$, we can draw samples from $p_{X}(x)$ via the generative pipeline
+%
+\begin{align}
+z \sim p_Z(z) \longrightarrow x = G_{\theta}(z)  \sim p_{X}(x),
+\end{align}
+%
+%
+%------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\includegraphics[page = 1, width=0.69\textwidth]{inn_example}
+\caption{Schematic representation of a NF: a complex, multi-modal probability density is mapped to a simple one, such as a Gaussian distribution. If the map $G_{\theta}$ is a bijection, samples from the target distribution can be drawn as $x = G_{\theta}(z)$.}
+\label{fig:NF}
+\end{figure}
+%------------------------------------------------------------
+%
+see Fig.~\ref{fig:NF} for a schematic representation. Similar to GMM example in Sec.~\ref{sec:gmm}, the parameters of $G_{\theta}$ can be chosen to minimize the negative log-likelihood $\log p_{X}(\mathcal{X} | \theta)$ 
+%
+\begin{align}\label{eq:change_of_variable}
+\mathcal{L} &= - \sum_{n=1}^N \log \left[ p_Z(G_{\theta}^{-1}(x_n)) \left|\det \frac{\partial G_{\theta}^{-1}(x)}{\partial x_n}\right| \right] = \\
+&= -\sum_{n=1}^N \log p_Z(G_{\theta}^{-1}(x_n)) + \log \left|\det \frac{\partial G_{\theta}^{-1}(x_n)}{\partial x_n}\right| = \\
+&= \sum_{n=1}^N \frac{(G_{\theta}^{-1}(x_n))^2}{2} - \log \left|\det \frac{\partial G_{\theta}^{-1}(x_n)}{\partial x_n}\right|\\
+\end{align}
+%
+where we have used $p_{Z}(z) = \mathcal{N}_{\mu=0, \Sigma=\mathbb{I}}$ and have discarded irrelevant constant terms. 
+In practice, we only need to compute $G_{\theta}^{-1}(x_n)$, the corresponding determinant of the Jacobian, and minimize the combination in the final line of Eq.~\ref{eq:change_of_variable}.
+
+This rather straightforward blueprint hides three complications one needs to carefully address when trying to realize this model. First of all, not only $G_{\theta}$ must be a bijection, i.e. its inverse must exist, but both $G_{\theta}$ and $G_{\theta}^{-1}$ must be efficiently computable, as one is required for training and the other for generating. Secondly, the map must have a tractable Jacobian. If $G_{\theta}$ is parametrized by some standard form of Neural Network (NN), such as a Multi-Layer Perceptron (MLP), none of the three properties is satisfied. As a result, many architectures have been proposed and in the literature to find the best trade-off between computational complexity and model expressive power.
+
+GANs introduce a brand new paradigm for generative modelling which doesn't involve computing the likelihood at all, and is therefore a form of likelihood-free learning. Instead, GANs rely on a two-sample test between distributions, i.e. a statistical test to determine whether or not two samples are drawn from the same distribution. This test is then turned into a differentiable objective function which is minimized with stochastic gradient descent methods, in such a way that it is minimal iff the two distributions are statistically identical.
+The statistical test is performed by a discriminator $D_{\phi}$ whose job is to tell apart real and fake samples. The final piece of a GAN is a generator $G_{\theta}$, a map from noise $z$ to target samples $\tilde{x}$, see Fig.~\ref{fig:gan}. In DL, both $D_{\phi}$ and $G_{\theta}$ are properly shaped NNs.
+%
+%------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\includegraphics[page = 1, width=0.99\textwidth]{gan}
+\caption{Schematic representation of a GAN: a generator $G$ deterministically transform noise $z$ to fake sample $\tilde{z}$. }
+\label{fig:gan}
+\end{figure}
+%------------------------------------------------------------
+%
+While many different ways to define the GAN objective have been proposed, we refer to the original formulation as it is close to the one employed in Chap.~\ref{chap:gan}. Formally, we consider the min-max game 
+%
+\begin{align}
+\min_{\theta} \max_{\phi} = \mathbb{E}_{x \sim p_{X}(x)} \left[ \log D_{\phi} (x) \right] + \mathbb{E}_{z\sim p_{Z}(z)} \left[ \log \left( 1 - D_{\phi} (G_{\theta}(z) \right) \right].
+\end{align}
+%
+For a fixed generator, this is nothing other than a binary classification task, and an optimal discriminator should output $1$ for any $x \sim p_{X}(x)$ and $0$ otherwise, which we can summarize as
+%
+\begin{align}
+D_{\phi^{*}}(x) = \frac{p_{X}(x)}{p_{X}(x) + p_{G}(x)},
+\end{align}
+%
+$p_{G}(x)$ being the distribution implicitly defined by the generator. 
+Fixing $\phi = \phi^{*}$, the generator piece of the objective is equivalent to minimizing the \textit{Jenson-Shannon} divergence $JS(p_{X}, p_{G})$, with
+%
+\begin{align}
+JS\left(p, q\right) = \frac{1}{2} \left(KL\left(p, \frac{p + q}{2}\right) + KL\left(q, \frac{p + q}{2}\right) \right),
+\end{align}
+%
+and $KL(a, b)$ is the \textit{Kullback-Leibler} divergence between $p$ and $q$. This objective has a global minimum for $p_{G} = p_{X}$.
+It turns out that if the discriminator is optimal, the objective function has vanishing gradient for the generator, leading to the standard alternating training of GANs: every $k$ updates of $\theta$ we perform an update of $\phi$, and $k$ is a hyperparameter.
+Training a GAN is a highly non trivial task with many potential issues if extra care is not taken, notably
+\begin{itemize}
+\item
+the optimization procedure is typically unstable and needs to be regularized;
+\item
+for multi-modal targets, generators can collapse to a single mode;
+\item
+since the objective function is not convex, there is no clear way to evaluate the model performances and determine a stopping point.
+\end{itemize}
+Plenty of empirical tips and tricks to stabilize the training of GANs are available in the literature, in the form of modified objective functions, gradient penalties, noise injection, specific optimizers and more.
+
+An important difference between the two presented frameworks is that a GAN represents a target density only implicitly, i.e. $G_{\theta}$ is only a sampler from $p_{X}$, but can't be used to estimate its value (with the exception of low dimensional problems where kernel methods may be used to smooth a binned distribution). On the other hand, the explicit value of the density can be trivially computed with a NF from Eq.~\ref{eq:nf} if we assume a perfect map to the latent space distribution.
+
+\section{Unfolding}
+
+In particle physics, \textit{unfolding} is defined as the statistical process of lifting the distortions induced by the finite resolution and limited acceptance of detectors. The unfolding problem is defined in terms of a distribution $p(x)$ of an observable $x$, and its distorted version $q(\tilde{x})$. In order to have a chance of estimating $p(x)$ we start from a model dependant proposal $p_{\text{model}}(x)$ of the true distribution, and assume that we can accurately describe the forward distortion process via Monte Carlo simulations
+%
+\begin{alignat*}{4}
+&\textbf{\text{forward process (MC)}} \qquad && \text{assumption} && \quad p(x) \longrightarrow q(\tilde{x}) \\
+&\textbf{\text{inverse process (unfolding)}}  \qquad && \text{observation} && \quad q(\tilde{x}) \longrightarrow p(x). \\
+\end{alignat*}
+%
+The inverse (unfolding) problem is typically ill-defined, as
 
 %\end{document}
