@@ -8,7 +8,16 @@
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-The research program carried over at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests.  
+The research program carried over at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests~\cite{Apostolakis:2308666, Aarrestad:2729448, Calafiura:2729668, ATL-SOFT-PUB-2018-002}. Simulations of parton level interactions and the subsequent processes of parton showering and hadronization, as well as the simulation of detector effects, are traditionally performed with Monte Carlo methods. These methods are built using first-principles, in the sense that they are expected to describe the corresponding physical system to the best of our knowledge, being that a detector or a quantum field theory. 
+However, precision and interpretability don't come for free, and a major shortcoming of these methods lies in their computational efficiency. In fact, Monte Carlo simulations takes the biggest share of computational resources of collaborations working at the LHC, with detector simulations being the biggest contributors~\cite{Calafiura:2729668}. As a notable example, the time needed to fully simulate a detector response with \geant~\cite{AGOSTINELLI2003250} is of the order of minutes.
+If we give up on the idea of simulating a physical system from first principles, we can reformulate the problem entirely as a sampling task: a detector image may be for instance regarded as a sample from an hypothetical distribution $p_{detector}$ defined on some high-dimensional space. The same idea may be applied to other stages of the simulation pipeline, such as the simulation of parton level events, or parton showers.
+If samples drawn from such a distribution can be used as a surrogate for first principle simulations, massive gains in computational time are theoretically possible, hence the recent interest in the potential of deep generative models for particle physics (see \href{https://iml-wg.github.io/HEPML-LivingReview}{HEPML-LivingReview} to get the full picture).
+
+Deep generative models are a natural tool for supporting  or replacing traditional Monte Carlo simulations, as they have the necessary expressive power to accurately reproduce complex, high-dimensional and multi-modal distributions. Furthermore, the field of high energy physics doesn't suffer from a typical bottleneck of applied deep learning, where clean, labelled natural images, texts, or biomedical data, can be expensive to obtain or be protected by privacy laws. Conversely, truly large, particle physics datasets are either publicly available or can be in most cases cheaply generated.
+
+The potential of deep generative models goes beyond the production of synthetic data, and, depending on the particular framework, they can solve a variety of tasks such as classification or anomaly detection. In this thesis, we introduce a novel method, whereby a deep generative model is employed to unfold detector effects down to the parton level.
+
+The thesis is organized as follows (?)
 
 \section{Generative models}\label{sec:gmm}
 Given data instances $\mathcal{X} = \{ x_1, \ldots , x_N \}$, a generative model is a probabilistic model of $p(x)$, i.e. of the underlying probability density from which $\mathcal{X}$ is sampled. 
@@ -121,8 +130,8 @@ z \sim p_Z(z) \longrightarrow x = G_{\theta}(z)  \sim p_{X}(x),
 %------------------------------------------------------------
 \begin{figure}[t]
 \centering
-\includegraphics[page = 1, width=0.69\textwidth]{inn_example}
-\caption{Schematic representation of a NF: a complex, multi-modal probability density is mapped to a simple one, such as a Gaussian distribution. If the map $G_{\theta}$ is a bijection, samples from the target distribution can be drawn as $x = G_{\theta}(z)$.}
+\includegraphics[page = 1, width=0.99\textwidth]{./figures/inn}
+\caption{Schematic representation of a NF: a random variable $z$ sampled from a fixed, simple distribution is transformed via a map $G$ to a sample $x$ sampled from a complex target distribution. If $G$ is a bijection, and its inverse $\tilde{G} = G^{-1}$ can be easily evaluated, the inverse direction can be used to train the model with Maximum Likelihood.}
 \label{fig:NF}
 \end{figure}
 %------------------------------------------------------------
@@ -146,8 +155,8 @@ The statistical test is performed by a discriminator $D_{\phi}$ whose job is to 
 %------------------------------------------------------------
 \begin{figure}[t]
 \centering
-\includegraphics[page = 1, width=0.99\textwidth]{gan}
-\caption{Schematic representation of a GAN: a generator $G$ deterministically transform noise $z$ to fake sample $\tilde{z}$. }
+\includegraphics[page = 1, width=0.99\textwidth]{./figures/gan}
+\caption{Schematic representation of a GAN: a generator $G$ deterministically maps noise $z$ to fake samples $\tilde{z}$. The discriminator $D$ is trained as a binary classifier of true versus fake data, while $G$ tries to fool it.}
 \label{fig:gan}
 \end{figure}
 %------------------------------------------------------------
