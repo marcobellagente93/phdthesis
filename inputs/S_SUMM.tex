@@ -4,11 +4,62 @@
 %\graphicspath{{../figures/}}	
 %\begin{document}
 
-\chapter{Summary}\label{chap:summ}
+\chapter{Summary and Outlook}\label{chap:summ}
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-In this thesis we have shown that bla
+In this thesis we have shown how deep generative models can be used to unfold detector effects in the example process of $ZW \to \ell \ell jj$ production at the LHC. Two different frameworks, a conditional GAN and a conditional INN have been tested, with and without a variable number of final state jets.
 
+While both models are capable of reproducing the parton level phase space, 
+the cINN can also gives correctly calibrated posterior probability
+distributions over parton-level phase space for given detector-level
+events
+
+Finally, we show the reconstructed $W'$-mass in the lower-right
+pane. Here we see the different (normalized) truth-level distributions
+for the Standard Model and the $W'$-injected sample. The FCGAN,
+trained on the Standard Model, keeps track of local phase space
+structures and reproduces the $W'$ peak faithfully. It also learn the
+$W'$-mass as the central peak position very well. The only issue is
+the $W'$-width, which the network over-estimates. However, we know
+already that dynamically generated width distributions are a challenge
+to GANs and require for instance an MMD loss.  Nevertheless,
+Fig.~\ref{fig:w_prime} clearly shows that GAN unfolding shows a high
+degree of model independence, making use of local structures in the
+mapping between the two phase spaces. We emphasize that the additional
+mass peak in the FCGANned events is not a one-dimensional feature, but
+a localized structure in the full phase space. This local structure is
+a feature of neural networks which comes in addition to the known
+strengths in interpolation.
+
+We have shown how an invertible network (INN) and in particular a
+conditional INN can be used to unfold detector effects for the simple
+example process of $ZW \to \ell \ell jj$ production at the LHC. The
+cINN is not only able to unfold the process over the entire phase
+space, it also gives correctly calibrated posterior probability
+distributions over parton-level phase space for given detector-level
+events. This feature is new even for neural network unfolding.
+
+Next, we have extended the unfolding to a variable number of jets in
+the final state. This situation will automatically appear whenever we
+include higher-order corrections in perturbative QCD for a given hard
+process. The hard process at parton level is defined at the training
+level. We find that the cINN also unfolds QCD jet radiation in the
+sense that it identifies the ISR jets and corrects the kinematics of
+the hard process to ensure energy-momentum conservation in the hard
+scattering.
+
+In combination, these features should enable analysis techniques like
+the matrix element method and efficient ways to communicate analysis
+results including multi-dimensional kinematic distributions. While the
+$ZW$ production process used in this analysis, we expect these results
+to carry over to more complex processes with intermediate
+particles~\cite{gan_phasespace} and the impact of a SM-training
+hypothesis should be under control~\cite{fcgan}, the next step will be
+to test this new framework in a realistic LHC example with proper
+precision predictions and a focus on uncertainties. As for any
+analysis method suitable for the coming LHC runs, the challenge will
+be to control the full uncertainty budget at the per-cent
+level. 
 
 %\end{document}

@@ -4,29 +4,39 @@
 %\graphicspath{{../figures/}}	
 %\begin{document}
 
-\chapter{Latent Space Refinement}\label{chap:lsr}
+\chapter[Topology improvement for invertible architectures]{Topology improvement \\for invertible architectures}\label{chap:lsr}
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
 \enlargethispage{2ex}
 
-\section*{Abstract}
-{\bf Deep generative models are becoming widely used across science and industry for a variety of purposes. A common challenge is achieving a precise implicit or explicit representation of the data probability density.  Recent proposals have suggested using classifier weights to refine the learned density of deep generative models.  We extend this idea to all types of generative models and show how latent space refinement via iterated generative modeling can circumvent topological obstructions and improve precision. This methodology also applies to cases were the target model is non-differentiable and has many internal latent dimensions which must be marginalized over before refinement. We demonstrate our Latent Space Refinement (LaSeR) protocol on a variety of examples, focusing on the combinations of Normalizing Flows and Generative Adversarial Networks. We make all codes publicly available.}
+{\bf Deep generative models are becoming widely used across science and industry for a variety of purposes. A common challenge is achieving a precise implicit or explicit representation of the data probability density.  Recent proposals have suggested using classifier weights to refine the learned density of deep generative models.  We extend this idea to all types of generative models and show how latent space refinement via iterated generative modelling can circumvent topological obstructions and improve precision. This methodology also applies to cases were the target model is non-differentiable and has many internal latent dimensions which must be marginalized over before refinement. We demonstrate our Latent Space Refinement (LaSeR) protocol on a variety of examples, focusing on the combinations of Normalizing Flows and Generative Adversarial Networks. We make all codes publicly available.}
 
 \section{Introduction}
 \label{sec:lsrintro}
 
-Generative models are essential tools for many aspects of scientific and engineering workflows. First-principles simulations encode physical laws and then samples from these simulations can be used for designing, performing, and interpreting a measurement. However, these physics-based simulations can be too slow or not precise enough for a growing number of studies. Deep learning-based techniques such as Generative Adversarial Networks (GAN)~\cite{goodfellow,Creswell2018}, Variational Autoencoders (VAE)~\cite{kingma2014autoencoding,Kingma2019}, and Normalizing Flows (NF)~\cite{10.5555/3045118.3045281,nflow_review} are powerful surrogates that can accelerate slow simulations and model complex datasets that would otherwise be intractable to describe from first principles. For example, a growing number of studies are exploring these tools for high energy physics (HEP) applications~\cite{by_example,calogan1,calogan2,Alonso-Monsalve:2018aqs,Butter:2019eyo,Martinez:2019jlu,fcgan,Vallecorsa:2019ked,SHiP:2019gcl,Carrazza:2019cnt,gan_phasespace,bsm_gan,DijetGAN2,gan_datasets,Chekalina:2018hxi,ATL-SOFT-PUB-2018-001,Zhou:2018ill,Carminati:2018khv,Vallecorsa:2018zco,Datta:2018mwd,fast_accurate,aachen_wgan1,Deja:2019vcv,Derkach:2019qfk,Erbin:2018csv,aachen_wgan2,Urban:2018tqv,Oliveira:DLPS2017,deOliveira:2017rwa,Farrell:2019fsm,Hooberman:DLPS2017,Belayneh:2019vyx,Buhmann:2020pmy,Alanazi:2020jod,2009.03796,Kansal:2020svm,Maevskiy:2020ank,Lai:2020byl,Choi:2021sku,Rehm:2021zow,Rehm:2021zoz,Carrazza:2021hny,Albergo:2019eim,Kanwar:2003.06413,Brehmer:2020vwc,Bothmann:2020ywa,Gao:2020zvv,Gao:2020vdv,Nachman:2020lpy,Choi:2020bnf,Lu:2020npg,Bieringer:2020tnw,Hollingsworth:2021sii,Monk:2018zsb,Cheng:2020dal,Dohi:2020eda,Howard:2021pos,Buhmann:2021lxj,Bortolato:2021zic,deja2020endtoend,Hariri:2021clz,Fanelli:2019qaq, Bellagente:2020piv, Bellagente:2021yyh}.
+In the previous chapters generative models have been introduced as essential tools for many aspects of scientific and engineering workflows. 
+First-principles simulations encode physical laws and then samples from these simulations can be used for designing, performing, and interpreting a measurement. 
+However, these physics-based simulations can be too slow or not precise enough for a growing number of studies. 
+Deep learning-based techniques such as Generative Adversarial Networks (GAN)~\cite{goodfellow,Creswell2018}, Variational Autoencoders (VAE)~\cite{kingma2014autoencoding,Kingma2019}, and Normalizing Flows (NF)~\cite{10.5555/3045118.3045281,nflow_review} are powerful surrogates that can accelerate slow simulations and model complex datasets that would otherwise be intractable to describe from first principles. For example, a growing number of studies are exploring these tools for high energy physics (HEP) applications~\href{https://iml-wg.github.io/HEPML-LivingReview}{HEPML-LivingReview}%\cite{by_example,fcgan, gan_phasespace, calogan1,calogan2,Alonso-Monsalve:2018aqs,Martinez:2019jlu,Vallecorsa:2019ked,SHiP:2019gcl,Carrazza:2019cnt,,bsm_gan,DijetGAN2,gan_datasets,Chekalina:2018hxi,ATL-SOFT-PUB-2018-001,Zhou:2018ill,Carminati:2018khv,Vallecorsa:2018zco,Datta:2018mwd,fast_accurate,aachen_wgan1,Deja:2019vcv,Derkach:2019qfk,Erbin:2018csv,aachen_wgan2,Urban:2018tqv,Oliveira:DLPS2017,deOliveira:2017rwa,Farrell:2019fsm,Hooberman:DLPS2017,Belayneh:2019vyx,Buhmann:2020pmy,Alanazi:2020jod,2009.03796,Kansal:2020svm,Maevskiy:2020ank,Lai:2020byl,Choi:2021sku,Rehm:2021zow,Rehm:2021zoz,Carrazza:2021hny,Albergo:2019eim,Kanwar:2003.06413,Brehmer:2020vwc,Bothmann:2020ywa,Gao:2020zvv,Gao:2020vdv,Nachman:2020lpy,Choi:2020bnf,Lu:2020npg,Hollingsworth:2021sii,Monk:2018zsb,Cheng:2020dal,Dohi:2020eda,Howard:2021pos,Buhmann:2021lxj,Bortolato:2021zic,deja2020endtoend,Hariri:2021clz,Fanelli:2019qaq, Bellagente:2020piv, Bellagente:2021yyh}.
 
-A key difference in generative modeling between many scientific applications, including HEP, and typical industrial applications is that individual samples are often not useful. Inference is performed on a statistical basis and so it is essential to model the probability density precisely and not just match its support. Existing deep generative models have shown great promise in qualitatively modeling complex probability densities, but it is often challenging to achieve precision.
+A key difference in generative modelling between many scientific applications, including HEP, and typical industrial applications is that individual samples are often not useful. Inference is performed on a statistical basis and so it is essential to model the probability density precisely and not just match its support. 
+Existing deep generative models have shown great promise in qualitatively modelling complex probability densities, but it is often challenging to achieve precision.
 
-A useful strategy to improve the precision of generative models is to refine their predictions. For example, Ref.~\cite{che2020gan} showed how the classification part of a GAN can be used to reweight and resample the input probability distribution of the random noise. A similar idea was introduced in Ref.~\cite{2009.03796} that is not specific to GANs, whereby a classifier network is trained on the generated samples to produce weights that improve the precision of the generated probability distribution. We combine and extent these approaches by introducing the \textbf{La}tent \textbf{S}pac\textbf{e} \textbf{R}efinement (\textsc{LaSeR}) protocol, illustrated in Fig.~\ref{fig:schematic}. Like \textsc{DctrGAN}~\cite{2009.03796,Andreassen:2019nnm}, \textsc{LaSeR} starts with any generative model $g(z)$ and trains a post-hoc classifier to distinguish the generated samples from the target data. A challenge with \textsc{DctrGAN} is that the results are weighted, which reduces the statistical power of a generated sample. The energy-based framework of Discriminator Driven Latent Sampling~(DDLS)~\cite{che2020gan} produces unweighted samples by transferring the weights to the latent space and then performing Langevin Markov Chain Monte Carlo (MCMC) to produce unweighted samples.  
+A useful strategy to improve the precision of generative models is to refine their predictions. For example, Ref.~\cite{che2020gan} showed how the classification part of a GAN can be used to reweight and resample the input probability distribution of the random noise. A similar idea was introduced in Ref.~\cite{2009.03796} that is not specific to GANs, whereby a classifier network is trained on the generated samples to produce weights that improve the precision of the generated probability distribution. 
+We combine and extend these approaches by introducing the \textbf{La}tent \textbf{S}pac\textbf{e} \textbf{R}efinement (\textsc{LaSeR}) protocol, illustrated in Fig.~\ref{fig:schematic}. 
+Like \textsc{DctrGAN}~\cite{2009.03796,Andreassen:2019nnm}, \textsc{LaSeR} starts with any generative model $g(z)$ and trains a post-hoc classifier to distinguish the generated samples from the target data. 
+A challenge with \textsc{DctrGAN} is that the results are weighted, which reduces the statistical power of a generated sample. 
+The energy-based framework of Discriminator Driven Latent Sampling~(DDLS)~\cite{che2020gan} produces unweighted samples by transferring the weights to the latent space and then performing Langevin Markov Chain Monte Carlo (MCMC) to produce unweighted samples.  
 
-We develop a more general protocol that works for any generative model and is more efficient than the Langevin MCMC approach of Ref.~\cite{che2020gan}. We begin by pulling back the weights from our post-hoc classifier to the latent space, either directly or via the \textsc{OmniFold} method~\cite{Andreassen:2019cjw} when the generator is not surjective. We then propose to learn a second generative model $\Phi(y)$ that maps an auxiliary latent space onto the refined latent space. Generating from the refined model amounts to sampling from the auxiliary latent space and applying $g(\Phi(y))$. We focus on the case where $g$ is a normalizing flow and $\Phi$ is a GAN because GANs need not to be invertible
-%\footnote{There are tricks to achieve a similar result for Normalizing Flows~\cite{huang2020augmented}.}
-; however, the method can be applied to any pair of generative models. Furthermore, the procedure can be iterated for further refinement.  Learning a post-hoc generative model in a latent space was also studied by the authors of Refs.~\cite{bohm2020probabilistic,GMMN,xiao2019generative}, where a standard autoencoder becomes probabilistic via a second model such as a NF trained on the bottleneck layer. Similarly, the authors of Ref.~\cite{dai2018diagnosing} proposed an iterative VAE setup to bring the latent space closer to a target multidimensional Gaussian random variable.
+We develop a more general protocol that works for any generative model and is more efficient than the Langevin MCMC approach of Ref.~\cite{che2020gan}. 
+We begin by directly pulling back the weights from our post-hoc classifier to the latent space (we also notice that in case our generator is not surjective, we still may do this via the \textsc{OmniFold} method~\cite{Andreassen:2019cjw}). This procedure allows us to define the optimal output as the one generated by the same nominal generative model, but the input is sampled from the optimal distribution encoded in the classifier weights. The challenge is then to efficiently sample from the optimal latent space.
+We propose to learn a second generative model $\Phi(y)$ that maps an auxiliary latent space onto the refined latent space. Generating from the refined model amounts to sampling from the auxiliary latent space and applying $g(\Phi(y))$. 
 
-This paper is organized as follows. We review related work and describe the statistical properties and challenges associated with existing generative models in Section~\ref{sec:background}.  We introduce various ways of implementing the \textsc{LaSeR} protocol in Sec.~\ref{sec:methods}.  Illustrative numerical examples are provided in Sec.~\ref{sec:examples} and the paper ends with conclusions and outlook in Sec.~\ref{sec:conclusion}.
+While this procedure is completely general and therefore independent on the particular baseline model, we focus on the case where $g$ is a normalizing flow and $\Phi$ is a GAN. This combination is particularly interesting given their different topological properties.
+Furthermore, the procedure can be iterated for further refinement.  Learning a post-hoc generative model in a latent space was also studied by the authors of Refs.~\cite{bohm2020probabilistic,GMMN,xiao2019generative}, where a standard autoencoder becomes probabilistic via a second model such as a NF trained on the bottleneck layer. Similarly, the authors of Ref.~\cite{dai2018diagnosing} proposed an iterative VAE setup to bring the latent space closer to a target multidimensional Gaussian random variable.
+
+This chapter is organized as follows. We review related work and describe the statistical properties and challenges associated with existing generative models in Section~\ref{sec:background}.  We introduce various ways of implementing the \textsc{LaSeR} protocol in Sec.~\ref{sec:methods}.  Illustrative numerical examples are provided in Sec.~\ref{sec:examples} and the chapter ends with conclusions and outlook in Sec.~\ref{sec:conclusion}.
 
 \begin{figure}[h!]
     \centering
@@ -39,15 +49,14 @@ This paper is organized as follows. We review related work and describe the stat
 \section{Background}
 \label{sec:background}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-A generator is a function $g$ that maps a latent space $\mathcal{Z}\subseteq \mathbb{R}^N$ onto a target or feature space $\mathcal{X}\subseteq \mathbb{R}^M$, with underlying probability densities $p_\mathcal{Z}$ and $p_\mathcal{X}$, respectively.  Typically, $p_\mathcal{Z}$ is chosen to be simple (e.g. normal or uniform) so that it is efficient to generate data $Z\sim p_\mathcal{Z}$.  In some cases, the latent space $\mathcal{Z}$ is broken into two components: one component that specifies the input features of interest and one component that specifies auxiliary latent features that are marginalized over.  When this happens, the map $g$ is viewed as a stochastic function of the first latent space component.  While our examples exclusively cover the case of deterministic maps from the full latent space to the target space, our approach can accommodate both settings as we explain in more detail below.
+As explained in Chap.~\ref{chap:introduction}, a generator is a function $g$ that maps a latent space $\mathcal{Z}\subseteq \mathbb{R}^N$ onto a target or feature space $\mathcal{X}\subseteq \mathbb{R}^M$, with underlying probability densities $p_\mathcal{Z}$ and $p_\mathcal{X}$, respectively.  Typically, $p_\mathcal{Z}$ is chosen to be simple (e.g. normal or uniform) so that it is efficient to generate data $Z\sim p_\mathcal{Z}$.  In some cases, the latent space $\mathcal{Z}$ is broken into two components: one component that specifies the input features of interest and one component that specifies auxiliary latent features that are marginalized over.  When this happens, the map $g$ is viewed as a stochastic function of the first latent space component.  While our examples exclusively cover the case of deterministic maps from the full latent space to the target space, our approach can accommodate both settings as we explain in more detail below.
 
 The function $g$ can be constructed from first-principles insights about the dynamics of a system or it can be learned from data.  For example, commonly-used deep generative models include
 
 \begin{itemize}
     \item Generative adversarial networks (GANs)~\cite{goodfellow,Creswell2018}
     \item Variational autoencoders (VAEs)~\cite{kingma2014autoencoding,Kingma2019}
-    \item Normalizing flows (NFs)~\cite{nflow1,nflow_review} %and related  invertible neural networks (INNs)~\cite{ardizzone2019analyzing,1800956}.
-    %\item Physics-based Monte-Carlo generators (e.g. from collider physics~\cite{Rambo, Platzer:2013esa, Alwall:2014hca, Sjostrand:2014zea, Frederix:2018nkq,Bellm:2015jjp, Bothmann:2019yzt}).
+    \item Normalizing flows (NFs)~\cite{nflow1,nflow_review} 
 \end{itemize}
 
 Apart from the specific learning objective, all generative models have their intrinsic advantages and disadvantages. The relevant features to understand the \textsc{LaSeR} protocol are summarized in Table~\ref{tab:comparison} and are further discussed in the following.
@@ -72,7 +81,7 @@ Apart from the specific learning objective, all generative models have their int
 \label{sec:event_generation}
 %======================================
 
-While the three generative models introduced in the previous section can all be trained directly on unlabeled data, they have different strategies for estimating $p_\mathcal{X}$.  GANs and VAEs learn this density implicitly by introducing an auxiliary task. In the case of GANs, the auxiliary task is performed by a discriminator network that tries to distinguish samples drawn from $p_\mathcal{Z}$ passed through $g$ and those drawn from $p_\mathcal{X}$ directly. For VAEs, the generator is called the decoder and the auxiliary task requires an encoder network $h$ to satisfy $g(h(x))\approx x$, while regularizing the latent space probability density.  Due to the structure of these networks, $N$ need not be the same size as $M$. 
+The three generative models introduced in the previous section can all be trained directly on unlabeled data, and have different strategies for estimating $p_\mathcal{X}$.  GANs and VAEs learn this density implicitly by introducing an auxiliary task. In the case of GANs, the auxiliary task is performed by a discriminator network that tries to distinguish samples drawn from $p_\mathcal{Z}$ passed through $g$ and those drawn from $p_\mathcal{X}$ directly. For VAEs, the generator is called the decoder and the auxiliary task requires an encoder network $h$ to satisfy $g(h(x))\approx x$, while regularizing the latent space probability density.  Due to the structure of these networks, $N$ need not be the same size as $M$. 
 
 In contrast to GANs and VAEs, NFs explicitly encode an estimate for the probability density $p_\mathcal{X}$. These networks rely on a coordinate transformation which maps the prior distribution $p_\mathcal{Z}$ into a target distribution $p_g$ with $g$ now being invertible. This requires $M=N$ but allows for an analytic expression for the probability density induced by $g$:
 %
@@ -91,13 +100,15 @@ In order to match $p_g$ and the data probability density $p_\mathcal{X}$, one ca
 \label{sec:topology}
 %======================================
 
-While the bijective nature of NFs allows for an explicit representation of the target probability density estimate, they inevitably suffer from a significant drawback.
+While the bijective nature of NFs allows for an explicit representation of the target probability density estimate, they inevitably suffer from the significant drawback described at the end of Sec.~\ref{intro:normflow}.
 In order to find a mapping $g$ which satisfies Eq.~\eqref{eq:coordinate_transform} and matches the data probability density, the manifolds defined by the prior distribution $p_\mathcal{Z}$ and the target distribution $p_\mathcal{X}$ need to be topologically equivalent.
-A common way to describe the topological properties of manifolds are the Betti numbers.
+A common way to describe the topological properties of manifolds are the Betti numbers\\
 %
-\begin{definition}
-The $n^\text{th}$ Betti number $b_n$ of a topological space $X$ is defined as the rank of the $n^\text{th}$ homology group $H_n$ of $X$~\cite{bettinumbers,hatcher2002algebraic}.
-\end{definition}
+%\begin{definition}
+\\
+\textbf{Definition 1:}\\
+\textit{The $n^\text{th}$ Betti number $b_n$ of a topological space $X$ is defined as the rank of the $n^\text{th}$ homology group $H_n$ of $X$~\cite{bettinumbers,hatcher2002algebraic}}\\\\
+%\end{definition}
 %
 Informally, the $n^\text{th}$ Betti number denotes the number of $n$-dimensional holes of a topological space.
 In fact, the first three Betti numbers do have simple geometrical interpretations:
@@ -117,10 +128,14 @@ For instance, in Fig.~\ref{fig:betti_torus} we illustrate a torus which has one 
 %\medskip
 
 It has been proven by Poincar\'{e} that these numbers are invariant under homeomorphisms. This implies the following proposition:
-\begin{proposition}
-Any bijective mapping $g(z)$ is a homeomorphism and preserves the topological structure of the input space.
-\label{prop:topology}
-\end{proposition}
+\\
+\\
+\textbf{Proposition 1:}\\
+%\begin{proposition}
+\textit{Any bijective mapping $g(z)$ is a homeomorphism and preserves the topological structure of the input space}
+%\label{prop:topology}
+\\\\
+%\end{proposition}
 A proof can be found in Refs.~\cite{younes2010shapes,dupont2019augmented}.
 This mathematical statement has a major impact on any generative model relying on bijective mappings, such as NFs. If the target space has a different topological structure than the latent space, these models cannot properly describe the target space topology as they inherently preserve the latent space topology.  It is indeed possible that these inconsistencies are hidden in some highly-correlated observable which might not be investigated during or after optimization. Moreover, it has been shown in Ref.~\cite{cornish2021relaxing} that you can hide and diminish the topological issues if you increase the network complexity. However, you can achieve better and computationally cheaper results by relaxing the bijetivity constraint itself~\cite{cornish2021relaxing} or by augmenting additional dimensions~\cite{dupont2019augmented, huang2020augmented}. Further, the issues arising by non-trivial topologies have also been investigated in the context of autoencoders in Ref.~\cite{Batson:2021agz}.
 
@@ -133,7 +148,7 @@ Consequently, if we want to correctly reproduce the target space with a non-triv
 
 The \textsc{LaSeR} protocol is illustrated in Fig.~\ref{fig:schematic}. The input is a generator $g(z)$ that could either be a neural network or a black-box (BB) simulator (e.g. a physics-based Monte Carlo).
 
-As a first step, a classifier is trained to distinguish samples drawn from $g$ and samples drawn from the target data probability density. It is well-known~\cite{hastie01statisticallearning,sugiyama_suzuki_kanamori_2012} (and forms the basis of the \textsc{Dctr} protocol~\cite{1907.08209}) that an ideally trained classifier $f$ using the binary cross entropy (BCE) loss function will have the property $f/(1-f)\propto p(x|\text{target})/p(x|\text{from $g$})$. The proportionality constant is $p(\text{target})/p(\text{from $g$})$ and is unity when the two datasets have the same number of samples. Other loss functions such as the mean squared error have the same property. It is also possible to engineer the loss function to directly learn the likelihood ratio~\cite{DAgnolo:2018cun,Nachman:2021yvi}. Throughout this paper, we use BCE.
+As a first step, a classifier is trained to distinguish samples drawn from $g$ and samples drawn from the target data probability density. It is well-known~\cite{hastie01statisticallearning,sugiyama_suzuki_kanamori_2012} (and forms the basis of the \textsc{Dctr} protocol~\cite{1907.08209}) that an ideally trained classifier $f$ using the binary cross entropy (BCE) loss function will have the property $f/(1-f)\propto p(x|\text{target})/p(x|\text{from $g$})$. The proportionality constant is $p(\text{target})/p(\text{from $g$})$ and is unity when the two datasets have the same number of samples. Other loss functions such as the mean squared error have the same property. It is also possible to engineer the loss function to directly learn the likelihood ratio~\cite{DAgnolo:2018cun,Nachman:2021yvi}. Throughout this chapter, we use BCE.
 
 Each generated sample is assigned a weight $w(x_i)=f(x_i)/(1-f(x_i))$. These weights are then assigned to the corresponding latent space point $g(z_i)=x_i$. When $g$ is surjective, $w$ is a proper function of $z$. However, there are many potential applications where the generator has many internal latent degrees of freedom that are marginalized over and are not part of $\mathcal{Z}$. In this case, one can use the \textsc{OmniFold} algorithm~\cite{Andreassen:2019cjw} which is an iterative expectation maximization-style approach that returns weights for the $z_i$ that maximizes the likelihood in the data space.  The weights extracted with \textsc{OmniFold} are a proper function of the latent space. This is not necessarily the case for weights directly inferred from the classifier, since the mapping $g$ can send the same latent space point to different data space points. In other words, the marginalized latent dimensions make $g$ a stochastic function.
 
@@ -179,7 +194,7 @@ Table~\ref{tab:refiner_comparison} illustrates some of the features of various c
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Numerical examples}
+\section{Toy examples}
 \label{sec:examples}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -201,7 +216,7 @@ with $\gamma = 0.999$ which decays the learning rate after each epoch.
 As a post-hoc classifier we employ a MLP with 8 hidden layers, 96 units per layer and leaky ReLU activation functions. We train it for 50 epochs by minimizing the BCE loss between true data samples and samples from the generator $g$. Optimization is again performed using Adam with default $\beta$ parameters and $\alpha_0 = 10^{-3}$ and an exponential learning rate schedule with $\gamma = 0.999$.
 
 \paragraph{Refiner network.}
-Finally, the refiner network is a GAN consisting of a discriminator and a generator, both MLPs with 7 hidden layers, 100 units per layer and Leaky ReLU activation functions.
+Finally, the refiner network is a GAN consisting of a discriminator and a generator, both MLPs with 3 hidden layers, 40 units per layer and Leaky ReLU activation functions.
 As a GAN does not require to have the same dimensions in the latent space as in the feature space we choose 4-dimensional auxiliary latent space to simplify the task of the generator. The standard GAN objective is replaced by the weighted BCE loss introduced in Ref.~\cite{Backes:2020vka} to accommodate the weights of the weighted training data. The GAN is trained for 200 epochs using the Adam optimizer with $(\alpha, \beta_1, \beta_2) = (10^{-4}, 0.5, 0.9)$ and also using an exponential learning rate schedule with $\gamma = 0.999$. To compensate an imbalance in the training we update the discriminator four times for each generator update.
 
 \paragraph{Hamiltonian Monte Carlo (HMC).}
@@ -242,7 +257,7 @@ In order to calculate these quantities numerically we generate 2M data points fo
 
 In the following we will simply refer to the \textsc{LaSeR} protocol using the Hamiltonian Monte Carlo as HMC method, and we will refer to the \textsc{LaSeR} protocol using a refiner network as \textsc{LaSeR} method.
 
-In the first example, illustrated in Fig.~\ref{fig:gaussians}, we considered a multi-modal distribution which can be topologically described by its Betti numbers $b_0=4$ and $b_{n\ge1}=0$. In contrast, our non-refined latent space is described by a 2-dimensional normal distribution with $b_0=1$ and $b_{n>0}=0$. As both spaces are topologically different our baseline model fails to correctly reproduce the truth distribution. It is obvious that the baseline model cannot properly separate the individual modes and always leaves a connection between them. This is in agreement with Proposition \ref{prop:topology} as our baseline model is a NF and thus inevitably topology preserving.
+In the first example, illustrated in Fig.~\ref{fig:gaussians}, we considered a multi-modal distribution which can be topologically described by its Betti numbers $b_0=4$ and $b_{n\ge1}=0$. In contrast, our non-refined latent space is described by a 2-dimensional normal distribution with $b_0=1$ and $b_{n>0}=0$. As both spaces are topologically different our baseline model fails to correctly reproduce the truth distribution. It is obvious that the baseline model cannot properly separate the individual modes and always leaves a connection between them. This is in agreement with Proposition 1 as our baseline model is a NF and thus inevitably topology preserving.
 After training a post-hoc classifier the reweighted feature space of the \textsc{Dctr} method clearly resolved the topological obstructions. Pulling back these weights onto the orginal latent space induces a weighted latent space which is now also clearly separated into four pieces and thus shows the same topological structure as the data distribution. This weighted latent space is correctly reproduced in the refined latent spaces of the HMC and \textsc{LaSeR} method. Acting with our generator $g$ on these refined latent spaces shows a highly improved feature space distribution.
 %
 \begin{figure}[!htbp]
@@ -296,6 +311,9 @@ Finally, in the last example we combine the topological features from the previo
 In order to provide a quantitative comparison of performances, we calculated the EMD and JSC scores of our baseline model and its refined counterparts for all examples. These scores are summarized in Table~\ref{tab:scores} and show that the \textsc{HMC} method yields the best performance in most scenarios for the unweighted output. However, the \textsc{LaSeR} method is equally good or better for the the most complex example, showing that the HMC method has troubles to sample from the highly tangled latent space.  Moreover, the HMC method cannot be used at all if the derivatives of the weights are not tractable, in which case the \textsc{LaSeR} method is still applicaple. The overall best performance is achieved by the \textsc{Dctr} method which however corresponds to a weighted feature space. As these weights are also used to obtain the refined latent space for the HMC and \textsc{LaSeR} method the score of the \textsc{Dctr} yield as a benchmark and provides lower limit.
 Indeed, we can ask ourselves why the EMD of both unweighted methods are smaller than the EMD of the \textsc{Dctr} method for the double donut example. However, owing to the
 the uncertainty on the numerical estimation of the scores, which are indicated in parenthesis, all scores a statistically consistent.
+
+\section{LHC applications}
+\label{sec:LHCexamples}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions and outlook}

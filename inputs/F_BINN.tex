@@ -4,104 +4,123 @@
 %\graphicspath{{../figures/}}	
 %\begin{document}
 
-\chapter{Bayesian Neural Networks}\label{chap:bnn}
+\chapter[What is the uncertainty of generative models?]{What is the uncertainty of\\ generative models?}\label{chap:bnn}
 
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
 \enlargethispage{2ex}
 
-\section*{Abstract}
-{\bf Following the growing success of generative neural networks in LHC
-  simulations, the crucial question is how to control the networks
-  and assign uncertainties to their event output. We show how
-  Bayesian normalizing flow or invertible networks capture uncertainties from
-  the training and turn them into an uncertainty on the
-  event weight. Fundamentally, the interplay between density and
-  uncertainty estimates indicates that these networks learn
-  functions in analogy to parameter fits rather than binned event
-  counts.}
+{\bf Following the growing interest in refining LHC simulations with deep generative models, a crucial question to realistically use them in an analysis, is how to define and estimate the uncertainty associated to models output. 
+We illustrate how approximate Bayesian inference can be used to define an uncertainty over a generative model's output.
+Our findings show a highly non-trivial pattern in the model uncertainty, which may be understood in terms of a functional fit of the learnt density.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{sec:binnintro}
 
+In Chap.~\ref{chap:unfolding} we have shown that deep generative models certainly
+possess the expressive power that we need to produce realistic synthetic data.
+However, expressive power is not the only feature needed for their realistic use
+in particle physics analysis. When data is simulated via standard Monte Carlo methods,
+there's a clear understanding of what is the associated statistical error. 
+
+Assuming a simple set-up in which we wish to estimate the observable
+\begin{align}
+\mathcal{O} = \int_x ~ dx f(x),
+\end{align}
+we can estimate $\mathcal{O}$ via Monte Carlo
+\begin{align}
+\mathbb{E}\left[\mathcal{O}\right] = \frac{1}{N} \sum_{i=1}^N f(x_i)
+\end{align}
+with uncertainty
+\begin{align}
+\text{Var}\left[\mathbb{E}\left[\mathcal{O}\right] \right] = \frac{\text{Var}\left[ f(x)\right]}{N}.
+\end{align}
+It is not within the scope of this chapter to discuss standard methods such as optimized
+importance sampling to improve the standard integration described above, instead, we
+want emphasize that as $\mathcal{O}$ is estimated using the "true" function $f(x)$, the 
+only relevant figure is the number of samples $N$.
+This is clearly not the case for approaches like the one described in Ref.~\cite{gan_phasespace},
+where a generative model completely replaces the integrator.
+As generative models only approximates a desired distribution, in this case the 
+integrand $f(x)$, they should be used with caution if and when precision is required.
+In other worlds, if an additional rejection sampling based on the truth is not added on top
+of the generative model, our prediction will also include uncertainties from the fact
+that we generate samples from some function $\tilde{f} \sim f$, and this extra uncertainty
+collects everything associated to model's training.
+This does not mean that such an approach should be discarded entirely, but rather
+that we should think of a way to estimate this approximation uncertainty.
+
 The role of first-principle simulations in our understanding of large
 data sets makes LHC physics stand out in comparison to many other
-areas of science. Three aspects define the application of modern big
-data methods in this field:
+areas of science. 
+Two key aspects determine the potential of modern data driven approaches in this field:
 %
 \begin{itemize}
 \item[$\cdot$] ATLAS and CMS deliver proper big data with excellent control over uncertainties;
-\item[$\cdot$] perturbative quantum field theory provides consistent precision predictions;
-\item[$\cdot$] fast and reliable precision simulations generate events from first principles.
+%\item[$\cdot$] perturbative quantum field theory ;
+\item[$\cdot$] high fidelity simulations can be used to generate events from first principles.
 \end{itemize}
 %
 The fact that experiments, field theory calculations, and simulations
 control their uncertainties implies that we can work with a complete
 uncertainty budget, including statistical, systematic, and theory
 uncertainties. To sustain this approach at the upcoming HL-LHC, with a
-data set more than 25 times the current Run~2 data set, the theory
-challenge is to provide faster simulations and keep full control of
-the uncertainties at the per-cent level and better.
+data set more than 25 times the current Run~2 data set, the
+challenge is to provide faster simulations while keeping full control of
+the uncertainties.
 
 In recent years it has been shown that modern machine learning can
-improve LHC event simulations in many
-ways. Promising techniques include generative
+improve LHC event simulations in various ways. 
+Promising techniques include deep generative models such as generative 
 adversarial networks
-(GAN)~\cite{goodfellow,Creswell2018}, %,Butter:2020qhk},
-variational autoencoders~\cite{kingma2014autoencoding,Kingma2019}, and
-normalizing
-flows~\cite{nflow1,nflow_review,papamakarios2019normalizing,nflow_review,mller2018neural},
-including invertible networks (INNs)~\cite{inn,coupling2,glow}. They
-can improve phase space integration~\cite{maxim,Chen:2020nfb}, phase
-space sampling~\cite{Bothmann:2020ywa,Gao:2020vdv,Gao:2020zvv}, and
-amplitude computations~\cite{Bishara:2019iwh,Badger:2020uow}.  Further
-developments are fully NN-based event
-
-generation~\cite{dutch,gan_datasets,DijetGAN2,gan_phasespace,Alanazi:2020klf},
-event subtraction~\cite{Butter:2019eyo}, event
-unweighting~\cite{Verheyen:2020bjw,Backes:2020vka}, detector
+(GAN)~\cite{goodfellow,Creswell2018}, variational 
+autoencoders~\cite{kingma2014autoencoding,Kingma2019}, and
+invertible models~\cite{nflow1,nflow_review,papamakarios2019normalizing,nflow_review,mller2018neural, inn,coupling2,glow}. 
+%They can improve phase space integration~\cite{maxim,Chen:2020nfb}, phase
+%space sampling~\cite{Bothmann:2020ywa,Gao:2020vdv,Gao:2020zvv}, and
+%amplitude computations~\cite{Bishara:2019iwh,Badger:2020uow}.  
+Further developments are fully NN-based event generation~\cite{dutch,gan_datasets,DijetGAN2,gan_phasespace,Alanazi:2020klf}, detector
 simulation~\cite{calogan1,calogan2,fast_accurate,aachen_wgan1,aachen_wgan2,ATLASShowerGAN,ATLASsimGAN,Belayneh:2019vyx,Buhmann:2020pmy,Buhmann:2021lxj},
-or parton
-showering~\cite{shower,by_example,monkshower,juniprshower,Dohi:2020eda}.
-Generative models will also improve searches for physics beyond the
+or parton showering~\cite{shower,by_example,monkshower,juniprshower,Dohi:2020eda}.
+Generative models may also improve searches for physics beyond the
 Standard Model~\cite{bsm_gan}, anomaly
 detection~\cite{Nachman:2020lpy,Knapp:2020dde}, detector
 resolution~\cite{DiBello:2020bas,Baldi:2020hjm}, and
-inference~\cite{Brehmer:2020vwc,radev2020bayesflow,Bieringer:2020tnw}. Finally,
+inference~\cite{Brehmer:2020vwc,radev2020bayesflow}. Finally,
 conditional GANs and INNs allow us to invert the simulation chain to
 unfold detector effects~\cite{Datta:2018mwd,fcgan} and extract the
 hard scattering process at parton level~\cite{Bellagente:2020piv}. The
-problem with these applications is that we know little about
+problem with these applications is that little is known about
 %
 \begin{enumerate}
 \item how these generative networks work, and
 \item what the uncertainty on the generative network output is.
 \end{enumerate}
 %
-As we will see in this paper, these two questions are closely related.
+As we will see in this chapter, these two questions may be related.
 
-In general, we can track statistical and systematic uncertainties in
+In general, we can track statistical uncertainties in
 neural network outputs with Bayesian
 networks~\cite{bnn_early,bnn_early2,bnn_early3,deep_errors}. Such
 networks have been used in particle physics for a long
 time~\cite{bnn_tev,bnn_tev2,bnn_Nu}. For the LHC we have proposed to
 use them to extract uncertainties in jet
 classification~\cite{Bollweg:2019skg} and jet
-calibration~\cite{Kasieczka:2020vlh}. They can cover essentially all
-uncertainties related to statistical, systematic, and structural
-limitations of the training sample~\cite{Nachman:2019dol}.  Similar
-ideas can be used as part of ensemble techniques~\cite{Araz:2021wqm}.
-We propose to use a Bayesian INN (BINN) to extract uncertainties on a
-generated event sample induced by the network training.
+calibration~\cite{Kasieczka:2020vlh}. 
+They can cover uncertainties related to statistical and structural
+limitations of the training sample~\cite{Nachman:2019dol}, while being obviously unable to track
+systematic uncertainties.  Similar ideas can be used as part of ensemble techniques~\cite{Araz:2021wqm}.
+We propose to use a Bayesian INN (BINN) to extract uncertainties induced by the network training on a
+generated event sample.
 
-Because Bayesian networks learn the density and uncertainty maps in
-one pass, their relation offers us fundamental insight into the way an
-INN learns a distribution. While Bayesian
-classification~\cite{Bollweg:2019skg} and regression
+Because invertible models allows to evaluate the likelihood exactly, 
+they are a natural tool for evaluating the uncertainty over the learnt
+distribution, compared to implicit models like generative adversarial networks.
+While Bayesian classification~\cite{Bollweg:2019skg} and regression
 networks~\cite{Kasieczka:2020vlh} highlight the statistical and
-systematic nature of uncertainties, our Bayesian generative network
+nature of uncertainties, our Bayesian generative network
 exhibits a very different structure. We will discuss the learning
 pattern of the Bayesian INN in details for a set of simple toy
 processes in Sec.~\ref{sec:toy}, before we apply the network to a
@@ -111,29 +130,26 @@ semi-realistic LHC example in Sec.~\ref{sec:lhc}.
 \section{Generative networks with uncertainties}
 \label{sec:nets}
 
-We start by reminding ourselves that we often assume that a generative
-model has learned a phase-space density perfectly, so the only
-remaining source of uncertainty is the statistics of the generated
-sample binned in phase space.  However, we know that such an
-assumption is not realistic~\cite{Bollweg:2019skg,Kasieczka:2020vlh},
-and we need to estimate the effect of statistical or systematic
-limitations of the training data. The problem with such a statistical
-limitation is that it is turned into a systematic shortcoming of the
-generative model~\cite{gan_phasespace} --- once we generate a new
-sample, the information on the training data is lost, and the only way
-we might recover it is by training many networks and comparing their
-outcome. For most applications this is not a realistic or economic
-option, so we will show how an alternative solution could look.
+We start by reminding that in the literature it is often assumed 
+that a generative model has learned a phase-space density perfectly, 
+so that the only remaining source of uncertainty is the statistics of the generated
+sample binned in phase space.  However, such an assumption is not 
+realistic~\cite{Bollweg:2019skg,Kasieczka:2020vlh},
+and we need to estimate the effect of statistical limitations of the training data,
+as well as in the representation power of the model and the training procedure. 
+A problem with existing methods to estimate models uncertainties is that they
+rely on training many networks, with the assumption that randomly initializing their weights
+ is enough to get independent samples and finally comparing their
+outcome. For some applications this can be an infeasible option, 
+so we will show how an alternative solution could look.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Uncertainties on event samples}
 \label{sec:nets_unc}
 
 Uncertainties on a simulated kinematic or phase space distribution are
-crucial for any LHC analysis. For instance, we need to know to what
-degree we can trust a simulated $p_T$-distribution in mono-jet search
-for dark matter. We denote the complete phase space weight for a given
-phase space point as $p(x)$, such that we can illustrate a total cross
+crucial for any LHC analysis. We denote the complete phase space weight 
+for a given phase space point as $p(x)$, such that we can express a total cross
 section as
 %
 \begin{align}
@@ -144,22 +160,20 @@ section as
 
 In this simplified notation $x$ stands for a generally
 multi-dimensional phase space. For each phase space position, we can
-also define an uncertainty $\sigma(x)$.
+likewise define an uncertainty $\sigma(x)$.
 
 One contribution to the error budget are systematic and theory
 uncertainties, $\sthsy(x)$. The former reflect our ignorance of
 aspects of the training data, which do not decrease when we increase
 the amount of training data. The latter captures the degree to which
 we trust our prediction, for instance based on self-consistency
-arguments.  For example accounting for large, momentum-dependent
-logarithms we can compute it from the phase space position, or for an
-unweighted event, alone. If we use a numerical variation of the
+arguments.  For example, we can account for possible large, 
+momentum-dependent logarithms as a simple function of phase space. 
+If we use a numerical variation of the
 factorization and renormalization scale to estimate a theory
 uncertainty, we typically re-weight events with the scales.  Another
 uncertainty arises from the statistical limitations of the training
-data, $\sst(x)$. For instance in mono-jet production, the tails of the
-predicted $p_T$-distribution for the Standard Model will at some point
-be statistics limited. In the Gaussian limit, a statistical
+data, $\sst(x)$. In the Gaussian limit, a statistical
 uncertainty can be defined by binning the phase space and in that
 limit we expect a scaling like $\sst(x) \sim \sqrt{p(x)}$, and we will
 test that hypothesis in detail in Sec.~\ref{sec:toy}.
@@ -177,9 +191,8 @@ added to unweighted events,
 %
 The entries $\sigma$ or $\sigma/p$ are smooth functions of phase
 space.  The challenge in working with this definition is how to
-extract $\sst$ without binning.  We will show how Bayesian networks
-give us access to limited information in the training data.  Specific
-theory and systematics counterparts can be either computed directly or
+extract $\sst$ without binning.  Specific
+theory counterparts can be either computed directly or
 extracted by appropriately modifying the training
 data~\cite{Bollweg:2019skg,Kasieczka:2020vlh}.
 
@@ -188,29 +201,28 @@ data~\cite{Bollweg:2019skg,Kasieczka:2020vlh}.
 \label{sec:nets_inn}
 
 To model complex densities such as LHC phase space distributions, we
-can employ normalizing
-flows~\cite{nflow1,coupling2,glow,nflow_review}. They use the fact we
-can transform a random variable $z\sim p_Z(z)$ using a bijective map
-$G:z\to x$ to a random variable $x = G(z)$ with the density
+can employ invertible models~\cite{nflow1,coupling2,glow,nflow_review}. 
+They use the fact we can transform a random variable $z\sim p_Z(z)$ 
+using a bijective map $G:z\to x$ to a random variable $x = G(z)$ with the density
 %
 \begin{align}
     p_X(x) = p_Z(z) \left|\det \frac{\partial G(z)}{\partial z}\right|^{-1} = p_Z\big(G^{-1}(x)\big)\left|\det\frac{\partial G^{-1}(x)}{\partial x}\right|\; .\label{eq:cov}
 \end{align}
 %
-Given a sample $z$ from the base distribution, we can then use the map
+Given a random variable $z$ from the base distribution, we can then use the map
 $G$ to generate a sample from the target distribution going in the
-forward direction. Alternatively, we can use a sample $x$ from the
-target distribution to compute its density using the inverse
+forward direction. Alternatively, we can start from a sample $x$ from the
+target distribution and compute its density using the inverse
 direction. We will suppress the subscripts in the distributions
 $p_Z,p_X$ whenever the density is clear from the context, to lighten
 the notation.
 
 For this to be a useful approach, we require the base distribution
-$p_Z$ to be simple enough to allow for effective sample generation,
-$G$ to be flexible enough for a non-trivial transformation, and its
-Jacobian determinant to be effectively computable. If these
+$p_Z$ to be simple enough to allow for efficient sample generation,
+$G$ to be flexible enough to represent a non-trivial transformation, and its
+Jacobian determinant to be cheaply computable. If these
 constraints are fulfilled, $G$ gives us a powerful generative pipeline
-to model the phase space density,
+to model the phase space density
 %
 \begin{align}
 \text{base distribution $z \sim p_Z$}
@@ -219,23 +231,25 @@ to model the phase space density,
 \label{eq:mapping2}
 \end{align}
 %
-where $\overline{G}(x) = G^{-1}(x)$.%\mpar{MH: Turn this into a figure?}
+where $\overline{G}(x) = G^{-1}(x)$.
 
-To fulfill the first constraint, we choose the base distribution $p_Z$
-to be a multivariate Gaussian with a mean zero and an identity matrix
-as the covariance.  The construction of $G$ relies on the property
-that the composition of a chain of simple invertible nonlinear maps
-gives us a complex map. In contrast, the determinant of the Jacobian
+To fulfil the first constraint, we choose the base distribution $p_Z$
+to be a multivariate Gaussian with zero mean and an identity matrix
+as the covariance.  
+The construction of $G$ relies on the fact that a composition of invertible
+maps is again invertible, therefore, the receptive field of an invertible architecture
+can be increased by stacking simple non-linear transformations.
+In contrast, the determinant of the Jacobian
 of the composition remains simple in the sense that we can decompose
-it into the product of determinants of each of the individual
-transformations.  There exists a broad literature of different
+it into the product of determinants of each individual transformation.  
+There exists a broad literature of different
 transformations, each with different strengths and
 weaknesses~\cite{nflow_review}. We rely on the real non-volume
 preserving flow~\cite{coupling2} in the invertible neural network
 (INN) formulation~\cite{inn}.
 
 An INN composes multiple transformation maps into coupling layers with
-the following structure. The input vector $z$ into a layer is split in
+dimensional partitioning. The input vector $z$ into a layer is split in
 half, $z = (z_1,z_2)$, allowing us to compute the output $x=(x_1,x_2)$
 of the layer as
 %
@@ -248,9 +262,9 @@ z_2 \odot e^{s_1(x_1)} + t_1(x_1)
 \end{align}
 %
 where $s_i, t_i$ ($i=1,2$) are arbitrary functions, and $\odot$ is the
-element-wise product. In practice each is a small multi-layer
-perceptron. This transformation has the benefit of being easily
-invertible. Given a vector $x=(x_1,x_2)$ the inverse given as
+element-wise product. In practice, each is a small multi-layer
+perceptron. This transformation has the benefit of being trivially
+invertible, given a vector $x=(x_1,x_2)$ the inverse is given by
 %
 \begin{align}
 \begin{pmatrix} z_1 \\ z_2 \end{pmatrix} =
@@ -272,17 +286,15 @@ Additionally, its Jacobian is an upper triangular matrix
 \end{align}
 %
 whose determinant is just the product of the diagonal entries,
-irrespective of the entries on the off-diagonal. As such it is
-computationally inexpensive, easily composable, yet still allows for
-complex transformations.
+irrespective of the off-diagonal entries. As such, it is
+computationally cheap and easily composable.
 
 We refer to the overall map composing a sequence of such coupling
 layers as $G(z;\theta)$, where we collected the parameters of the
 individual nets $s$, $t$ of each layer into a joint $\theta$. Note
 that each coupling layer has a separate set of nets, whose indices
 we suppress  (e.g.\ $s^l, t^l$ for the $l$-th layer).
-We can then learn the
-overall model via a maximum likelihood approach.  It relies on the
+We can then train the model via a maximum likelihood approach.  It relies on the
 assumption that we have access to a data set of $N$ samples
 $\mathcal{D} = \{x_1,\ldots, x_N\}$ of the intractable target phase
 space distribution $p_X^*(x)$ and want to fit our model distribution
@@ -306,24 +318,24 @@ $p_X^*(x)$ and our approximating distribution $p_X(x;\theta)$.
 \subsection{Bayesian INN}
 \label{sec:nets_binn}
 
-The invertible neural net provides us with a powerful generative model
+The invertible model provides us with a powerful generative model
 of the underlying data distribution. However, it lacks a mechanism to
-account for our uncertainty in the transformation parameters $\theta$
-themselves.  To model it, we switch from deterministic transformations
-to probabilistic transformations, replacing the deterministic
+account for the uncertainty in the parameters $\theta$themselves.  
+In order to model it, we switch from deterministic to probabilistic 
+transformations, replacing the deterministic
 sub-networks $s_{1,2}$ and $t_{1,2}$ in each of the coupling layers
 with Bayesian neural nets. In this section, we first review the
-structure of a classical Bayesian neural net
+structure of a classical Bayesian neural network
 (BNN)~\cite{mackay1995probable, neal2012bayesian} as used in a
 supervised learning task, and then explain how we can use BNNs for our
-problem of modeling the phase space density, extending the INN into a
-Bayesian invertible neural net (BINN).
+problem of modelling the phase space density, extending the INN into a
+Bayesian invertible neural network (BINN).
 
-\paragraph{Bayesian Neural Net}
+\paragraph{Bayesian Neural Networks}
 Assuming a data set $\mcD$ consisting of $N$ pairs of observations
 $(\mathbf{x}_i, y_i)$, $\mcD =\{(\mathbf{x}_1,
 y_1),\ldots,(\mathbf{x}_N,y_N)\}$, in the supervised learning problem
-we want to model the relation $y = f_\theta(\mathbf{x})$ though a
+we want to model the relation $y = f_\theta(\mathbf{x})$ through a
 neural network parameterised by weights $\theta$. Placing a prior over
 the weights and allowing for some observation noise, the generative
 model is given as
@@ -415,8 +427,8 @@ re-parametrization~\cite{kingma2015variational} to reduce the
 variance of the gradients.
 
 \paragraph{Bayesian INN}
-As discussed in Sec.~\ref{sec:nets_inn}, our generative model of the
-density consists of a map $G: z \to x$ from a base distribution
+As discussed in Sec.~\ref{sec:nets_inn}, our generative model consists 
+of a map $G: z \to x$ from a base distribution
 $p_Z(z)$ to the phase-space $p_X(x)$ parameterized via an
 INN. Replacing the deterministic sub-networks $s_{1,2}$ and $t_{1,2}$
 in Eq.\eqref{eq:layer1} with BNNs we get as the generative pipeline
@@ -483,25 +495,23 @@ Prior width & 1 \\
 %----------------------------------------------------------
 
 Before we tackle a semi-realistic LHC setup, we first study the
-behavior of BINNs for a set of toy examples, namely distributions over
+behaviour of BINNs for a set of toy examples, namely distributions over
 the minimally allowed two-dimensional parameter space where in one
 dimension the density is flat. Aside from the fact that these toy
 examples illustrate that the BINN actually constructs a meaningful
 uncertainty distribution, we will use the combination of density and
 uncertainty maps to analyse how an INN actually learns a density
-distributions. We will see that the INN describes the density map in
-the sense of a few-parameter fit, rather than numerically encoding
-patches over the parameter space independently.
+distributions. We will see that the INN representation of the target density 
+may be interpreted as a few-parameter fit, rather than numerically 
+encoding patches over the parameter space independently.
 
 The default architecture for our toy models is a
 network with 32 units per layer, three layers per
-coupling block, and a total of 20 coupling blocks. It's implemented in \textsc{PyTorch}~\cite{pytorch}. More details are
-given in Tab.~\ref{tab:toy_params}.  The most relevant hyperparameter
-is the number of coupling blocks in that more blocks provide a more
-stable performance with respect to several trainings of the same
-architecture.  Generally, moderate changes for instance of the number
-of units per layer do not have a visible impact on the
-performance. For each of the trainings we use a sample of 300k
+coupling block, and a total of 20 coupling blocks. 
+It's implemented in \textsc{PyTorch}~\cite{pytorch}. More details are
+given in Tab.~\ref{tab:toy_params}.  Generally, moderate changes 
+of the hyperparameters do not have a visible impact on the
+performances. For each of the trainings we use a sample of 300k
 events. The widths of the Gaussian priors is set to one. We check that
 variations of this over several orders of magnitude did not have a
 significant impact on the performance.
@@ -521,9 +531,9 @@ p(x, y) = \text{Linear}(x \in [0, 1]) \times \text{Const}(y \in [0, 1]) = x \tim
 %
 The second term ensures that the distribution $p(x,y)$ is normalized
 to one, and the network output is shown in
-Fig.~\ref{fig:linear_ring_hists}. The network output are unweighted
-events in the two-dimensional parameters space, $(x,y)$. We show
-one-dimensional distributions after marginalizing over the unobserved
+Fig.~\ref{fig:linear_ring_hists}. The network output are set of points in the 
+two-dimensional parameters space, $(x,y)$. We show
+one-dimensional distributions after marginalizing over the flat
 direction and find that the network reproduces
 Eq.\eqref{eq:linear_dens} well.
 
@@ -539,23 +549,23 @@ Eq.\eqref{eq:linear_dens} well.
 \end{figure}
 %-------------------------------------------
 
-In Fig.~\ref{fig:linear_unc} we include the predictive uncertainty
+In Fig.~\ref{fig:linear_unc} we include the predicted uncertainty
 given by the BINN. For this purpose we train a network on the
 two-dimensional parameter space and evaluate it for a set of points
 with $x \in [0,1]$ and a constant $y$-value. In the left panel we
-indicate the predictive uncertainty as an error bar around the density
-estimate. Throughout the paper we always remove the phase space
-boundaries, because we know that the network is unstable there, and
-the uncertainties explode just like we expect. The relative
+indicate the predicted uncertainty as an error bar around the density
+estimate. Throughout the chapter we always remove the phase space
+boundaries, because we observe that the model predicts there large 
+uncertainties which would overall dominate the figures. The relative
 uncertainty grows for small values of $x$ and hence small values of
 $p(x,y)$, and it covers the deviation of the extracted density from
 the true density well. These features are common to all our network
 trainings. In the central and right panel of Fig.~\ref{fig:linear_unc}
-we show the relative and absolute predictive uncertainties. The error
+we show the relative and absolute predicted uncertainties. The error
 bar indicates how much $\sigma_\text{pred}$ varies for different
 choices of $y$. We compute it as the standard deviation of different
 values of $\sigma_\text{pred}$, after confirming that the central
-values agree within this range. As expected, the relative uncertainty
+values agrees within this range. As expected, the relative uncertainty
 decreases towards larger $x$. However, the absolute uncertainty shows
 a distinctive minimum in $\sigma_\text{pred}$ around $x \approx
 0.45$. This minimum is a common feature in all our trainings, so we
@@ -567,7 +577,7 @@ need to explain it.
 \includegraphics[width=0.32\textwidth, page=1]{./figures/bINN/linear_1dplots}
 \includegraphics[width=0.32\textwidth, page=2]{./figures/bINN/linear_1dplots}
 \includegraphics[width=0.32\textwidth, page=3]{./figures/bINN/linear_1dplots}
-\caption{Density and predictive uncertainty distribution for the wedge
+\caption{Density and predicted uncertainty distribution for the wedge
   ramp. In the left panel the density and uncertainty are averaged
   over several lines with constant $y$. In the central and right
   panels, the uncertainty band on $\sigma_\text{pred}$ is given by
@@ -586,16 +596,15 @@ its linear behavior
   \qquad \text{with} \qquad x \in [0,1] \; .
 \end{align}
 %
-Because the network learns a density, we can remove $b$ by
+Because the network learns a normalized density, we can remove $b$ by
 fixing the normalization,
 %
 \begin{align}
   p(x) = a \left( x - \frac{1}{2} \right) + 1 \; .
 \end{align}
 %
-If we now assume that a network acts like a fit of $a$, as it will turn
-out useful, we can relate the uncertainty $\Delta a$ to an uncertainty
-in the density,
+If we now assume that a network acts like a fit of $a$, , we can relate 
+the uncertainty $\Delta a$ to an uncertainty in the density
 %
 \begin{align}
 \sigma_\text{pred} \equiv \Delta p \approx \left| x - \frac{1}{2} \right| \; \Delta a \; .
@@ -609,7 +618,7 @@ observed value in Fig.~\ref{fig:linear_unc}.
 
 The differences between the simple prediction in
 Eq.\eqref{eq:simple_wedge} and our numerical findings in
-Fig.~\ref{fig:linear_unc} is that the predictive uncertainty is not
+Fig.~\ref{fig:linear_unc} is that the predicted uncertainty is not
 symmetric and does not reach zero. To account for these sub-leading
 effects we can expand our very simple ansatz to
 %
@@ -627,8 +636,8 @@ Using the normalization condition we again remove $b$ and find
   +  \frac{ 1 - \frac{a}{2}(x_\text{max}^2 - x_\text{min}^2) }{ x_\text{max} - x_\text{min} } \; .
 \end{align}
 %
-Again assuming a fit-like behavior of the flow network we expect for
-the predictive uncertainty
+Again assuming a fit-like behaviour of the flow network we expect for
+the predicted uncertainty
 %
 \begin{align}
 \sigma_\text{pred}^2 \equiv (\Delta p)^2 =
@@ -639,7 +648,7 @@ the predictive uncertainty
 \end{align}
 %
 Adding $x_\text{max}$ adds an $x$-independent offset. Also accounting
-for $x_\text{min}$ does not change the $x$-dependence of predictive
+for $x_\text{min}$ does not change the $x$-dependence of predicted
 uncertainty. The slight shift of the minimum and the asymmetry between
 the lower and upper boundaries in $x$ are not explained by this
 argument.  We ascribe them to boundary effects, specifically the
@@ -654,7 +663,7 @@ $x$-independent term with high precision, whereas the uncertainty on
 the slope $a$ is around 4\%.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Kicker ramp}
+\subsection{Quadratic ramp}
 \label{sec:toy_kicker}
 
 %-------------------------------------------
@@ -663,14 +672,13 @@ the slope $a$ is around 4\%.
 \includegraphics[width=0.32\textwidth, page=1]{./figures/bINN/quadratic_2dhists}
 \includegraphics[width=0.32\textwidth, page=1]{./figures/bINN/quadratic_1dhists}
 \includegraphics[width=0.32\textwidth, page=2]{./figures/bINN//quadratic_1dhists}
-\caption{Two-dimensional and marginal densities for the quadratic
-  kicker ramp.}
+\caption{Two-dimensional and marginal densities for the quadratic ramp.}
 \label{fig:quadratic_hists}
 \end{figure}
 %-------------------------------------------
 
 We can test our findings from the linear wedge ramp using the slightly
-more complex quadratic or kicker ramp,
+more complex quadratic ramp,
 %
 \begin{align}
   p(x, y) =  \text{Quadr} (x\in[0,1]) \times \text{Const} (y \in[0, 1])
@@ -690,8 +698,8 @@ towards the lower boundary with $p(x) \to 0$.
 \includegraphics[width=0.32\textwidth, page=1]{./figures/bINN/quadratic_1dplots}
 \includegraphics[width=0.32\textwidth, page=2]{./figures/bINN/quadratic_1dplots}
 \includegraphics[width=0.32\textwidth, page=3]{./figures/bINN/quadratic_1dplots}
-\caption{Density and predictive uncertainty distribution for the
-  kicker ramp. In the left panel the density and uncertainty are
+\caption{Density and predicted uncertainty distribution for the
+  quadratic ramp. In the left panel the density and uncertainty are
   averaged over several lines with constant $y$. In the central and
   right panels, the uncertainty band on $\sigma_\text{pred}$ is given
   by their variation.  The green curve represents a two-parameter fit
@@ -701,13 +709,11 @@ towards the lower boundary with $p(x) \to 0$.
 %-------------------------------------------
 
 In complete analogy to Fig.~\ref{fig:linear_unc} we show the complete
-BINN output with the density $p(x,y)$ and the predictive uncertainty
+BINN output with the density $p(x,y)$ and the uncertainty
 $\sigma_\text{pred}(x,y)$ in Fig.~\ref{fig:quadratic_unc}. As for the
 linear case, the BINN reproduces the density well, deviations from the
-truth being within the predictive uncertainty in all points of phase
-space. We remove the phase space boundaries, where the network becomes
-unstable and the predictive uncertainties grows correspondingly.  The
-indicated error bar on $\sigma_\text{pred}(x,y)$ is given by the
+truth being within the uncertainty in all points of phase
+space. The indicated error bar on $\sigma_\text{pred}(x,y)$ is given by the
 variation of the predictions for different $y$-values, after ensuring
 that their central values agree.  The relative uncertainty at the
 lower boundary $x = 0$ is large, reflecting the statistical limitation
@@ -828,7 +834,7 @@ network describes the true two-dimensional density well.
 \includegraphics[width=0.32\textwidth, page=1]{./figures/bINN/gauss_ring_1dplots}
 \includegraphics[width=0.32\textwidth, page=2]{./figures/bINN/gauss_ring_1dplots}
 \includegraphics[width=0.32\textwidth, page=3]{./figures/bINN/gauss_ring_1dplots}
-\caption{Cartesian density and predictive uncertainty distribution for
+\caption{Cartesian density and predicted uncertainty distribution for
   the Gaussian ring. In the left panel the density and uncertainty are
   averaged over several lines with constant $\phi$. In the central and
   right panels, the uncertainty band on $\sigma_\text{pred}$ is given
@@ -841,10 +847,10 @@ network describes the true two-dimensional density well.
 In Fig.~\ref{fig:gauss_unc} we show the Cartesian density but
 evaluated on a line of constant angle. This form includes the Jacobian
 and has the expected, slightly shifted peak position at $r_\text{max}
-= 2 + \sqrt{3} = 3.73$. The BINN returns a predictive uncertainty,
+= 2 + \sqrt{3} = 3.73$. The BINN returns an uncertainty
 which grows towards both boundaries.  The error band easily covers the
 deviation of the density learned by the BINN and the true
-density. While the relative predictive uncertainty appears to have a
+density. While the relative predicted uncertainty appears to have a
 simple minimum around the peak of the density, we again see that the
 absolute uncertainty has a distinct structure with a local minimum
 right at the peak. The question is what we can learn about the INN
@@ -879,10 +885,10 @@ contribution from the the mean has a minimum at $r=\mu=4$ and is
 otherwise dominated by the exponential behavior of the Gaussian, just
 as we observe in the BINN result.  In the opposite limit of $\Delta
 \mu \ll \Delta w$ the uncertainty develops the maxima at $r=3$ and
-$r=5$, which we observe in Fig.~\ref{fig:gauss_unc}. In the lower
-panels we show a one-parameter fit of the BINN output and find that
-the network determined the mean of the Gaussian as $\mu = 4 \pm
-0.037$.
+$r=5$, which we observe in Fig.~\ref{fig:gauss_unc}. In the central and right 
+panels we show a one-parameter fit of the BINN output and find that the 
+network determined the mean of the Gaussian as $\mu = 4 \pm 0.037$. 
+We observe that including $\Delta w$ doesn't improve the goodness of the fit.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Errors vs training statistics}
@@ -898,7 +904,7 @@ the network determined the mean of the Gaussian as $\mu = 4 \pm
 \includegraphics[width=0.32\textwidth, page=2]{./figures/bINN/training_size_100k}
 \includegraphics[width=0.32\textwidth, page=2]{./figures/bINN/training_size_1M}
 \caption{Dependence of the density (upper) and absolute
-  uncertainty (lower) on the training statistics for the kicker ramp. We illustrate BINNs trained
+  uncertainty (lower) on the training statistics for the quadratic ramp. We illustrate BINNs trained
   on 10k, 100k, and 1M events (left to right), to be compared to 300k
   events used for Fig.~\ref{fig:quadratic_unc}. Our training routine
   ensures that all models receive the same number of weights updates,
@@ -908,23 +914,23 @@ the network determined the mean of the Gaussian as $\mu = 4 \pm
 %-------------------------------------------
 
 Even though it is clear from the above discussion that we cannot
-expect the predictive uncertainties to have a simple scaling pattern,
+expect the predicted uncertainties to have a simple scaling pattern,
 like for the regression~\cite{Kasieczka:2020vlh} and
 classification~\cite{Bollweg:2019skg} networks, there still remains
-the question how the BINN uncertainties change with the size of the
+the question of how the BINN uncertainties change with the size of the
 training sample.
 
 In Fig.~\ref{fig:training_size} we show how the BINN predictions for
 the density and uncertainty change if we vary the training sample size
 from 10k events to 1M training events. Note that for all toy
-models, including the kicker ramp in Sec.~\ref{sec:toy_kicker}, we use
+models, including the quadratic ramp in Sec.~\ref{sec:toy_kicker}, we use
 300k training events. For the small 10k training sample, we see that
 the instability of the BINN density becomes visible even for our
 reduced $x$-range.  The peak-dip pattern of the absolute uncertainty,
-characteristic for the kicker ramp, is also hardly visible, indicating
+characteristic for the quadratic ramp, is also hardly visible, indicating
 that the network has not learned the density well enough to determine
-its shape. Finally, the variation of the predictive density explodes
-for $x>0.4$, confirming the picture of a poorly trained BINN. As a
+its shape. Finally, the variation of the predicted density explodes
+for $x>0.4$, confirming the picture of a poorly trained model. As a
 rough estimate, the absolute uncertainty at $x=0.5$ with a density
 value $p(x,y) = 0.75$ ranges around $\sigma_\text{pred} =
 0.11~...~0.15$.
@@ -942,20 +948,21 @@ the density and uncertainty at the upper phase space boundary are much
 better controlled.
 
 Finally, we briefly comment on a frequentist interpretation of the
-BINN output. We know from simpler Bayesian networks~\cite{Bollweg:2019skg,Kasieczka:2020vlh}
-that it is possible to reproduce the predictive uncertainty using
+BINN output. We know from simpler Bayesian 
+networks~\cite{Bollweg:2019skg,Kasieczka:2020vlh}
+that it is possible to reproduce the predicted uncertainty using
 an ensemble of deterministic networks with the same architecture.
 However, from those studies we also know that our class of Bayesian
 networks has a very efficient built-in regularization, so
 this kind of comparison is not trivial. For the BINN results shown
-in this paper we find that the detailed patterns in the
+in this chapter we find that the detailed patterns in the
 absolute uncertainties are extracted by the Bayesian network much more
 effectively than they would be for ensembles of deterministic INNs.
 For naive implementations with a similar network size and no fine-tuned
 regularization these patterns are somewhat harder to extract. On the
 other hand, in stable regions without distinctive patterns
 the spread of ensembles of deterministic networks
-reproduces the predictive uncertainty reported by the BINN.
+reproduces the predicted uncertainty reported by the BINN.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Marginalizing phase space}
@@ -963,9 +970,9 @@ reproduces the predictive uncertainty reported by the BINN.
 
 Before we move to a more LHC-related problem, we need to study how the
 BINN provides uncertainties for marginalized kinematic
-distribution. In all three toy examples the two-dimensional phase
+distributions. In all three toy examples the two-dimensional phase
 space consists of one physical and one trivial direction. For
-instance, the kicker ramp in Sec.~\ref{sec:toy_kicker} has a quadratic
+instance, the quadratic ramp in Sec.~\ref{sec:toy_kicker} has a quadratic
 physical direction, and in a typical phase space problem we would
 integrate out the trivial, constant direction and show a
 one-dimensional kinematic distribution. From our effectively
@@ -975,7 +982,7 @@ in the lower-right panel of Fig.~\ref{fig:quadratic_unc}.
 
 To compute the uncertainty for a properly marginalized phase space
 direction, we remind ourselves how the BINN computes the density and
-the predictive uncertainty by sampling over the weights,
+the predicted uncertainty by sampling over the weights,
 %
 \begin{align}
 p(x, y) &= \int d\theta \, q(\theta) \, p(x, y | \theta)  \notag \\
@@ -1008,7 +1015,7 @@ distribution as
 %
 We illustrate this construction with a trivial $p(x,y) = p(x,y_0)$,
 where we can replace the trivial $y$-dependence by a fixed choice
-$y=y_0$ just like for the wedge and kicker ramps. Here we find, modulo
+$y=y_0$ just like for the wedge and quadratic ramps. Here we find, modulo
 a normalization constant in the $y$-integration
 %
 \begin{align}
@@ -1021,7 +1028,7 @@ a normalization constant in the $y$-integration
    = \int dy \, \sigma_\text{pred}^2 (x,y_0) = \sigma_\text{pred}^2 (x,y_0) \; .
 \end{align}
 %
-Adding a trivial $y$-direction does not affect the predictive
+Adding a trivial $y$-direction does not affect the predicted
 uncertainty in the physical $x$-direction.
 
 %-------------------------------------------
@@ -1033,8 +1040,8 @@ uncertainty in the physical $x$-direction.
 \includegraphics[width=0.32\textwidth,page=1]{./figures/bINN/quadratic_1dhists_with_unc}
 \hspace*{0.1\textwidth}
 \includegraphics[width=0.32\textwidth,page=2]{./figures/bINN/quadratic_1dhists_with_unc}
-\caption{Marginalized densities and predictive uncertainties for the
-  kicker ramp. Instead of the true distribution we now show the training data as a reference, to illustrate possible limitations. We use 10M phase space point to guarantee a stable prediction.}
+\caption{Marginalized densities and predicted uncertainties for the
+  quadratic ramp. Instead of the true distribution we now show the training data as a reference, to illustrate possible limitations. We use 10M phase space point to guarantee a stable prediction.}
 \label{fig:marginalized}
 \end{figure}
 %-------------------------------------------
@@ -1068,9 +1075,9 @@ sufficiently large $N$, which we typically set to $10^5~...~10^6$. For
 the Bayesian weights we find stable results for $M=30~...~50$.
 
 In Fig.~\ref{fig:marginalized} we show the marginalized densities and
-predictive uncertainties for the kicker ramp.  In $y$-direction the
-density and the predictive uncertainty show the expected flat
-behavior. The only exception are the phase space boundaries, where the
+predicted uncertainties for the quadratic ramp.  In $y$-direction the
+density and the predicted uncertainty show the expected flat
+behaviour. The only exception are the phase space boundaries, where the
 density starts to deviate slightly from the training data and the
 uncertainty correctly reflects that instability.  In $x$-direction,
 the marginalized density and uncertainty can be compared to their
@@ -1089,13 +1096,12 @@ correlated bins, where a combination will not lead to any improvement
 in the uncertainty. In Fig.~\ref{fig:marginalized} we see that the
 $\sigma_\text{pred}(x)$ values on the peak, in the dip, and to the
 upper end of the phase space boundary hardly change from the
-one-dimensional results in Fig.\ref{fig:quadratic_unc}. This confirms
+one-dimensional results in Fig.\ref{fig:quadratic_unc}. This strengthens
 our general observation, that the (B)INN learns a functional form of
 the density in both directions, in close analogy to a fit. It also
 means that the uncertainty from the generative network training is not
 described by the simple statistical scaling we observed for simpler
-networks~\cite{Bollweg:2019skg,Kasieczka:2020vlh}.
-% and instead points towards a GANplification-like~\cite{Butter:2020qhk} pattern.
+models~\cite{Bollweg:2019skg,Kasieczka:2020vlh}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{LHC events with uncertainties}
@@ -1157,7 +1163,7 @@ hyper-parameters for this section.
 \includegraphics[width=0.32\textwidth, page=27]{./figures/bINN/DrellYan_without_mmd_1dhists}
 \caption{One-dimensional (marginalized) kinematic distributions for
   the Drell-Yan process.  We show the central prediction from the BINN
-  and include the predictive uncertainty from the BINN as the blue
+  and include the predicted uncertainty from the BINN as the blue
   band. The red band indicates the statistical uncertainty of the
   training data per bin in the Gaussian limit.}
 \label{fig:DY}
@@ -1178,7 +1184,7 @@ hyper-parameters for this section.
 \end{figure}
 %----------------------------------------------------------
 
-To start with, we show a set of generated kinematic distributions in
+To begin with, we show a set of generated kinematic distributions in
 Fig.~\ref{fig:DY}. The positron energy features the expected strong
 peak from the $Z$-resonance. Its sizeable tail to larger energies is
 well described by the training data to $E_e \approx 280$~GeV. The
@@ -1186,11 +1192,11 @@ central value learned by the BINN becomes unstable at slightly lower
 values of 250~GeV, as expected. The momentum component $p_x$ is not
 observable given the azimuthal symmetry of the detector, but it's
 broad distribution is nevertheless reproduced correctly. The
-predictive uncertainty covers the slight deviations over the entire
+predicted uncertainty covers the slight deviations over the entire
 range. What is observable at the LHC is the transverse momentum of the
 outgoing leptons, with a similar distribution as the energy, just with
 the $Z$-mass peak at the upper end of the distribution. Again, the
-predictive uncertainty determined by the BINN covers the slight
+predicted uncertainty determined by the BINN covers the slight
 deviations from the truth on the pole and in both tails. In the second
 row we show the $p_z$ component as an example for a strongly peaked
 distribution, similar to the Gaussian toy model in
@@ -1203,8 +1209,8 @@ peak. It is well known that this intermediate resonance is especially
 hard to learn for a network, because it forms a narrow, highly
 correlated phase space structure. Going beyond the precision shown
 here would for instance require an additional MMD loss, as described
-in Ref.~\cite{gan_phasespace} and in more detail in Ref.~\cite{fcgan}.
-This resonance peak is the only distribution, where the predictive
+ in Ref.~\cite{fcgan}.
+This resonance peak is the only distribution, where the predicted
 uncertainty does not cover the deviation of the BINN density from the
 truth. This apparent failure corresponds to the fact that generative
 networks always overestimate the width and hence underestimate the
@@ -1217,46 +1223,44 @@ In Fig.~\ref{fig:DY_unc} we show a set of absolute and relative
 uncertainties from the BINN. The strong peak combined with a narrow
 tail in the $E_e$ distribution shows two interesting features. Just
 above the peak the absolute uncertainty drops more rapidly than
-expected, a feature shared by the wedge and kicker ramps at their
+expected, a feature shared by the wedge and quadratic ramps at their
 respective upper phase space boundaries. The shoulder around $E_e
-\approx 280$~GeV indicates that for a while the predictive uncertainty
+\approx 280$~GeV indicates that for a while the predicted uncertainty
 follows the increasingly poor modelling of the phase space density by
 the BINN, to a point where the network stops following the truth curve
-altogether and the predictive uncertainty is limited by the expressive
+altogether and the predicted uncertainty is limited by the expressive
 power of the network.  Unlike the absolute uncertainty, the relative
 uncertainty keeps growing for increasing values of $E_e$.  This
 behavior illustrates that in phase space regions where the BINN starts
-failing altogether, we cannot trust the predictive uncertainty either,
+failing altogether, we cannot trust the predicted uncertainty either,
 but we see a pattern in the intermediate phase space regime where the
 network starts failing.
 
-The second kinematic quantity we select is the (unobservable)
-$x$-component of the momentum. It forms a relative flat central
+The second kinematic quantity we select is the
+$x$-component of the momentum, which forms a relative flat central
 plateau with sharp cliffs at each side. Any network will have trouble
 learning the exact shape of such sharp phase space patterns. Here the
-BINN keeps track of this, the absolute and the relative predictive
+BINN keeps track of this, the absolute and the relative
 uncertainties indeed explode. The only difference between the two is
-that the (learned) density at the foot of the plateau drops even
+that the density at the foot of the plateau drops even
 faster than the learned absolute uncertainty, so their ratio keeps
 growing.
 
 Finally, we show the result for the Breit-Wigner mass peak, the
 physical counterpart of the Gaussian ring model of
 Sec.~\ref{sec:toy_ring}. Indeed, we see exactly the same pattern,
-namely a distinctive minimum in the predictive uncertainty right on
+namely a distinctive minimum in the predicted uncertainty right on
 the mass peak.  This pattern can be explained by the network learning
 the general form of a mass peak and then adjusting the mean and the
 width of this peak. Learning the peak position leads to a minimum of
 the uncertainty right at the peak, and learning the width brings up
 two maxima on the shoulders of the mass peak.  In combination
-Fig.~\ref{fig:DY} and \ref{fig:DY_unc} clearly show that the BINN
+Fig.~\ref{fig:DY} and \ref{fig:DY_unc} show that the BINN
 traces uncertainties in generated LHC events just as for the toy
-models. Again, some distinctive patterns in the predictive uncertainty
-can be explained by the way the network learns the phase space
-density.
+models.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Outlook}
+\section{Conclusions and outlook}
 
 Controlling the output of generative networks and quantifying their
 uncertainties is the main task for any application in LHC physics, be
@@ -1271,20 +1275,11 @@ statistics. Our method can be trivially extended
 from unweighted to weighted events by adapting the simple MLE loss.
 An intriguing result from our study is that the combined learning of
 the density and uncertainty distributions allows us to draw conclusions on
-how a normalizing-flow network like the BINN learns a distribution. We
-find that the uncertainty distributions are naturally explained by a
+how a normalizing-flow network like the BINN learns a distribution. 
+We find that the uncertainty distributions are naturally explained by a
 fit-like behavior of the network, rather than a patch-wise learning of
 the density. For the LHC, this can be seen for instance in the
 non-trivial uncertainty for an intermediate Breit-Wigner
 resonance. 
-%These results are another step in understanding
-%GANplification patterns~\cite{Butter:2020qhk} and might even allow us
-%to use INNs to extrapolate in phase space.
-
-Obviously, it remains to be seen how our observations generalize to
-other generative networks architectures. For the LHC, the next step
-should be an in-depth study of INN-like networks applied to event
-generation.
-
 
 %\end{document}
