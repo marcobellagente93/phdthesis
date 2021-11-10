@@ -312,8 +312,60 @@ In order to provide a quantitative comparison of performances, we calculated the
 Indeed, we can ask ourselves why the EMD of both unweighted methods are smaller than the EMD of the \textsc{Dctr} method for the double donut example. However, owing to the
 the uncertainty on the numerical estimation of the scores, which are indicated in parenthesis, all scores a statistically consistent.
 
-\section{LHC applications}
-\label{sec:LHCexamples}
+\section{LHC applications}\label{sec:LHCexamples}
+The content of this section is part of currently active, and therefore unpublished, research projects.\\
+In Sec.~\ref{sec:examples} we have shown how \textsc{LaSeR}) easily handle topology limitations in toy examples. Clearly the key question is whether or not such obstructions are relevant for high energy physics applications.
+We will immediately show that this is indeed the case.
+As a prime example, we consider the 
+\begin{align}
+     p p \to W^+ + Nj
+\end{align}
+scattering process, with $N = 2, 3 (, 4)$ jets. In order to stay in the perturbative regime of QCD we apply a typical cut on the transverse momenta of the jets as
+\begin{align}
+    p_{T,j}>25\,\mathrm{GeV}.
+\end{align}
+This process has a low phase-space dimensionality but still encodes typical topological features which need to be correctly addressed by the generative model, as the cuts on the transverse momenta introduce a number of holes in the process manifold equal to the number of jets (or any massless parton in general). In Fig.~\ref{fig:lhc_hole} we illustrate how the typical parton level cut on the transverse momentum of parton naturally leads to a topological obstruction.
+%
+%------------------------------------------------------------
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.47\textwidth, page=1]{./figures/pt_ring.pdf}
+\includegraphics[width=0.49\textwidth, page=1]{./figures/ring.pdf}
+\caption{Left: the typical shape of the $p_T$ distribution of a jet. Right: the effect of the transverse momentum cut visualized in the $p_X$-$p_Y$ plane.}
+\label{fig:lhc_hole}
+\end{figure}
+%------------------------------------------------------------
+%
+A very important comments is in order.
+some extremely clever cook may think that using a different set of variables rather then 4-momenta provide better results. This is logically flawed, as different representations, like $\{p_T, \eta, \phi\}$ are again related to the 4-momenta by a change of variable.
+%
+We conclude by showing in Fig.~\ref{fig:w_3jets_marginals} and~\ref{fig:w_3jets_2d} preliminary results on the application of the \textsc{LaSeR} protocol to $p p \to W^+ + 3j$.
+%------------------------------------------------------------
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\textwidth, page=1]{./figures/wp_3j_HMC_ratio.pdf}
+\includegraphics[width=0.32\textwidth, page=4]{./figures/wp_3j_HMC_ratio.pdf}
+\includegraphics[width=0.32\textwidth, page=6]{./figures/wp_3j_HMC_ratio.pdf}\\
+\includegraphics[width=0.32\textwidth, page=7]{./figures/wp_3j_HMC_ratio.pdf}
+\includegraphics[width=0.32\textwidth, page=15]{./figures/wp_3j_HMC_ratio.pdf}
+\includegraphics[width=0.32\textwidth, page=13]{./figures/wp_3j_HMC_ratio.pdf}
+\caption{Set of kinematic distributions for the W + 3jets process, with and without \textsc{LaSeR} refinement.}
+\label{fig:w_3jets_marginals}
+\end{figure}
+%------------------------------------------------------------
+%
+%------------------------------------------------------------
+\begin{figure}[H]
+\centering
+%\includegraphics[width=0.98\textwidth, page=13]{./figures/wp_3j_HMC_2d.pdf}\\
+%\includegraphics[width=0.98\textwidth, page=13]{./figures/wp_3j_epoch_500_target_2d.pdf}\\
+\includegraphics[width=0.98\textwidth, page=50]{./figures/wp_3j_HMC_2d.pdf}\\
+\includegraphics[width=0.98\textwidth, page=50]{./figures/wp_3j_epoch_500_target_2d.pdf}\\
+\caption{Two-dimensional distributions of one of the jets for the W + 3jets process, with and without \textsc{LaSeR} refinement.}
+\label{fig:w_3jets_2d}
+\end{figure}
+%------------------------------------------------------------
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions and outlook}

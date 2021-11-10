@@ -8,58 +8,19 @@
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-In this thesis we have shown how deep generative models can be used to unfold detector effects in the example process of $ZW \to \ell \ell jj$ production at the LHC. Two different frameworks, a conditional GAN and a conditional INN have been tested, with and without a variable number of final state jets.
+In this thesis we have shown the potential of novel methods based on deep generative models for LHC analysis. 
 
-While both models are capable of reproducing the parton level phase space, 
-the cINN can also gives correctly calibrated posterior probability
-distributions over parton-level phase space for given detector-level
-events
 
-Finally, we show the reconstructed $W'$-mass in the lower-right
-pane. Here we see the different (normalized) truth-level distributions
-for the Standard Model and the $W'$-injected sample. The FCGAN,
-trained on the Standard Model, keeps track of local phase space
-structures and reproduces the $W'$ peak faithfully. It also learn the
-$W'$-mass as the central peak position very well. The only issue is
-the $W'$-width, which the network over-estimates. However, we know
-already that dynamically generated width distributions are a challenge
-to GANs and require for instance an MMD loss.  Nevertheless,
-Fig.~\ref{fig:w_prime} clearly shows that GAN unfolding shows a high
-degree of model independence, making use of local structures in the
-mapping between the two phase spaces. We emphasize that the additional
-mass peak in the FCGANned events is not a one-dimensional feature, but
-a localized structure in the full phase space. This local structure is
-a feature of neural networks which comes in addition to the known
-strengths in interpolation.
-
-We have shown how an invertible network (INN) and in particular a
-conditional INN can be used to unfold detector effects for the simple
-example process of $ZW \to \ell \ell jj$ production at the LHC. The
-cINN is not only able to unfold the process over the entire phase
-space, it also gives correctly calibrated posterior probability
-distributions over parton-level phase space for given detector-level
-events. This feature is new even for neural network unfolding.
-
-Next, we have extended the unfolding to a variable number of jets in
-the final state. This situation will automatically appear whenever we
-include higher-order corrections in perturbative QCD for a given hard
-process. The hard process at parton level is defined at the training
-level. We find that the cINN also unfolds QCD jet radiation in the
-sense that it identifies the ISR jets and corrects the kinematics of
-the hard process to ensure energy-momentum conservation in the hard
-scattering.
-
-In combination, these features should enable analysis techniques like
-the matrix element method and efficient ways to communicate analysis
-results including multi-dimensional kinematic distributions. While the
-$ZW$ production process used in this analysis, we expect these results
-to carry over to more complex processes with intermediate
-particles~\cite{gan_phasespace} and the impact of a SM-training
-hypothesis should be under control~\cite{fcgan}, the next step will be
-to test this new framework in a realistic LHC example with proper
-precision predictions and a focus on uncertainties. As for any
-analysis method suitable for the coming LHC runs, the challenge will
-be to control the full uncertainty budget at the per-cent
-level. 
+%In this thesis we have presented three different applications for generative networks: event generation, sample-based subtraction of distributions, and detector unfolding. For this we employed generative adversarial networks (GANs) and invertible neural networks (INNs) as machine learning based methods to perform LHC simulations. We have shown, how these more advanced approches can circumvent or at least alleviate shortcomings of regular simulation methods.
+%In detail, in Chapter 3 we constructed a GAN which is capable of reproducing the full phase space structure of a realistic LHC process, namely top-pair production all the way down to its decay products. We have seen that using a simple feed-forward neural network in both the generator and discriminator network we can nicely reproduce flat observables such as the transverse momentum up to a deviation of 10%, as shown in Fig. 3.3. We have further shown in Fig. 3.5 and Fig. 3.8 that even 2-dimensional correlations are perfectly reproduced. Furthermore, by including an additional MMD term to the generator loss, our GAN was even capable of resolving sharp phase space structures originating from intermediate on-shell resonances, as shown in Fig. 3.6. A notable feature of this MMD term is that no extra mass or width information about the resonance is needed and that the peak structure is extracted completely dynamical. We only need to know which final-state 4-momentum combination encodes the intermediate resonance. Hence, this MMD term represents a novel approach to map out resonances appropriately.
+%Even though this setup has already shown remarkable results, we studied this GAN approach in more detail since we wanted to push the precision to a level being comparable to state-of-the-art simulation methods. Therefore, in Sec. 3.3 we modified the generator and discriminator architecture in such a way that the inputs and outputs are more physically motivated as well as more generalizable to other processes. For this, we considered W + 2 jet production and investigated how much further we can push the precision of our GAN. We found that applying our modifications, we can improve our GAN performance to decrease the overall deviation to the 1% level in the bulk and 10% in the sparsely populated phase space regions, as shown in Fig. 3.11. In order to benchmark this performance we compared it to two independent Monte Carlo samples of the same size in Fig. 3.10. We can see that our GAN already reaches similar if not equal precision.
+%Another question which has risen while working on the projects mentioned above was how we can deal with training data which is not yet unweighted but contains non-unit weights. In detail, we were interested to train a GAN on these weighted events while still producing unweighted events as before. Therefore, we have modified the discriminator loss function such that the event weights in the training data are taken into account. More specifically, we replaced the standard expectation value by a weighted mean using the event weights. As we did not modify the loss terms corresponding to the generated events we have restricted our generator to produce unweighted events only. In order to check whether these modifications are correct, we have considered two toy examples
+%107
+%  shown in Fig. 3.13 and Fig. 3.16. Besides, showing the distributions we also calculated the unweighting efficiency defined in Sec. 1.5.2 for both examples and obtained efficien- cies of 50% and 45% for an 1-dimensional and 2-dimensional example, respectively. We compared these with unweighting efficiencies obtained by the Vegas algorithm. With Vegas we got efficiencies of 93% and 15% for the 1-dimensional and 2-dimensional case, respectively. From this we can conclude that the neural network approach is outper- forming standard techniques if the considered distribution is non-factorizable and more complex. As a physics application we considered muon pair production via the Drell– Yan scattering. We can see in Fig. 3.19 that our GAN can still nicely reproduce the correct distributions when trained on weighted data.
+%In Chapter 4, we employed GANs to subtract and add distributions based on samples to avoid current statistical limitations of bin-wise methods. For this, we extended our GAN architecture by adding a discriminator for each available dataset we wanted to train on. For instance, we considered two simple 1-dimensional distributions represented as event samples, and we were interested in the difference of both distributions. We further wanted to generate new samples distributed according to this difference. In order to do so, we employed two discriminator networks, where one discriminator was trying to distinguish generated events from true events being drawn from either of the two distributions, and the other one only classified events which were either fake or true following one of the two distributions. By supplementing each event with a class label we were able to directly generate evens which were distributed according to the difference of both distributions, as shown for a toy example in Fig. 4.2. Furthermore, we considered two different LHC applications: background subtraction and collinear dipole subtraction for Drell–Yan scattering.
+%In the first example, the network was trained to subtract the photon-induced contribution from the full e+e− production at LO. Even though this does not yield a state-of-the-art problem for LHC analyses we could further employ it for more involved background subtractions in four body-decays while still preserving all kinematic correlations. In the second example, we combined the full LO matrix element for Z + g production and the collinear approximated contribution expressed as modified Catani-Seymour dipole to obtain events following the finite contribution from real gluon emission.
+%Finally, in Chapter 5, we considered another application of GANs and also INNs. There, we were interested in unfolding detector effects. As a naive ansatz we used both a standard GAN and INN to directly map from the detector level to the parton level. As we can see in Fig. 5.3 and Fig. 5.12 this works fine if we unfold the entire data at once. However, once we try to cut on detector level events and only unfold a part of the data this procedure fails. The reason for this is that two events which might be close on detector level are not mapped onto events which are also close on parton level. In other words, the network does not learn a mapping between both spaces in a structured manner. In order to solve this problem, we introduced a conditional setup in which the network tries to map random numbers onto the parton level but being conditioned on detector level events. Using this conditioning the slicing of detector level input does not brake the unfolding procedure and we obtain the correct parton level distributions, as shown in Fig. 5.6. A nice feature which only comes with INNs is that they are also capable to give a correctly calibrated posterior probability distribution over parton-level phase space for a single detector-level event. This is new and unique even for neural network unfolding.
+%Additionally, we have shown that the GAN network also reproduces an possible new res- onance as a local structure in phase space even though it was trained on SM events only, as illustrated in Fig. 5.10. From this we can conclude that the neural network preserves local structures in the mapping between the input and target space.Furthermore, we have also considered unfolding of a variable number of jets and inverted parton shower- ing. We found that the conditional INN can also unfold QCD jet radiation and identifies the ISR jets correctly. It also preserves 4-momentum conservation in the hard scattering process.
+%Putting everything together, we can conclude that machine learning and especially neural networks can be used for various tasks to supplement standard LHC analyses. While our applications already serve as good examples on how to use generative networks in particle physics there is still more of the story to tell. Undoubtedly, the application of machine learning and neural networks will be beneficial in many other areas of theoretical physics. For instance, neural networks could also be used to speed-up the evaluation of complicated higher-order matrix elements. In either case, we should expect that machine learning will have a huge impact on theoretical and experimental high-energy physics research in the future.
 
 %\end{document}

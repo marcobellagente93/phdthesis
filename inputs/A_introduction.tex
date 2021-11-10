@@ -216,15 +216,76 @@ since the objective function is not convex, there is no clear way to evaluate th
 
 An important difference between the two presented frameworks is that a GAN represents a target density only implicitly, i.e. $G_{\theta}$ is only a sampler from $p_{X}$, but can't be used to estimate its value (with the exception of low dimensional problems where kernel methods may be used to smooth a binned distribution). On the other hand, the explicit value of the density can be trivially computed with a NF from Eq.~\ref{eq:nf} if we assume a perfect map to the latent space distribution.
 
-\section{Unfolding}
+\section{Bayesian unfolding}
 
-In particle physics, unfolding is defined as the statistical process of lifting the distortions induced by the finite resolution and limited acceptance of detectors. The unfolding problem is defined in terms of a distribution $p(x)$ of an observable $x$, and its distorted version $q(\tilde{x})$. In order to have a chance of estimating $p(x)$ we start from a model dependant proposal $p_{\text{model}}(x)$ of the true distribution, and assume that we can accurately describe the forward distortion process via Monte Carlo simulations
-%
-\begin{alignat*}{4}
-&\textbf{\text{forward process (MC)}} \qquad && \text{assumption} && \quad p(x) \longrightarrow q(\tilde{x}) \\
-&\textbf{\text{inverse process (unfolding)}}  \qquad && \text{observation} && \quad q(\tilde{x}) \longrightarrow p(x). \\
-\end{alignat*}
-%
-The inverse (unfolding) problem is typically ill-defined, as
+In this section we will define the fundamental ideas of unfolding following closely Ref.~\cite{DAgostini:1994fjx, dagostini2010improved}.
+In any quantitative science we wish to be able to estimate the possible value of "true" parameters, directly connected to some underlying theory, given that we are only able of observing a distorted version of them in the best scenario, more realistically we will have to be satisfied with observing a different set of parameters entirely.
+In particular, we are often interested in lifting the effects induced by the detectors and possible physical and theoretical backgrounds. This procedure is normally called de-convolution, and takes the name of unfolding in particle physics.
 
-%\end{document}
+Bayesian inference is the proper framework to perform inference over unknown parameters from experimental data. A starting point for Bayesian unfolding is the discretization of the problem, in the form of binning of observable distribution of events, with each bin being treated as an independent variables.
+%
+%------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\includegraphics[page = 1, width=0.95\textwidth]{./figures/graphical_model}
+\caption{Graphical model of causes and effects. Each arrow represents a probabilistic link}
+\label{fig:graph_model}
+\end{figure}
+%------------------------------------------------------------
+%
+Borrowing the language of graphical models, the problem can be described by the Bayesian network of Fig.~\ref{fig:graph_model}, $C_{i}$ being the true number of events in each cause bin, given that we observe $E_{j}$ events per bin.
+It's important to notice that as the links between cause and effect is probabilistic, so will be the number of true events per bin. Concretely,  given causes $C_i$ and effects $E_j$, we wish to estimate the conditional distribution
+%
+\begin{align}\label{eq:unf}
+P(C_i | E_j)
+\end{align}
+%
+Following standard Bayesian inference, Eq.~\ref{eq:unf} may be computed as
+%
+\begin{align}\label{eq:bayes_inf}
+P(C_i | E_j) = \frac{P(E_j | C_i) P(C_i)}{\sum_{l=1}^{n_E} P(E_j| C_l) P(C_l)},
+\end{align}
+Eq.~\ref{eq:bayes_inf} is nothing other than Bayes' theorem stating that the posterior is proportional to the likelihood, provided that we multiply by the prior
+%
+\begin{align}
+P(C_i | E_j) \propto P(E_j | C_i) P(C_i),
+\end{align}
+%
+and the denominator is a normalization factor.
+%The main issue in the practical application of Eq.~\ref{eq:bayes_inf} is that there is no closed to compute 
+The unfolding algorithm proceeds as follows:
+\begin{itemize}
+\item
+compute the number of expected events in bin $C_i$ given that $n(E_i)$ is the observed counting bin $E_j$\\
+\begin{align}
+n(C_i)|_{n(E_j)} = P(C_i | E_j) n(E_j);
+\end{align}
+\item
+include effects from all observations\\
+\begin{align}
+n(C_i) = \sum_j P(C_i | E_j) n(E_j);
+\end{align}
+\item
+correct for the effect of different efficiencies $\epsilon_i$\\
+\begin{align}
+\tilde{n}(C_i) = \frac{1}{\epsilon_i} n(C_i) = \frac{1}{\epsilon_i}\sum_{j=1}^{n_E} P(C_i | E_j) n(E_j);
+\end{align}
+with the efficiencies computed from the smearing matrix as
+\begin{align}
+\epsilon_i = \sum_{j=1}^{n_E} P(E_j | C_i) = \sum_{j=1}^{n_E} \lambda_{ij},
+\end{align}
+where $\lambda_{ij} = P(E_j | C_i)$ are the entries of a smearing matrix $\Lambda$ estimated from Monte Carlo simulations. 
+
+The above algorithm is essentially the first form of Bayesian unfolding presented in Ref.~\cite{DAgostini:1994fjx}. Ref.~\cite{dagostini2010improved} introduced several improvements over the first version, like the explicit modelling of the smearing matrix and the inclusion its uncertainty as
+%
+\begin{align}
+P(C_i | E_j) \longrightarrow P(C_i | E_j, \Lambda); \qquad P(C_i | E_j) = \int P(C_i | E_j) f(\Lambda) d\Lambda,
+\end{align}
+%
+i.e. the posterior over causes depends explicitly on the smearing matrix $\Lambda$, which is sampled from a distribution $f(\Lambda)$.
+Most notably, however, is the additional iteration of the algorithm. Bayesian inference only makes sense when we have a prior belief of what the possible values of the unobserved parameters are. Choosing a "correct" prior is a tricky task, as this choice, which is arbitrary, affects the posterior distribution.
+Ref.~\cite{dagostini2010improved} suggests that the dependence on the prior can be reduced by iterating the unfolding procedure, by using the result of unfolding step $n$ as the prior of unfolding $n+1$.
+
+We conclude the introduction with a brief discussions of the limitations of iterated Bayesian unfolding, and equivalent methods. The first obvious limitation is that the method relies on binning measurements into histograms. Binning can be problematic as aside with the exception of few limited case there's no obvious best binning, and each individual observable typically requires an ad hoc manual choice of the binning. Directly related to this is the fact that the total number of bins grows exponentially with the number of dimensions, each being a different observable. This means that differential cross section measurements beyond a few dimensions are impractical.
+
+\end{itemize}
