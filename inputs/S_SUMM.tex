@@ -8,7 +8,8 @@
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-In this thesis we have shown the potential of novel methods based on deep generative models for LHC analysis. 
+In this thesis we have illustrated how LHC analysis may benefit from the introduction of deep learning-based tools.
+In particular, we have focused on the possible application of a variety of deep generative models to the problem of unfolding. In parallel we have defined a method to estimate the uncertainty of generative models and an algorithmic procedure to remove topological obstructions from data manifolds.
 
 \medskip
 In Chap.~\ref{chap:unfolding} we have employed GANs and INNs as tools for inverting Monte Carlo simulations without relying on binned histograms. We started with a naive GAN and shown that without a dedicated training correlating parton and detector level information, the inversion is meaningless. Accordingly, we changed our model to a conditional setting, showing how phase space slices at the detector level are correctly propagated by the model down to the parton level. This insight is then applied to INNs. We again started with a naive formulation, showing that our invertible architecture is powerful enough to represent the parton level distributions. We then employed a conditional set-up superior to that of the conditional GAN, showing that a conditional INN can generate posterior distributions over single events. We have concluded the chapter by illustrating how the conditional INN is powerful enough to handle a semi-realistic scenario with initial state radiation and a variable number of reconstructed jets.
@@ -23,4 +24,4 @@ Finally, in Chap.~\ref{chap:lsr} we introduced the notion of topological obstruc
 
 \medskip
 
-In conclusion, the field of deep learning for high energy physics is gaining more and more momentum.
+In conclusion, the field of deep learning for high energy physics is gaining more and more momentum, with novel applications, architectures and training procedures being proposed on a daily basis. We strongly believe that with a few more steps toward explainable machine learning, more mathematically rigorous approaches and in general better communication between theorists and experimentalists, this technology will become a standard tool in the life of future researchers.

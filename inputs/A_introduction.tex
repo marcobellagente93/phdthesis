@@ -1,31 +1,26 @@
-%\input{0_praeambel.tex}
-%\input{0_declare.tex}
-%\pagestyle{fancy}
-%\graphicspath{{../figures/}}	
-%\begin{document}
 
 \chapter{Introduction}\label{chap:introduction}
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-The research program carried over at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests~\cite{Apostolakis:2308666, Aarrestad:2729448, Calafiura:2729668, ATL-SOFT-PUB-2018-002}. Simulations of parton level interactions and the subsequent processes of parton showering and hadronization, as well as the simulation of detector effects, are traditionally performed with Monte Carlo methods. These methods are built using first-principles, in the sense that they are expected to describe the corresponding physical system to the best of our knowledge, being that a detector or a quantum field theory. 
+The research program carried out at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests~\cite{Apostolakis:2308666, Aarrestad:2729448, Calafiura:2729668, ATL-SOFT-PUB-2018-002}. Simulations of parton level interactions and the subsequent processes of parton showering and hadronization, as well as the simulation of detector effects, are traditionally performed with Monte Carlo methods. These methods are built using first-principles, in the sense that they are expected to describe the corresponding physical system to the best of our knowledge, being that a detector or a quantum field theory. 
 However, precision and interpretability don't come for free, and a major shortcoming of these methods lies in their computational efficiency. In fact, Monte Carlo simulations takes the biggest share of computational resources of collaborations working at the LHC, with detector simulations being the biggest contributors~\cite{Calafiura:2729668}. As a notable example, the time needed to fully simulate a detector response with \geant~\cite{AGOSTINELLI2003250} is of the order of minutes.
 If we give up on the idea of simulating a physical system from first principles, we can reformulate the problem entirely as a sampling task: a detector image may be for instance regarded as a sample from an hypothetical distribution $p_{detector}$ defined on some high-dimensional space. The same idea may be applied to other stages of the simulation pipeline, such as the simulation of parton level events, or parton showers.
 If samples drawn from such a distribution can be used as a surrogate for first principle simulations, massive gains in computational time are theoretically possible, hence the recent interest in the potential of deep generative models for particle physics (see \href{https://iml-wg.github.io/HEPML-LivingReview}{HEPML-LivingReview} to get the full picture).
-
-Deep generative models are a natural tool for supporting  (or replacing) traditional Monte Carlo simulations, as they have the necessary expressive power to accurately reproduce complex, high-dimensional and multi-modal distributions. Furthermore, the field of high energy physics doesn't suffer from a typical bottleneck of applied deep learning, where clean, labelled natural images, texts, or biomedical data, can be expensive to obtain or be protected by privacy laws. Conversely, truly large, particle physics datasets are either publicly available or can be in most cases cheaply generated.
-
-The potential of deep generative models goes beyond the production of synthetic data, and, depending on the particular framework, they can solve a variety of tasks such as classification or anomaly detection. 
+\medskip
+Deep generative models are a natural tool for supporting  (or replacing) traditional Monte Carlo simulations, as they have the necessary expressive power to accurately reproduce complex, high-dimensional and multi-modal distributions. Furthermore, the field of high energy physics does not suffer from a typical bottleneck of deep learning, where clean, labelled natural images, texts, or biomedical data, can be expensive to obtain or be protected by privacy laws. Conversely, truly large, particle physics datasets are either publicly available or can be in most cases cheaply generated.
+\medskip
+Furthermore, the potential of deep generative models goes beyond the production of synthetic data. Depending on the particular framework, they can solve a variety of tasks, like unfolding~\cite{Andreassen:2019cjw, Datta:2018mwd,fcgan} classification~\cite{ardizzone2021training, mackowiak2020generative}, model proposal~\cite{2020ganEFT}, out-of-distribution detection~\cite{nalisnick2019deep, kirichenko2020normalizing, serra2020input, song2019unsupervised} and anomaly detection~\cite{knapp2020adversarially, pol2020anomaly, cheng2021variational, newPhysAnom}. 
 
 The thesis is organized as follows:
-in the remaining part of Chap.~\ref{chap:introduction} we give a definition of generative models and introduce the unfolding problem, the two main topics of the thesis; in Chap.~\ref{chap:unfolding} we illustrate a method for unfolding of detector effects based on deep generative models. In Chap~\ref{chap:bnn} we then address a key technical aspects for a realistic use in LHC analysis, namely how to define uncertainties over a deep generative model's output. Finally, in Chap.~\ref{chap:lsr} we introduce a method to handle topology obstructions induced by parton level cuts. We conclude with a summary of the main results and of possible future directions.
+in the remaining part of Chap.~\ref{chap:introduction} we give a definition of generative models and introduce the unfolding problem, the two main topics of the thesis; in Chap.~\ref{chap:unfolding} we illustrate a method for unfolding detector effects based on deep generative models. In Chap~\ref{chap:bnn} we then address a key aspect for a realistic use in LHC analysis, namely how to define uncertainties over a deep generative model's output. Finally, in Chap.~\ref{chap:lsr} we introduce a method to handle topological obstructions induced by parton level cuts. We conclude with a summary of the main results and with possible future directions.
 The work of this thesis is based on Ref.~\cite{cond_gan, Bellagente:2020piv, Bellagente:2021yyh, LSR}.
 
 \section{Generative models}\label{sec:gmm}
-Given data instances $\mathcal{X} = \{ x_1, \ldots , x_N \}$, a generative model is a probabilistic model of $p(x)$, i.e. of the underlying probability density from which $\mathcal{X}$ is sampled. 
+Given data instances $\mathcal{X} = \{ x_1, \ldots , x_N \}$, a generative model is a probabilistic model of $p(x)$, i.e.\ of the underlying probability density from which $\mathcal{X}$ is sampled. 
 In machine learning, generative modelling, or density estimation, is the unsupervised task of approximating a probability density via a parametrized function $G_{\theta}$, whose parameters $\theta$ are inferred in an automatic fashion. If $G_{\theta}$ is a good approximation of $p(x)$, new and realistic samples can be drawn from it.
 Similarly, if the data comes with labels $\mathcal{Y}$, we wish to approximate the conditional probability density $p(x | y)$ with a conditional probabilistic model $G_{\theta}(x | y)$.
-The underlying assumption of density estimation is that the manifold on which $\mathcal{X}$ lies can be described by a number of parameters which is lower than the dimensionality of the data itself, this way $G_{\theta}$ 
+The underlying assumption of density estimation is that the manifold on which $\mathcal{X}$ lies can be described by a number of parameters which is lower than the dimensionality of the data itself. This way $G_{\theta}$ 
 is forced to discover regularities and patterns of the input data.
 
 As an example, given some multi-modal distribution $p(x)$, we may represent it compactly with a finite mixture
@@ -40,7 +35,7 @@ with mixture weights $\pi_{k}$ constrained as
 0 \leq \pi_k \leq 1, \quad \sum_{k=1}^{K} \pi_{k} = 1.
 \end{align}
 %
-The components $p_{k}(x)$ belong to a family of a basic distributions, e.g. Gaussians $\mathcal{N}_k(x | \mu_k, \Sigma_k)$, in which case we call the model Gaussian Mixture Model (GMM). The model's parameters $\theta = \{ \mu_k, \Sigma_k, \pi_k; ~ k = 1, \ldots, K \}$ can be inferred via Maximum Likelihood. Assuming that the points in the dataset $\mathcal{X} = \{x_1, \ldots , x_N \}$ are identically and independently distributed, the likelihood can be written in the factorized form
+The components $p_{k}(x)$ belong to a family of a basic distributions, e.g.\ Gaussians $\mathcal{N}_k(x | \mu_k, \Sigma_k)$, in which case we call the model Gaussian Mixture Model (GMM). The model's parameters $\theta = \{ \mu_k, \Sigma_k, \pi_k; ~ k = 1, \ldots, K \}$ can be inferred via maximum likelihood. Assuming that the points in the dataset $\mathcal{X} = \{x_1, \ldots , x_N \}$ are identically and independently distributed, the likelihood can be written in the factorized form
 %
 \begin{align}
 p(\mathcal{X} | \theta ) = \prod_{n=1}^N p(x_n | \theta), \quad p(x_n | \theta) = \sum_{k=1}^K \pi_k \mathcal{N}_k(x_n | \mu_k, \Sigma_k),
@@ -111,23 +106,23 @@ The last bullet is particularly attractive for LHC analysis, in that not only sc
 Concerning the practical realisation of DGMs, the three most successful frameworks studied and employed in the literature are
 \begin{itemize}
 \item
-Normalizing Flows (NF);
+Normalizing Flows (NF~\cite{inn,coupling2,glow, nflow1,papamakarios2019normalizing,nflow_review,mller2018neural, grathwohl2018ffjord,chen2019neural});
 \item
-Generative Adversarial Networks (GAN);
+Generative Adversarial Networks (GAN)~\cite{goodfellow,Creswell2018};
 \item
-Variational Autoencoders.
+Variational Autoencoders~\cite{kingma2014autoencoding,Kingma2019}.
 \end{itemize}
 The first two have been extensively employed in this thesis, and will be therefore further elaborated in the following sections.
 
-\subsubsection{Normaling Flows}\label{intro:normflow}
-Normalizing Flow (NFs)~\cite{inn,coupling2,glow, nflow1,papamakarios2019normalizing,nflow_review,mller2018neural, grathwohl2018ffjord,chen2019neural} are defined in terms of a parametrized change of variable $G_{\theta}: x \rightarrow z$ between distributions
+\subsection{Normaling Flows}\label{intro:normflow}
+Normalizing Flow  are defined in terms of a parametrized change of variable $G_{\theta}: z \rightarrow x$ between distributions
 %
 \begin{align}\label{eq:nf}
 p_X(x) = p_Z(z) \left|\det \frac{\partial G_{\theta}(z)}{\partial z}\right|^{-1} = p_Z(\bar{G}_{\theta}(x)) \left|\det \frac{\partial \bar{G}_{\theta}(x)}{\partial x}\right|,
 \end{align}
 %
 where $\bar{G} = G^{-1}$.
-Regardless of how complicated $p_{X}(x)$ may be, if there exists a bijection $G_{\theta}$ such that $p_Z(z)$ is a simple distribution, e.g. a Gaussian $\mathcal{N}_{\mu=0, \Sigma=\mathbb{I}}$, we can draw samples from $p_{X}(x)$ via the generative pipeline
+Regardless of how complicated $p_{X}(x)$ may be, if there exists a bijection $G_{\theta}$ such that $p_Z(z)$ is a simple distribution, e.g.\ a Gaussian $\mathcal{N}_{\mu=0, \Sigma=\mathbb{I}}$, we can draw samples from $p_{X}(x)$ via the generative pipeline
 %
 \begin{align}
 z \sim p_Z(z) \longrightarrow x = G_{\theta}(z)  \sim p_{X}(x),
@@ -143,18 +138,20 @@ z \sim p_Z(z) \longrightarrow x = G_{\theta}(z)  \sim p_{X}(x),
 \end{figure}
 %------------------------------------------------------------
 %
-see Fig.~\ref{fig:NF} for a schematic representation. Similar to GMM example in Sec.~\ref{sec:gmm}, the parameters of $G_{\theta}$ can be chosen to minimize the negative log-likelihood
+see Fig.~\ref{fig:NF} for a schematic representation. Similar to the GMM example in Sec.~\ref{sec:gmm}, the parameters of $G_{\theta}$ can be chosen to minimize the negative log-likelihood
 %
 \begin{align}\label{eq:change_of_variable}
+\begin{split}
 \mathcal{L} &= - \sum_{n=1}^N \log \left[ p_Z(\bar{G} _{\theta}(x_n)) \left|\det \frac{\partial \bar{G} _{\theta}(x)}{\partial x_n}\right| \right]\\
 &= -\sum_{n=1}^N \log p_Z(\bar{G} _{\theta}(x_n)) + \log \left|\det \frac{\partial \bar{G} _{\theta}(x_n)}{\partial x_n}\right|\\
-&= \sum_{n=1}^N \frac{(\bar{G} _{\theta}(x_n))^2}{2} - \log \left|\det \frac{\partial \bar{G} _{\theta}(x_n)}{\partial x_n}\right|
+&= \sum_{n=1}^N \frac{(\bar{G} _{\theta}(x_n))^2}{2} - \log \left|\det \frac{\partial \bar{G} _{\theta}(x_n)}{\partial x_n}\right|,
+\end{split}
 \end{align}
 %
 where we have used $p_{Z}(z) = \mathcal{N}_{\mu=0, \Sigma=\mathbb{I}}$ and have discarded irrelevant constant terms. 
 In practice, we only need to compute $\bar{G} _{\theta}(x_n)$, the corresponding determinant of the Jacobian, and minimize the combination in the final line of Eq.~\ref{eq:change_of_variable}.
 
-This rather straightforward blueprint hides three complications one needs to carefully address. First of all, not only $G_{\theta}$ must be a bijection, i.e. its inverse must exist, but both $G_{\theta}$ and $\bar{G} _{\theta}$ must be efficiently computable, as one is required for training and the other for generating. Finally, the map must have a tractable Jacobian. If $G_{\theta}$ is parametrized by a standard NN, such as a Multi-Layer Perceptron (MLP), none of the three properties is satisfied. These constraints restrict the class of allowed transformations, severely limiting the expressive power at our disposal, and, as a result, this research line is primarily dedicated to find the optimal trade-off between computational complexity and model expressive power. 
+This rather straightforward blueprint hides three complications one needs to carefully address. First of all, not only $G_{\theta}$ must be a bijection, i.e.\ its inverse must exist, but both $G_{\theta}$ and $\bar{G} _{\theta}$ must be efficiently computable, as one is required for training and the other for generating. Finally, the map must have a tractable Jacobian. If $G_{\theta}$ is parametrized by a standard NN, such as a Multi-Layer Perceptron (MLP), none of the three properties is satisfied. These constraints restrict the class of allowed transformations, severely limiting the expressive power at our disposal.
 However, not all hope is lost, as we can build progressively more complex maps by simply stacking many simple functions, while maintaining the tractability of the Jacobian.
 Given a bijection $G_{i}$ with inverse $\bar{G}_{i}$ and a cheap Jacobian, the composition
 \begin{align}
@@ -168,23 +165,102 @@ and its determinant is the product of each individual determinant
 \begin{align}
 \det G = \prod_{i=1}^{N}  \det G_{i}.
 \end{align}
+This means that a composition of bijections is again a bijection whose computational complexity simply grows linearly with the number of compositions.
+As a result, this research line is primarily dedicated to find the optimal trade-off between computational complexity and model expressive power. 
+In the remaining of this section we give an overview of past and currently used methods, with no claim of completeness.
 
-We conclude this section with a comment motivating the study of Chap.~\ref{chap:lsr}. As already stated, invertible models are bijections, or homeomorphisms~\cite{dupont2019augmented,  huang2020augmented} (note that this is a strict equivalence, i.e. an invertible model do not approximate an homeomorphism, it is one), and as such they are by construction unable to map manifolds with different topological features, such as the number of holes and disconnected patches. In particular, if we stick to the standard formulation and only consider Gaussian latent spaces, we may only be able to represent data whose underlying manifold is compact and has genus zero. As this may be a limiting factor for the naive use of normalizing flows in particle physics, in Chap.~\ref{chap:lsr} we illustrate a possible method to account for it.
+\subsubsection{Planar and Radial Flows}
+The original work on NFs~\cite{pmlr-v37-rezende15} introduces the simple planar and radial flows, which despite representing a simple transformation are not easily invertible.
+A planar flow takes the form
+%
+\begin{align}
+G(x) = x + u h(w^{T}x + b),
+\end{align}
+%
+where $u, w, b$ are parameters and $h$ is a non-linear activation function. This transformation expands and contracts the distribution along certain axis, and has the simple Jacobian
+%
+\begin{align}
+\det \frac{\partial G}{\partial x} = 1 + h^{'}(w^{T}x + b) u^{T}w
+\end{align}
+%
+which can be computed in $\mathcal{O}(D)$ time but cannot be inverted in closed form and doesn't exist in general.
+On the other hand, radial flows modify the distribution around a point $x_0$ as
+%
+\begin{align}
+G(x) = x + \frac{\beta}{\alpha + ||x - x_0||}(x - x_0).
+\end{align}
+%
+The same considerations apply here, the determinant of a radial flow can be efficiently computed, but its inverse is not always defined and cannot be computed in closed form.
 
-\subsubsection{Generative Adversarial Networks}\label{intro:gan}
-GANs introduce a brand new paradigm for generative modelling which, unlike the previously described methods, doesn't involve computing the likelihood at all, and is therefore a form of likelihood-free machine learning. Instead, GANs rely on a two-sample test between distributions, i.e. a statistical test to determine whether or not two samples are drawn from the same distribution. This test is formulated as a differentiable objective function so that it can be minimized with stochastic gradient descent methods, in such a way that it is minimal iff the two distributions are statistically identical.
+\subsubsection{Dimensional Partitioning}
+
+Introduced in ~\cite{coupling1, coupling2}, this approach builds an invertible transformation by splitting a $D$-dimensional input $x$ into two subspaces $(x_1, x_2)$, and defining the bijection $G$, normally called a coupling layer, as
+%
+\begin{align}
+y_1 &= h(x_1, f(x_2))\\
+y_2 &= x_2.
+\end{align}
+%
+with inverse
+%
+\begin{align}
+x_1 &= h^{-1}(y_1, f(y_2))\\
+x_2 &= y_2.
+\end{align}
+%
+The main feature of a coupling layer is that even if $f$ is an arbitrary function, the Jacobian of $G$ is always a triangular matrix which doesn't depend on the derivative of $f$. Different methods can be used to perform the partitioning and ensure that every dimension gets transformed~\cite{coupling2, glow}.
+
+\subsubsection{Autoregressive Flows}
+
+An autoregressive flow is a non-linear generalization of a multiplication by a triangular matrix~\cite{kingma2017improving, papamakarios2018masked}. In an autoregressive model the output $y = G(x)$ is computed step-by-step as a function conditioned on the previous entries, i.e.\
+%
+\begin{align}
+y_t = h(x_t, f_t(x_{1:t-1})),
+\end{align}
+%
+where $x_{1:t} = (x_1, \ldots, x_t)$, and $f_t$ is an arbitrary map taking a $t-1$ dimensional input. Similarly to a coupling layer, since each output $y_t$ only depends on $x_{1:t}$, the resulting Jacobian is again triangular and can be efficiently computed. The main difference with respect to coupling layers is that the inverse function, which can be trivially computed for the former, must be computed recursively as
+%
+\begin{align}
+x_t = h^{-1}(y_t, f_t(x_{1:t-1})).
+\end{align}
+%
+As this operation is inherently sequential, it cannot be parallelized and represent therefore a bottleneck for training this kind of model. Depending on the application, one may want to either have a fast forward direction, in which case one gets a so called masked autoregressive flow, or a fast inverse direction, giving instead an inverse autoregressive flow.
+
+\subsubsection{Residual Flows and ODE}
+
+The last method we present is based on residual connections, i.e.\ functions with the form
+%
+\begin{align}
+G(x) = x + f(x).
+\end{align}
+%
+Residual blocks have been used for a long time~\cite{he2015deep}, and have been adapted into invertible architecture in Ref.~\cite{gomez2017reversible, jacobsen2018irevnet}. Splitting input and output as $(x_1, x_2)$, $(y_1, y_2)$, the map
+%
+\begin{align}
+y_1 &= x_1 + f(x_2)\\
+y_2 &= x_2 + l(y_1)
+\end{align}
+%
+is trivially invertible, but has inefficient Jacobian. Most notably, however, is the fact one can see a residual connection as the discretized version of an ordinary differential equation. Starting from this intuition, Ref.~\cite{dupont2019augmented, chen2019neural , grathwohl2018ffjord} have introduced the idea of defining a continuous version of the residual connections equation, and solving it with standard methods for ordinary differential equations.
+
+\medskip
+
+We conclude this section with a comment motivating the study of Chap.~\ref{chap:lsr}. As already stated, invertible models are bijections, or homeomorphisms~\cite{dupont2019augmented,  huang2020augmented} (note that this is a strict equivalence, i.e.\ an invertible model does not approximate a homeomorphism, it is one), and as such they are by construction unable to map manifolds with different topological features, such as the number of holes and disconnected patches. In particular, if we stick to the standard formulation and only consider Gaussian latent spaces, we may only be able to represent data whose underlying manifold is compact and has genus zero. As this may be a limiting factor for the naive use of normalizing flows in particle physics, in Chap.~\ref{chap:lsr} we illustrate a possible method to account for it.
+
+\subsection{Generative Adversarial Networks}\label{intro:gan}
+GANs introduce a brand new paradigm for generative modelling which, unlike the previously described methods, doesn't involve computing the likelihood at all, and is therefore a form of likelihood-free machine learning. Instead, GANs rely on a two-sample test between distributions, i.e.\ a statistical test to determine whether or not two samples are drawn from the same distribution. This test is formulated as a differentiable objective function so that it can be minimized with stochastic gradient descent methods, in such a way that it is minimal iff the two distributions are statistically identical.
 The statistical test is performed by a discriminator $D_{\phi}$ whose job is to tell apart real and fake samples. The final piece of a GAN is a generator $G_{\theta}$, a map from noise $z$ to target samples $\tilde{x}$, see Fig.~\ref{fig:gan}. In DL, both $D_{\phi}$ and $G_{\theta}$ are properly shaped NNs.
 %
 %------------------------------------------------------------
 \begin{figure}[t]
 \centering
 \includegraphics[page = 1, width=0.99\textwidth]{./figures/gan}
-\caption{Schematic representation of a GAN: a generator $G$ deterministically maps noise $z$ to fake samples $\tilde{z}$. The discriminator $D$ is trained as a binary classifier of true versus fake data, while $G$ tries to fool it.}
+\caption{Schematic representation of a GAN: a generator $G$ deterministically maps noise $z$ to fake samples $\tilde{x}$. The discriminator $D$ is trained as a binary classifier of true versus fake data, while $G$ tries to fool it.}
 \label{fig:gan}
 \end{figure}
 %------------------------------------------------------------
 %
-While many different ways to define the GAN objective have been proposed, we refer to the original formulation as it is close to the one employed in Chap.~\ref{chap:unfolding}. Formally, we consider the min-max game 
+While many different ways to define the GAN objective have been proposed, we refer to the original formulation\cite{goodfellow} as it is close to the one employed in Chap.~\ref{chap:unfolding}. Formally, we consider the min-max game 
 %
 \begin{align}
 \min_{\theta} \max_{\phi} = \mathbb{E}_{x \sim p_{X}(x)} \left[ \log D_{\phi} (x) \right] + \mathbb{E}_{z\sim p_{Z}(z)} \left[ \log \left( 1 - D_{\phi} (G_{\theta}(z) \right) \right].
@@ -196,7 +272,7 @@ For a fixed generator, this is nothing other than a binary classification task, 
 D_{\phi^{*}}(x) = \frac{p_{X}(x)}{p_{X}(x) + p_{G}(x)},
 \end{align}
 %
-$p_{G}(x)$ being the distribution implicitly defined by the generator. 
+with $p_{G}(x)$ being the distribution implicitly defined by the generator. 
 Fixing $\phi = \phi^{*}$, the generator part of the objective is equivalent to minimizing the Jenson-Shannon divergence $JS(p_{X}, p_{G})$, with
 %
 \begin{align}
@@ -216,14 +292,15 @@ since the objective function is not convex, there is no clear way to evaluate th
 \end{itemize}
 %Plenty of empirical tips and tricks to stabilize the training of GANs are available in the literature, in the form of modified objective functions, gradient penalties, noise injection, specific optimizers and more.
 
-An important difference between the two presented frameworks is that a GAN represents a target density only implicitly, i.e. $G_{\theta}$ is only a sampler from $p_{X}$, but can't be used to estimate its value (with the exception of low dimensional problems where kernel methods may be used to smooth a binned distribution). On the other hand, the explicit value of the density can be trivially computed with a NF from Eq.~\ref{eq:nf} if we assume a perfect map to the latent space distribution.
+An important difference between the two presented frameworks is that a GAN represents a target density only implicitly, i.e.\ $G_{\theta}$ is only a sampler from $p_{X}$, but can't be used to estimate its value (with the exception of low dimensional problems where kernel methods may be used to smooth a binned distribution). On the other hand, the explicit value of the density can be trivially computed with a NF from Eq.~\ref{eq:nf} if we assume a perfect map to the latent space distribution.
 
-\section{Bayesian unfolding}
+\section{Unfolding}
 
-In this section we will define the fundamental ideas of unfolding following closely Ref.~\cite{DAgostini:1994fjx, dagostini2010improved}.
 In any quantitative science we wish to be able to estimate the possible value of "true" parameters, directly connected to some underlying theory, given that we are only able of observing a distorted version of them in the best scenario, more realistically we will have to be satisfied with observing a different set of parameters entirely.
-In particular, we are often interested in lifting the effects induced by the detectors and possible physical and theoretical backgrounds. This procedure is normally called de-convolution, and takes the name of unfolding in particle physics.
+In particular, we are often interested in lifting the effects induced by the detectors and possible physical and theoretical backgrounds. This procedure is normally called de-convolution, and takes the name of unfolding in particle physics. In this section we first revise a standard method for unfolding based on Bayesian inference, and then illustrate how to set-up a deep-learning version of it.
 
+\subsection{Iterated Bayesian Unfolding}
+In this section we will define the fundamental ideas of unfolding following closely Ref.~\cite{DAgostini:1994fjx, dagostini2010improved}.
 Bayesian inference is the proper framework to perform inference over unknown parameters from experimental data. A starting point for Bayesian unfolding is the discretization of the problem, in the form of binning of observable distribution of events, with each bin being treated as an independent variables.
 %
 %------------------------------------------------------------
@@ -269,7 +346,7 @@ n(C_i) = \sum_j P(C_i | E_j) n(E_j);
 \end{align}
 \item
 correct for the effect of different efficiencies $\epsilon_i$\\
-\begin{align}
+\begin{align}\label{eq:IBU}
 \tilde{n}(C_i) = \frac{1}{\epsilon_i} n(C_i) = \frac{1}{\epsilon_i}\sum_{j=1}^{n_E} P(C_i | E_j) n(E_j);
 \end{align}
 with the efficiencies computed from the smearing matrix as
@@ -277,6 +354,7 @@ with the efficiencies computed from the smearing matrix as
 \epsilon_i = \sum_{j=1}^{n_E} P(E_j | C_i) = \sum_{j=1}^{n_E} \lambda_{ij},
 \end{align}
 where $\lambda_{ij} = P(E_j | C_i)$ are the entries of a smearing matrix $\Lambda$ estimated from Monte Carlo simulations. 
+\end{itemize}
 
 The above algorithm is essentially the first form of Bayesian unfolding presented in Ref.~\cite{DAgostini:1994fjx}. Ref.~\cite{dagostini2010improved} introduced several improvements over the first version, like the explicit modelling of the smearing matrix and the inclusion its uncertainty as
 %
@@ -284,10 +362,44 @@ The above algorithm is essentially the first form of Bayesian unfolding presente
 P(C_i | E_j) \longrightarrow P(C_i | E_j, \Lambda); \qquad P(C_i | E_j) = \int P(C_i | E_j) f(\Lambda) d\Lambda,
 \end{align}
 %
-i.e. the posterior over causes depends explicitly on the smearing matrix $\Lambda$, which is sampled from a distribution $f(\Lambda)$.
+i.e.\ the posterior over causes depends explicitly on the smearing matrix $\Lambda$, which is sampled from a distribution $f(\Lambda)$.
 Most notably, however, is the additional iteration of the algorithm. Bayesian inference only makes sense when we have a prior belief of what the possible values of the unobserved parameters are. Choosing a "correct" prior is a tricky task, as this choice, which is arbitrary, affects the posterior distribution.
-Ref.~\cite{dagostini2010improved} suggests that the dependence on the prior can be reduced by iterating the unfolding procedure, by using the result of unfolding step $n$ as the prior of unfolding $n+1$.
+Ref.~\cite{dagostini2010improved} suggests that the dependence on the prior can be reduced by iterating the unfolding procedure, by using the result of unfolding step $n$ as the prior of unfolding $n+1$. This method is therefore called Iterated Bayesian Unfolding (IBU).
 
 We conclude the introduction with a brief discussions of the limitations of iterated Bayesian unfolding, and equivalent methods. The first obvious limitation is that the method relies on binning measurements into histograms. Binning can be problematic as aside with the exception of few limited case there's no obvious best binning, and each individual observable typically requires an ad hoc manual choice of the binning. Directly related to this is the fact that the total number of bins grows exponentially with the number of dimensions, each being a different observable. This means that differential cross section measurements beyond a few dimensions are impractical.
 
-\end{itemize}
+\subsection{OmniFold}
+
+In parallel to the work of Ref.~\cite{cond_gan, Bellagente:2020piv}, which constitutes the main content of Chap.~\ref{chap:unfolding}, another deep-learning framework for unfolding has been published. Because of its relevance as the only other existing method for unfolding relying on deep-learning, and for its connection to IBU, we believe that an explanation of the \textsc{OmniFold} method~\cite{Andreassen:2019cjw} deserves its own section.
+
+\textsc{OmniFold} has been proposed to overcome the two main shortcomings of IBU, binning and handling multiple dimensions, by generalizing the iterated version of Eq.~\ref{eq:IBU} to the continuous, multi-dimensional case. In Fig.~\ref{fig:omnifold} we illustrate schematically the method.
+%
+%------------------------------------------------------------
+\begin{figure}[t]
+\centering
+\includegraphics[page = 1, width=0.95\textwidth]{./figures/omnifold}
+\caption{Illustration of the \textsc{OmniFold} method: synthetic data is reweighted against the true data at the detector level. This weights are pulled back at the particle level to induce weights on the particle level data. In the second step the original synthetic particle level data is weighted to match its reweighted version. The process is then iterated.}
+\label{fig:omnifold}
+\end{figure}
+%------------------------------------------------------------
+%
+Starting with particle level events $t$ with initial weights $\nu_0(t)$ simulated with Monte Carlo, we produce a paired set of detector level events $m$ with induced weights $\nu_0^{\text{push}}(m) = \nu_0(t)$.
+We then compute new weights $\omega_0(m)$, and use them to obtain the next set of particle level weights $\nu_1(t)$. The key idea to achieve the correct reweighting is that the likelihood ratio
+%
+\begin{align}
+L \left[ (w, X), (w^{'}, X^{'}) \right](x) = \frac{p_{w, X}(x)}{p_{w^{'}, X^{'}}(x)},
+\end{align}
+%
+can be approximated using a classifier trained to distinguish $(w, X)$ against $(w^{'}, X^{'})$~\cite{Andreassen:2019nnm, brehmer1, brehmer2, mining, cranmer2016approximating}.
+With the likelihood ratio it is straightforward to reweight events as
+\begin{align}
+\omega_n(m) = \nu_{n-1}^{\text{push}} L \left[ (1, \text{truth, det)}), (\nu_{n-1}^{\text{push}}, \text{Synt, det)})\right],\\
+\nu_n(t) = \nu_{n-1} L \left[ (\omega_n, \text{synt, part)}), (\nu_{n-1}, \text{synt, part)})\right].
+\end{align}
+It is possible to show that after one iteration the new weights are given by
+%
+\begin{align}
+\nu_1 p_{synt, part}(t) = \int dm^{'} p_{\text{ synt, part| Synt, Det}} (t | m^{'}) p_{\text{truth, det}}(m^{'})
+\end{align}
+%
+which is a continuous version of Eq.~\ref{eq:IBU}. On top of that, \textsc{OmniFold} is not limited by the dimensionality of the observables, and can in principle unfold the full phase space of an event, provided that the classifier employed is powerful enough.
