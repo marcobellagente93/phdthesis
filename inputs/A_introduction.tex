@@ -3,14 +3,17 @@
 \enlargethispage{2ex}
 \vspace*{-2pt}
 
-The research program carried out at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests~\cite{Apostolakis:2308666, Aarrestad:2729448, Calafiura:2729668, ATL-SOFT-PUB-2018-002}. Simulations of parton level interactions and the subsequent processes of parton showering and hadronization, as well as the simulation of detector effects, are traditionally performed with Monte Carlo methods. These methods are built using first-principles, in the sense that they are expected to describe the corresponding physical system to the best of our knowledge, being that a detector or a quantum field theory. 
+The research program carried out at the Large Hadron Collider (LHC) relies on vast amount of synthetic data to perform hypothesis tests~\cite{Apostolakis:2308666, Aarrestad:2729448, Calafiura:2729668, ATL-SOFT-PUB-2018-002}. Simulations of parton level interactions and the subsequent processes of parton showering and hadronization, as well as the simulation of detector effects, are traditionally performed with Monte Carlo methods~\cite{delphes, madgraph, pythia}. These methods are built using first-principles, in the sense that they are expected to describe the corresponding physical system to the best of our knowledge, being that a detector or a quantum field theory. 
 However, precision and interpretability don't come for free, and a major shortcoming of these methods lies in their computational efficiency. In fact, Monte Carlo simulations takes the biggest share of computational resources of collaborations working at the LHC, with detector simulations being the biggest contributors~\cite{Calafiura:2729668}. As a notable example, the time needed to fully simulate a detector response with \geant~\cite{AGOSTINELLI2003250} is of the order of minutes.
 If we give up on the idea of simulating a physical system from first principles, we can reformulate the problem entirely as a sampling task: a detector image may be for instance regarded as a sample from an hypothetical distribution $p_{detector}$ defined on some high-dimensional space. The same idea may be applied to other stages of the simulation pipeline, such as the simulation of parton level events, or parton showers.
-If samples drawn from such a distribution can be used as a surrogate for first principle simulations, massive gains in computational time are theoretically possible, hence the recent interest in the potential of deep generative models for particle physics (see \href{https://iml-wg.github.io/HEPML-LivingReview}{HEPML-LivingReview} to get the full picture).
-\medskip
+If samples drawn from such a distribution can be used as a surrogate for first principle simulations, massive gains in computational time are theoretically possible, hence the recent interest in the potential of deep generative models for particle physics\cite{aachen_wgan1, aachen_wgan2, Erdmann:2018kuh, wgan_0, calogan1, calogan2, 2020GANpileup, 2019Lund, DijetGAN1, DijetGAN2, Diefenbacher:2020rna, 2021Getting, ATL-SOFT-PUB-2018-001, 2020iflow1, 2020iflow2, dohi2020variational}. 
+
+%(see \href{https://iml-wg.github.io/HEPML-LivingReview}{HEPML-LivingReview} to get the full picture).
+
 Deep generative models are a natural tool for supporting  (or replacing) traditional Monte Carlo simulations, as they have the necessary expressive power to accurately reproduce complex, high-dimensional and multi-modal distributions. Furthermore, the field of high energy physics does not suffer from a typical bottleneck of deep learning, where clean, labelled natural images, texts, or biomedical data, can be expensive to obtain or be protected by privacy laws. Conversely, truly large, particle physics datasets are either publicly available or can be in most cases cheaply generated.
-\medskip
-Furthermore, the potential of deep generative models goes beyond the production of synthetic data. Depending on the particular framework, they can solve a variety of tasks, like unfolding~\cite{Andreassen:2019cjw, Datta:2018mwd,fcgan} classification~\cite{ardizzone2021training, mackowiak2020generative}, model proposal~\cite{2020ganEFT}, out-of-distribution detection~\cite{nalisnick2019deep, kirichenko2020normalizing, serra2020input, song2019unsupervised} and anomaly detection~\cite{knapp2020adversarially, pol2020anomaly, cheng2021variational, newPhysAnom}. 
+
+Furthermore, the potential of deep generative models goes beyond the production of synthetic data. Depending on the particular framework, they can solve a variety of tasks, like unfolding~\cite{Andreassen:2019cjw, Datta:2018mwd,fcgan} classification~\cite{ardizzone2021training, mackowiak2020generative}, model proposal~\cite{2020ganEFT}, out-of-distribution detection~\cite{nalisnick2019deep, kirichenko2020normalizing, serra2020input, song2019unsupervised}, parton distribution functions compression~\cite{compressing_pdf} and anomaly detection~\cite{knapp2020adversarially, pol2020anomaly, cheng2021variational, newPhysAnom}. 
+Given the variety of applications and the number of papers on the topic, we refer to \href{https://github.com/iml-wg/HEPML-LivingReview}{HEPML-LivingReview} for a complete overview.
 
 The thesis is organized as follows:
 in the remaining part of Chap.~\ref{chap:introduction} we give a definition of generative models and introduce the unfolding problem, the two main topics of the thesis; in Chap.~\ref{chap:unfolding} we illustrate a method for unfolding detector effects based on deep generative models. In Chap~\ref{chap:bnn} we then address a key aspect for a realistic use in LHC analysis, namely how to define uncertainties over a deep generative model's output. Finally, in Chap.~\ref{chap:lsr} we introduce a method to handle topological obstructions induced by parton level cuts. We conclude with a summary of the main results and with possible future directions.
@@ -91,7 +94,7 @@ In Fig.~\ref{fig:gmm} we show a simple example of a Gaussian mixture model used 
 %------------------------------------------------------------
 
 \section{Deep Generative Models}\label{sec:DGM}
-We may regard the GMM as the simplest form of statistical model. Recent years have seen the advent of novel methods for generative modelling which we collectively refer to as Deep Generative Models (DGM), in complete analogy to what Deep Learning (DL) means with respect to ML. 
+We may regard the GMM as the simplest form of statistical generative model. Recent years have seen the advent of novel methods for generative modelling which we collectively refer to as Deep Generative Models (DGM), in complete analogy to what Deep Learning (DL) means with respect to ML. 
 Before describing the most relevant forms of DGMs, and with no claim of completeness, we recall that some of the key features of DL include
 \begin{itemize}
 \item
@@ -101,14 +104,14 @@ the NN parameters are inferred via a stochastic gradient descent approach;
 \item
 in order to really exploit NNs, vast amount of high-fidelity data is needed for their training.
 \end{itemize}
-The last bullet is particularly attractive for LHC analysis, in that not only scientific collaborations such as ATLAS and CMS have already collected petabytes of data (with a lot more to come with the next upgrade of the collider), but we are also able to generate synthetic data from first principles via Monte Carlo simulations. It is therefore not surprising that DGMs have been extensively used in particle physics. Given the variety of applications and the number of papers on the topic, we refer to \href{https://github.com/iml-wg/HEPML-LivingReview}{here} for a complete overview.
+The last bullet is particularly attractive for LHC analysis, in that not only scientific collaborations such as ATLAS and CMS have already collected petabytes of data (with a lot more to come with the next upgrade of the collider), but we can also easily prepare data in a controlled environment for benchmarking models.
 
 Concerning the practical realisation of DGMs, the three most successful frameworks studied and employed in the literature are
 \begin{itemize}
 \item
 Normalizing Flows (NF~\cite{inn,coupling2,glow, nflow1,papamakarios2019normalizing,nflow_review,mller2018neural, grathwohl2018ffjord,chen2019neural});
 \item
-Generative Adversarial Networks (GAN)~\cite{goodfellow,Creswell2018};
+Generative Adversarial Networks (GAN)~\cite{goodfellow,Creswell2018, wgan_gp, wgan_original, lim2017geometric, zhang2019selfattention};
 \item
 Variational Autoencoders~\cite{kingma2014autoencoding,Kingma2019}.
 \end{itemize}
@@ -294,14 +297,14 @@ since the objective function is not convex, there is no clear way to evaluate th
 
 An important difference between the two presented frameworks is that a GAN represents a target density only implicitly, i.e.\ $G_{\theta}$ is only a sampler from $p_{X}$, but can't be used to estimate its value (with the exception of low dimensional problems where kernel methods may be used to smooth a binned distribution). On the other hand, the explicit value of the density can be trivially computed with a NF from Eq.~\ref{eq:nf} if we assume a perfect map to the latent space distribution.
 
-\section{Unfolding}
+\section{Unfolding}\label{intro:unfolding}
 
 In any quantitative science we wish to be able to estimate the possible value of "true" parameters, directly connected to some underlying theory, given that we are only able of observing a distorted version of them in the best scenario, more realistically we will have to be satisfied with observing a different set of parameters entirely.
 In particular, we are often interested in lifting the effects induced by the detectors and possible physical and theoretical backgrounds. This procedure is normally called de-convolution, and takes the name of unfolding in particle physics. In this section we first revise a standard method for unfolding based on Bayesian inference, and then illustrate how to set-up a deep-learning version of it.
 
 \subsection{Iterated Bayesian Unfolding}
 In this section we will define the fundamental ideas of unfolding following closely Ref.~\cite{DAgostini:1994fjx, dagostini2010improved}.
-Bayesian inference is the proper framework to perform inference over unknown parameters from experimental data. A starting point for Bayesian unfolding is the discretization of the problem, in the form of binning of observable distribution of events, with each bin being treated as an independent variables.
+Bayesian inference is a framework to estimate unknown parameters from observed data. A starting point for Bayesian unfolding is the discretization of the problem, in the form of binning of observable distribution of events, with each bin being treated as an independent variables.
 %
 %------------------------------------------------------------
 \begin{figure}[t]
@@ -324,7 +327,7 @@ Following standard Bayesian inference, Eq.~\ref{eq:unf} may be computed as
 \begin{align}\label{eq:bayes_inf}
 P(C_i | E_j) = \frac{P(E_j | C_i) P(C_i)}{\sum_{l=1}^{n_E} P(E_j| C_l) P(C_l)},
 \end{align}
-Eq.~\ref{eq:bayes_inf} is nothing other than Bayes' theorem stating that the posterior is proportional to the likelihood, provided that we multiply by the prior
+Eq.~\ref{eq:bayes_inf} is Bayes' theorem stating that the posterior is proportional to the likelihood, provided that we multiply by the prior
 %
 \begin{align}
 P(C_i | E_j) \propto P(E_j | C_i) P(C_i),
@@ -335,9 +338,9 @@ and the denominator is a normalization factor.
 The unfolding algorithm proceeds as follows:
 \begin{itemize}
 \item
-compute the number of expected events in bin $C_i$ given that $n(E_i)$ is the observed counting bin $E_j$\\
+estimate the number of expected events in bin $C_i$ given that $n(E_i)$ is the observed counting bin $E_j$\\
 \begin{align}
-n(C_i)|_{n(E_j)} = P(C_i | E_j) n(E_j);
+n(C_i)|_{n(E_j)} \sim P(C_i | E_j) n(E_j);
 \end{align}
 \item
 include effects from all observations\\
@@ -356,13 +359,42 @@ with the efficiencies computed from the smearing matrix as
 where $\lambda_{ij} = P(E_j | C_i)$ are the entries of a smearing matrix $\Lambda$ estimated from Monte Carlo simulations. 
 \end{itemize}
 
-The above algorithm is essentially the first form of Bayesian unfolding presented in Ref.~\cite{DAgostini:1994fjx}. Ref.~\cite{dagostini2010improved} introduced several improvements over the first version, like the explicit modelling of the smearing matrix and the inclusion its uncertainty as
+The above algorithm is essentially the first form of Bayesian unfolding presented in Ref.~\cite{DAgostini:1994fjx}. Ref.~\cite{dagostini2010improved} introduced several improvements over the first version. A first improvements concerns the explicit modelling of the smearing matrix. In the original formulation, one starts by generating a large number of events in each cell and counting where they end up after the simulation. The entries $\lambda_{ij}$ are estimated as
+%
+\begin{align}
+\lambda_{ij} \sim \frac{n(E_j)^{MC}}{n(C_i)^{MC}}.
+\end{align}
+%
+We can both improve this estimate, and include its uncertainty, by employing again Bayes theorem and computing a posterior over the $\lambda_{ij}$. Given a column $\lambda_i$ of $\Lambda$, we have
+%
+\begin{align}
+f(\lambda_i | n(E)^{MC}, n(C_i)^{MC}) \propto P(n(E)^{MC} | n(C_i)^{MC}, \lambda_i) f(\lambda_i).
+\end{align}
+%
+If we choose a Dirichlet prior for $\lambda_i$ it is possible to show
+%
+\begin{align}
+\lambda_i \sim \text{Dir}(\alpha_{\text{posterior}, i}), \quad \alpha_{\text{posterior}, i } = \alpha_{\text{prior}, i} + n(E)^{MC}|_{n(C_i)^{MC}},
+\end{align}
+%
+where
+%
+\begin{align}
+\text{Dir}(x | \alpha) = x_1^{\alpha_1 -1 } \ldots x_n^{\alpha_n -1 }.
+\end{align}
+%
+We can now account for the extra uncertainty in $P(C_i | E_j)$ by computing
+%%
+%\begin{align}
+%f(x | \alpha) = \frac{\Gamma(\alpha_1 + \ldots + \alpha_n)}{\Gamma(\alpha_1) \ldots \Gamma(\alpha_n)} x_1^{\alpha_1 -1} \ldots x_n^{\alpha_n -1}
+%\end{align}
+%%
 %
 \begin{align}
 P(C_i | E_j) \longrightarrow P(C_i | E_j, \Lambda); \qquad P(C_i | E_j) = \int P(C_i | E_j) f(\Lambda) d\Lambda,
 \end{align}
 %
-i.e.\ the posterior over causes depends explicitly on the smearing matrix $\Lambda$, which is sampled from a distribution $f(\Lambda)$.
+i.e.\ the posterior over causes depends explicitly on the smearing matrix $\Lambda$, which is sampled from the posterior distribution $f(\Lambda)$.
 Most notably, however, is the additional iteration of the algorithm. Bayesian inference only makes sense when we have a prior belief of what the possible values of the unobserved parameters are. Choosing a "correct" prior is a tricky task, as this choice, which is arbitrary, affects the posterior distribution.
 Ref.~\cite{dagostini2010improved} suggests that the dependence on the prior can be reduced by iterating the unfolding procedure, by using the result of unfolding step $n$ as the prior of unfolding $n+1$. This method is therefore called Iterated Bayesian Unfolding (IBU).
 
