@@ -1711,30 +1711,30 @@ hypothesis should be under control, the next step will be
 to test this new framework in a realistic LHC example with proper analysis of the
 uncertainties.
 
-%------------------------------------------------------------
-\begin{figure}[b!]
-\centering
-\input{inputs/incl_flow}
-\caption{Illustration of the complementary 1.FCGAN and
-  \textsc{OmniFold}~\cite{Andreassen:2019cjw} approaches.}
-\label{fig:flow}
-\end{figure}
-%------------------------------------------------------------
-
-We have already pointed out in Sec.~\ref{intro:unfolding} that while research 
-projects related to this chapter were being finalized, the \textsc{OmniFold} approach
-appeared~\cite{Andreassen:2019cjw}. It aims at the same problem as our 
-generative models approach,
-but as illustrated in Fig.~\ref{fig:flow} it is completely
-complementary. Our conditional models use the simulation based on \delphes to
-train a generative network, which we can apply to LHC events to
-generate events describing the hard process. The \textsc{OmniFold}
-approach also starts from matched simulated events, but instead of
-inverting the detector simulation it uses machine learning to
-iteratively translate each side of this link to the measured events.
-This way both approaches should be able to extract hard process
-information from LHC events, assuming that we understand the relation
-between perturbative QCD predictions and Monte Carlo events.
+%%------------------------------------------------------------
+%\begin{figure}[b!]
+%\centering
+%\input{inputs/incl_flow}
+%\caption{Illustration of the complementary 1.FCGAN and
+%  \textsc{OmniFold}~\cite{Andreassen:2019cjw} approaches.}
+%\label{fig:flow}
+%\end{figure}
+%%------------------------------------------------------------
+%
+%We have already pointed out in Sec.~\ref{intro:unfolding} that while research 
+%projects related to this chapter were being finalized, the \textsc{OmniFold} approach
+%appeared~\cite{Andreassen:2019cjw}. It aims at the same problem as our 
+%generative models approach,
+%but as illustrated in Fig.~\ref{fig:flow} it is completely
+%complementary. Our conditional models use the simulation based on \delphes to
+%train a generative network, which we can apply to LHC events to
+%generate events describing the hard process. The \textsc{OmniFold}
+%approach also starts from matched simulated events, but instead of
+%inverting the detector simulation it uses machine learning to
+%iteratively translate each side of this link to the measured events.
+%This way both approaches should be able to extract hard process
+%information from LHC events, assuming that we understand the relation
+%between perturbative QCD predictions and Monte Carlo events.
 
 %We have shown that it is possible to invert a simple Monte Carlo
 %simulation, like a fast detector simulation, with a fully conditional

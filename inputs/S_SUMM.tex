@@ -24,7 +24,9 @@ Finally, in Chap.~\ref{chap:lsr} we introduced the notion of topological obstruc
 
 \medskip
 
+The work presented mostly consists of proofs of principle in a new field with vast, unexplored directions. As such, it opens up the path to several possible directions and follow-ups. Concerning the idea of generative unfolding, we have presented in Fig.~\ref{fig:w_prime} how our method can be robust against the injection of signal not included in the training set. This, however, is far from a complete proof that such a method is independent of the prior distribution it is trained on. Furthermore, the method needs to be tested against other deep learning frameworks and traditional approaches such as \textsc{OmniFold} and IBU.
 
+An obvious direction for the application of topology refinement is in hybrid Monte Carlo/machine learning approaches like i-flow~\cite{2020iflow1, 2020iflow2}. i-flow uses a normalizing flow to replace the proposal function of a standard Monte Carlo integrator like Sherpa. Phase-space cuts on the transverse momentum of massless particles may affect the final efficiency of the proposed model, and latent space refinement could be a simple way to boost their performances.
 
 \medskip
 
