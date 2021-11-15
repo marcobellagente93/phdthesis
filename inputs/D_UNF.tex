@@ -10,7 +10,7 @@
 
 \enlargethispage{2ex}
 
-{\bf LHC analysis accounts for the distortion induced by detector measurements using an unfolding procedure. Two shortcomings of existing unfolding techniques are their reliance on binned distributions, and, consequentially, their restriction to a limited number of selected observables. We show how conditional generative models can be used to map detector level observables to a pre-defined hard process. Specifically, we consider ZW production at the LHC, with either a fixed or variable number of QCD jets reconstructed by the detector. While open questions remain on the prior-independence of generative unfolding, it represents a first step toward multi-dimensional unbinned unfolding.}
+{\bf LHC analysis accounts for the distortion induced by detector measurements using an unfolding procedure. Two shortcomings of existing unfolding techniques are their reliance on binned distributions, and, consequentially, their restriction to a limited number of selected observables. We show how conditional generative models can be used to map detector level observables to a pre-defined hard process. Specifically, we consider ZW production at the LHC, with either a fixed or variable number of QCD jets reconstructed by the detector. While additional work remain to be done to assess the prior-independence of generative unfolding, it represents a first step toward multi-dimensional unbinned unfolding.}
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -522,7 +522,7 @@ is able to reproduce the parton level observables correctly.
 
 This first approach only serves as a check that the training procedure of the
 GAN leads to the correct outcome, as it suffers from severe limitations. 
-First of all, we wish to invert the detector simulation stochastically, i.e. 
+First of all, we wish to invert the detector simulation stochastically, i.e.\
 we want the full posterior distribution of possible parton level events
 associated to a single detector level event. As this setting doesn't accommodate
 any random input, and the generator itself is a deterministic map, this is 
@@ -979,7 +979,7 @@ then reproduces $x_d$ from the combination $x_p$ and $r$. Its inverse
 $\bar{g}$ instead reproduces the combination of $x_p$ and $r$ from $x_d$.
 
 We have introduced in Sec.~\ref{intro:normflow} the general features of 
-invertible models, i.e. models that learn both directions of the bijective mapping in parallel
+invertible models, i.e.\ models that learn both directions of the bijective mapping in parallel
 and encodes them into one network as illustrated in Fig.~\ref{fig:inn} .
 In particular, we have explained how we can think of an INN as the composition
 of multiple copies of a single base function with the required properties

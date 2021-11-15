@@ -52,17 +52,6 @@ collects everything associated to model's training.
 This does not mean that such an approach should be discarded entirely, but rather
 that we should think of a way to estimate this approximation uncertainty.
 
-The role of first-principle simulations in our understanding of large
-data sets makes LHC physics stand out in comparison to many other
-areas of science. 
-Two key aspects determine the potential of modern data driven approaches in this field:
-%
-\begin{itemize}
-\item[$\cdot$] ATLAS and CMS deliver proper big data with excellent control over uncertainties;
-%\item[$\cdot$] perturbative quantum field theory ;
-\item[$\cdot$] high fidelity simulations can be used to generate events from first principles.
-\end{itemize}
-%
 The fact that experiments, field theory calculations, and simulations
 control their uncertainties implies that we can work with a complete
 uncertainty budget, including statistical, systematic, and theory
@@ -197,56 +186,57 @@ extracted by appropriately modifying the training
 data~\cite{Bollweg:2019skg,Kasieczka:2020vlh}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Invertible Neural Networks}
+\subsection{Bayesian INN}
 \label{sec:nets_inn}
 
 To model complex densities such as LHC phase space distributions, we
-can employ invertible models~\cite{nflow1,coupling2,glow,nflow_review}. 
-They use the fact we can transform a random variable $z\sim p_Z(z)$ 
-using a bijective map $G:z\to x$ to a random variable $x = G(z)$ with the density
-%
-\begin{align}
-    p_X(x) = p_Z(z) \left|\det \frac{\partial G(z)}{\partial z}\right|^{-1} = p_Z\big(G^{-1}(x)\big)\left|\det\frac{\partial G^{-1}(x)}{\partial x}\right|\; .\label{eq:cov}
-\end{align}
-%
-Given a random variable $z$ from the base distribution, we can then use the map
-$G$ to generate a sample from the target distribution going in the
-forward direction. Alternatively, we can start from a sample $x$ from the
-target distribution and compute its density using the inverse
-direction. We will suppress the subscripts in the distributions
-$p_Z,p_X$ whenever the density is clear from the context, to lighten
-the notation.
+can employ invertible models of the kind described in Chap.~\ref{chap:unfolding}. 
 
-For this to be a useful approach, we require the base distribution
-$p_Z$ to be simple enough to allow for efficient sample generation,
-$G$ to be flexible enough to represent a non-trivial transformation, and its
-Jacobian determinant to be cheaply computable. If these
-constraints are fulfilled, $G$ gives us a powerful generative pipeline
-to model the phase space density
-%
-\begin{align}
-\text{base distribution $z \sim p_Z$}
-\stackrel[\leftarrow \; \overline{G}(x)]{G(z) \rightarrow}{\xleftrightarrow{\hspace*{1.5cm}}}
-\text{phase space distribution $x \sim p_X$} \;,
-\label{eq:mapping2}
-\end{align}
-%
-where $\overline{G}(x) = G^{-1}(x)$.
+%They use the fact we can transform a random variable $z\sim p_Z(z)$ 
+%using a bijective map $G:z\to x$ to a random variable $x = G(z)$ with the density
+%%
+%\begin{align}
+%    p_X(x) = p_Z(z) \left|\det \frac{\partial G(z)}{\partial z}\right|^{-1} = p_Z\big(G^{-1}(x)\big)\left|\det\frac{\partial G^{-1}(x)}{\partial x}\right|\; .\label{eq:cov}
+%\end{align}
+%%
+%Given a random variable $z$ from the base distribution, we can then use the map
+%$G$ to generate a sample from the target distribution going in the
+%forward direction. Alternatively, we can start from a sample $x$ from the
+%target distribution and compute its density using the inverse
+%direction. We will suppress the subscripts in the distributions
+%$p_Z,p_X$ whenever the density is clear from the context, to lighten
+%the notation.
 
-To fulfil the first constraint, we choose the base distribution $p_Z$
-to be a multivariate Gaussian with zero mean and an identity matrix
-as the covariance.  
-The construction of $G$ relies on the fact that a composition of invertible
-maps is again invertible, therefore, the receptive field of an invertible architecture
-can be increased by stacking simple non-linear transformations.
-In contrast, the determinant of the Jacobian
-of the composition remains simple in the sense that we can decompose
-it into the product of determinants of each individual transformation.  
-There exists a broad literature of different
-transformations, each with different strengths and
-weaknesses~\cite{nflow_review}. We rely on the real non-volume
-preserving flow~\cite{coupling2} in the invertible neural network
-(INN) formulation~\cite{inn}.
+%For this to be a useful approach, we require the base distribution
+%$p_Z$ to be simple enough to allow for efficient sample generation,
+%$G$ to be flexible enough to represent a non-trivial transformation, and its
+%Jacobian determinant to be cheaply computable. If these
+%constraints are fulfilled, $G$ gives us a powerful generative pipeline
+%to model the phase space density
+%%
+%\begin{align}
+%\text{base distribution $z \sim p_Z$}
+%\stackrel[\leftarrow \; \overline{G}(x)]{G(z) \rightarrow}{\xleftrightarrow{\hspace*{1.5cm}}}
+%\text{phase space distribution $x \sim p_X$} \;,
+%\label{eq:mapping2}
+%\end{align}
+%%
+%where $\overline{G}(x) = G^{-1}(x)$.
+
+%To fulfil the first constraint, we choose the base distribution $p_Z$
+%to be a multivariate Gaussian with zero mean and an identity matrix
+%as the covariance.  
+%The construction of $G$ relies on the fact that a composition of invertible
+%maps is again invertible, therefore, the receptive field of an invertible architecture
+%can be increased by stacking simple non-linear transformations.
+%In contrast, the determinant of the Jacobian
+%of the composition remains simple in the sense that we can decompose
+%it into the product of determinants of each individual transformation.  
+%There exists a broad literature of different
+%transformations, each with different strengths and
+%weaknesses~\cite{nflow_review}. We rely on the real non-volume
+%preserving flow~\cite{coupling2} in the invertible neural network
+%(INN) formulation~\cite{inn}.
 
 An INN composes multiple transformation maps into coupling layers with
 dimensional partitioning. The input vector $z$ into a layer is split in
@@ -315,8 +305,8 @@ divergence between the true but unknown phase space distribution
 $p_X^*(x)$ and our approximating distribution $p_X(x;\theta)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Bayesian INN}
-\label{sec:nets_binn}
+%\subsection{Bayesian INN}
+%\label{sec:nets_binn}
 
 The invertible model provides us with a powerful generative model
 of the underlying data distribution. However, it lacks a mechanism to

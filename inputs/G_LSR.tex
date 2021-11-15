@@ -49,7 +49,7 @@ This chapter is organized as follows. We review related work and describe the st
 \section{Background}
 \label{sec:background}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-As explained in Chap.~\ref{chap:introduction}, a generator is a function $g$ that maps a latent space $\mathcal{Z}\subseteq \mathbb{R}^N$ onto a target or feature space $\mathcal{X}\subseteq \mathbb{R}^M$, with underlying probability densities $p_\mathcal{Z}$ and $p_\mathcal{X}$, respectively.  Typically, $p_\mathcal{Z}$ is chosen to be simple (e.g. normal or uniform) so that it is efficient to generate data $Z\sim p_\mathcal{Z}$.  In some cases, the latent space $\mathcal{Z}$ is broken into two components: one component that specifies the input features of interest and one component that specifies auxiliary latent features that are marginalized over.  When this happens, the map $g$ is viewed as a stochastic function of the first latent space component.  While our examples exclusively cover the case of deterministic maps from the full latent space to the target space, our approach can accommodate both settings as we explain in more detail below.
+As explained in Chap.~\ref{chap:introduction}, a generator is a function $g$ that maps a latent space $\mathcal{Z}\subseteq \mathbb{R}^N$ onto a target or feature space $\mathcal{X}\subseteq \mathbb{R}^M$, with underlying probability densities $p_\mathcal{Z}$ and $p_\mathcal{X}$, respectively.  Typically, $p_\mathcal{Z}$ is chosen to be simple (e.g.\ normal or uniform) so that it is efficient to generate data $Z\sim p_\mathcal{Z}$.  In some cases, the latent space $\mathcal{Z}$ is broken into two components: one component that specifies the input features of interest and one component that specifies auxiliary latent features that are marginalized over.  When this happens, the map $g$ is viewed as a stochastic function of the first latent space component.  While our examples exclusively cover the case of deterministic maps from the full latent space to the target space, our approach can accommodate both settings as we explain in more detail below.
 
 The function $g$ can be constructed from first-principles insights about the dynamics of a system or it can be learned from data.  For example, commonly-used deep generative models include
 
@@ -146,7 +146,7 @@ Consequently, if we want to correctly reproduce the target space with a non-triv
 \label{sec:methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The \textsc{LaSeR} protocol is illustrated in Fig.~\ref{fig:schematic}. The input is a generator $g(z)$ that could either be a neural network or a black-box (BB) simulator (e.g. a physics-based Monte Carlo).
+The \textsc{LaSeR} protocol is illustrated in Fig.~\ref{fig:schematic}. The input is a generator $g(z)$ that could either be a neural network or a black-box (BB) simulator (e.g.\ a physics-based Monte Carlo).
 
 As a first step, a classifier is trained to distinguish samples drawn from $g$ and samples drawn from the target data probability density. It is well-known~\cite{hastie01statisticallearning,sugiyama_suzuki_kanamori_2012} (and forms the basis of the \textsc{Dctr} protocol~\cite{1907.08209}) that an ideally trained classifier $f$ using the binary cross entropy (BCE) loss function will have the property $f/(1-f)\propto p(x|\text{target})/p(x|\text{from $g$})$. The proportionality constant is $p(\text{target})/p(\text{from $g$})$ and is unity when the two datasets have the same number of samples. Other loss functions such as the mean squared error have the same property. It is also possible to engineer the loss function to directly learn the likelihood ratio~\cite{DAgnolo:2018cun,Nachman:2021yvi}. Throughout this chapter, we use BCE.
 
@@ -173,7 +173,7 @@ For this, we train a second generative model $\Phi$ which we call the refiner. T
 $p_{\mathcal{Z}^\prime}=q_\mathcal{Z}$, respectively.
 The refiner $\Phi$ can be either a GAN or a NF, where the latter requires $L=N$. In order to train the model on the weighted latent space $(z,w(z))$ we accommodate the weights into the loss functions as it was proposed in Refs.~\cite{Backes:2020vka, Verheyen:2020bjw}. In contrast to the MCMC algorithm, this method does not require to calculate the derivative of the weights $\partial w/\partial z$.
 
-At the end, we generate new samples from the refined generator by first sampling from the auxiliary latent space, mapping that to the refined latent space, and then passing that through $g$. In some cases, the entire procedure can be iterated, i.e.\,if $g$ is a neural network, its weights could be updated using the refined latent space.
+At the end, we generate new samples from the refined generator by first sampling from the auxiliary latent space, mapping that to the refined latent space, and then passing that through $g$. In some cases, the entire procedure can be iterated, i.e.\ if $g$ is a neural network, its weights could be updated using the refined latent space.
 
 Table~\ref{tab:refiner_comparison} illustrates some of the features of various combinations of generators $g$ and latent space refiner networks $\Phi$.
 
@@ -209,7 +209,7 @@ All models and the training routines are implemented in \textsc{PyTorch} 1.8~\ci
 
 \paragraph{Baseline model.}
 In all examples we use the Real-NVP~\cite{RNVP2019} implementation of a NF as the baseline model. Our implementation relies partially on the \textsc{FrEIA} library.\footnote{Framework for Easily Invertible Architectures: \texttt{https://github.com/VLL-HD/FrEIA}}
-In the first two examples, the NF consists of 12 coupling blocks, where each block consists of a fully connected multi-layer perceptron (MLP) with 3 hidden layers, 48 units per layer and leaky ReLU activation functions. In the third more complex example, we increase the number of coupling blocks to 20 and the number of units to 60. In all cases the model is trained for 100 epochs by minimizing the negative log-likelihood with an additional weight decay of $10^{-5}$. The optimization is performed using Adam~\cite{Adam2019} with default $\beta$ parameters and $\alpha_0 = 10^{-3}$. We further employ a exponential learning rate schedule, i.e.\,$\alpha_n = \alpha_0\,\gamma^n$,
+In the first two examples, the NF consists of 12 coupling blocks, where each block consists of a fully connected multi-layer perceptron (MLP) with 3 hidden layers, 48 units per layer and leaky ReLU activation functions. In the third more complex example, we increase the number of coupling blocks to 20 and the number of units to 60. In all cases the model is trained for 100 epochs by minimizing the negative log-likelihood with an additional weight decay of $10^{-5}$. The optimization is performed using Adam~\cite{Adam2019} with default $\beta$ parameters and $\alpha_0 = 10^{-3}$. We further employ a exponential learning rate schedule, i.e.\ $\alpha_n = \alpha_0\,\gamma^n$,
 with $\gamma = 0.999$ which decays the learning rate after each epoch.
 
 \paragraph{Post-hoc classifier.}
@@ -330,13 +330,13 @@ This process has a low phase-space dimensionality but still encodes typical topo
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.47\textwidth, page=1]{./figures/pt_ring.pdf}
-\includegraphics[width=0.49\textwidth, page=1]{./figures/ring.pdf}
+\includegraphics[width=0.47\textwidth, page=1]{./figures/ring.pdf}
 \caption{Left: the typical shape of the $p_T$ distribution of a jet. Right: the effect of the transverse momentum cut visualized in the $p_X$-$p_Y$ plane.}
 \label{fig:lhc_hole}
 \end{figure}
 %------------------------------------------------------------
 %
-A very important comments is in order.
+A very important comment is in order:
 some extremely clever cook may think that using a different set of variables rather then 4-momenta provide better results. This is logically flawed, as different representations, like $\{p_T, \eta, \phi\}$ are again related to the 4-momenta by a change of variable.
 %
 We conclude by showing in Fig.~\ref{fig:w_3jets_marginals} and~\ref{fig:w_3jets_2d} preliminary results on the application of the \textsc{LaSeR} protocol to $p p \to W^+ + 3j$.
