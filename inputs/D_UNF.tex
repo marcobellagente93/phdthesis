@@ -524,7 +524,7 @@ This first approach only serves as a check that the training procedure of the
 GAN leads to the correct outcome, as it suffers from severe limitations. 
 First of all, we wish to invert the detector simulation stochastically, i.e.\
 we want the full posterior distribution of possible parton level events
-associated to a single detector level event. As this setting doesn't accommodate
+associated to a single detector level event. As this setting does not accommodate
 any random input, and the generator itself is a deterministic map, this is 
 not possible.
 Secondly, the detector information is completely ignored by the model, 
@@ -569,7 +569,7 @@ simulation.
 We see that while there's a strong correlation in the paired dataset
 used for the training, the model is completely insensitive to it, and 
 simply reproduces the full parton level information.
-This is clear indications that the naive GAN approach doesn't exploit 
+This is clear indications that the naive GAN approach does not exploit 
 the fact that parton and detector events are paired. We discuss a 
 solution in the next section.
 
